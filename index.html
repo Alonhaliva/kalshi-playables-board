@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalshi — Playable Creative Board</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#EEF6F2;color:#3C3C3C;padding:40px 4%}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-size:30px;font-weight:800}
+h1 .brand{color:#00C588}
+.sub{color:#777;font-size:15px;margin:6px 0 26px}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.stat{flex:1 1 200px;background:#fff;border:2px solid #E5E5E5;border-radius:16px;padding:18px 20px}
+.stat b{display:block;font-size:26px;color:#00C588;font-weight:800}
+.stat span{font-size:13px;color:#777;font-weight:600;line-height:1.4}
+h2{font-size:15px;font-weight:800;letter-spacing:1.5px;color:#AFAFAF;text-transform:uppercase;margin:36px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:18px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:2px solid #E5E5E5;border-bottom-width:5px;border-radius:18px;padding:20px;display:flex;gap:18px}
+@media(max-width:560px){.card{flex-direction:column;align-items:center}}
+.phonewrap{flex-shrink:0;text-align:center}
+.phone{width:206px;height:406px;border-radius:22px;border:3px solid #3C3C3C;overflow:hidden;position:relative;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.phone iframe{width:375px;height:740px;border:0;transform:scale(0.5413);transform-origin:0 0;display:block}
+.replay{margin-top:8px;background:none;border:1.5px solid #E5E5E5;border-radius:10px;color:#AFAFAF;font-size:11px;font-weight:800;letter-spacing:.6px;padding:5px 12px;cursor:pointer}
+.replay:hover{color:#00C588;border-color:#00C588}
+.meta{flex:1;min-width:0}
+.name{font-size:18px;font-weight:800}
+.fmt{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;color:#1899D6;background:#DDF4FF;border-radius:8px;padding:3px 8px;margin:6px 0 10px}
+.fmt.hot{color:#CC7800;background:#FFF3D6}
+.hook{font-size:13.5px;color:#555;line-height:1.55;margin-bottom:10px}
+.thesis{font-size:12.5px;color:#8a8a8a;line-height:1.55}
+.thesis b{color:#008F63}
+.file{font-size:10.5px;color:#AFAFAF;margin-top:10px;word-break:break-all;font-family:Menlo,monospace}
+.live{display:inline-block;font-size:10px;font-weight:800;color:#fff;background:#FF4B4B;border-radius:6px;padding:2px 7px;letter-spacing:1px;vertical-align:3px;margin-left:8px}
+table{width:100%;border-collapse:collapse;background:#fff;border:2px solid #E5E5E5;border-radius:16px;overflow:hidden;font-size:13.5px}
+th{background:#00C588;color:#fff;font-weight:800;text-align:left;padding:11px 14px;font-size:12px;letter-spacing:.8px;text-transform:uppercase}
+td{padding:11px 14px;border-top:1px solid #EFEFEF;color:#555;vertical-align:top}
+td:first-child{font-weight:700;color:#3C3C3C;white-space:nowrap}
+.note{background:#FFF8E1;border:2px solid #FFC800;border-radius:14px;padding:16px 18px;font-size:13px;color:#7A5800;line-height:1.6;margin-top:30px}
+footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1><span class="brand">Kalshi</span> × Unity Ads — Playable Creative Board</h1>
+<p class="sub">5 Unity-compliant playable end cards — <b>all demos below are live, tap and play them right here</b> · MRAID 3.0 · single file · &lt;5&nbsp;MB · portrait+landscape · iOS&nbsp;+&nbsp;Android CTAs — August 2026</p>
+<div class="stats"><div class="stat"><b>up to 16×</b><span>conversion vs. non-interactive formats (playable benchmark, 2025)</span></div><div class="stat"><b>2–3×</b><span>CTR vs. standard video/display</span></div><div class="stat"><b>15–80s</b><span>engagement time — interactive creatives hold attention well beyond 60s, vs. 5–7s on standard video</span></div><div class="stat"><b>+30–40%</b><span>post-install retention when users try the mechanic before they install</span></div></div>
+<h2>Brand mechanics — the untested edge</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Which Trader Are You?&lt;/title&gt;
+&lt;style&gt;
+  /* ---- Kalshi brand tokens (kalshi.com/brandkit) ---- */
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{
+    width:100%; height:100%; overflow:hidden;
+    background:#01201A;
+    font-family:Inter, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;
+    color:#FFFFFF; -webkit-user-select:none; user-select:none;
+  }
+  #stage{
+    position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center;
+    -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:
+      radial-gradient(circle at 50% 14%, rgba(0,221,148,0.20), rgba(0,221,148,0) 58%),
+      radial-gradient(circle at 84% 94%, rgba(77,228,178,0.12), rgba(77,228,178,0) 52%),
+      #01201A;
+    touch-action:manipulation;
+  }
+  #panel{
+    position:relative; width:100%; max-width:460px; margin:0 auto;
+    padding:5% 7%;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center;
+    text-align:center;
+  }
+  #logo{ width:96px; height:auto; margin:0 0 14px; display:block; }
+  #logo path{ fill:#00DD94; }
+  .tag{
+    font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    color:#00DD94; font-weight:800; margin:0 0 4px;
+  }
+  .prog{ font-size:11px; color:#6f9c8b; font-weight:700; letter-spacing:.06em; margin:0 0 12px; }
+
+  h1{ font-size:23px; line-height:1.25; font-weight:800; margin:2px 0 20px; color:#fff; min-height:58px;
+      display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; }
+
+  .opts{ width:100%; display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; gap:11px; }
+  .opt{
+    width:100%; text-align:left; cursor:pointer;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.22);
+    border-bottom:3px solid rgba(0,221,148,0.32);
+    border-radius:16px; padding:15px 16px; color:#eafff7; font-size:15px; font-weight:600;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center; gap:12px;
+    -webkit-transition:-webkit-transform .12s ease, background .12s ease; transition:transform .12s ease, background .12s ease;
+  }
+  .opt:active{ -webkit-transform:scale(.98); transform:scale(.98); }
+  .opt .em{ font-size:24px; line-height:1; -webkit-flex-shrink:0; flex-shrink:0; }
+  .opt.sel{ background:rgba(0,221,148,0.16); border-color:#00DD94; border-bottom-color:#00CE8E; }
+
+  /* result */
+  #result{ display:none; width:100%; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; }
+  #result.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
+  .rface{ font-size:64px; line-height:1; margin:4px 0 8px; }
+  .rname{ font-size:30px; font-weight:800; color:#00DD94; letter-spacing:-.01em; text-shadow:0 0 30px rgba(0,221,148,0.35); margin:0 0 8px; }
+  .rdesc{ font-size:14px; color:#bfeede; line-height:1.5; margin:0 0 16px; max-width:340px; }
+  .mkt{
+    width:100%; max-width:360px; background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.24);
+    border-radius:14px; padding:12px 15px; margin:0 0 6px;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; gap:10px;
+  }
+  .mkt .q{ font-size:13px; color:#cfeee2; text-align:left; font-weight:600; }
+  .mkt .pc{ font-size:20px; font-weight:800; color:#00DD94; -webkit-flex-shrink:0; flex-shrink:0; }
+  .mkt .pc small{ font-size:12px; color:#86b8a6; font-weight:700; display:block; }
+
+  #cta{
+    margin:18px auto 0; padding:15px 32px; border:0; border-radius:999px;
+    font-family:inherit; font-weight:800; font-size:17px;
+    color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    -webkit-transition:-webkit-transform .1s ease; transition:transform .1s ease;
+  }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+
+  .legal{ margin-top:16px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.5; }
+  .legal b{ color:#86b8a6; font-weight:700; }
+
+  @media (orientation:landscape){
+    #panel{ max-width:640px; padding:2.5% 6%; }
+    #logo{ width:78px; margin-bottom:8px; }
+    h1{ font-size:19px; min-height:0; margin-bottom:12px; }
+    .opts{ display:grid; grid-template-columns:1fr 1fr; }
+    .rface{ font-size:48px; } .rname{ font-size:24px; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot;&gt;Prediction markets&lt;/div&gt;
+  &lt;div class=&quot;prog&quot; id=&quot;prog&quot;&gt;Question 1 of 3&lt;/div&gt;
+  &lt;h1 id=&quot;q&quot;&gt;It&amp;rsquo;s election night. You&amp;rsquo;re&amp;hellip;&lt;/h1&gt;
+  &lt;div class=&quot;opts&quot; id=&quot;opts&quot;&gt;&lt;/div&gt;
+
+  &lt;div id=&quot;result&quot;&gt;
+    &lt;div class=&quot;rface&quot; id=&quot;rface&quot;&gt;🎯&lt;/div&gt;
+    &lt;div class=&quot;rname&quot; id=&quot;rname&quot;&gt;The Contrarian&lt;/div&gt;
+    &lt;div class=&quot;rdesc&quot; id=&quot;rdesc&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mkt&quot;&gt;&lt;div class=&quot;q&quot; id=&quot;mktq&quot;&gt;Fed cuts rates in December?&lt;/div&gt;&lt;div class=&quot;pc&quot; id=&quot;mktp&quot;&gt;64&amp;cent;&lt;small&gt;YES&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;button id=&quot;cta&quot;&gt;Trade your take on Kalshi&lt;/button&gt;
+    &lt;div class=&quot;legal&quot;&gt;Kalshi is a &lt;b&gt;CFTC-regulated&lt;/b&gt; exchange &amp;middot; &lt;b&gt;Legal in all 50 states&lt;/b&gt; &amp;middot; 18+&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — &quot;Which Trader Are You?&quot; personality playable.
+ * 3 taps -&gt; a trader archetype + a live-market suggestion + CTA.
+ * MRAID 3.0, ES5 (iOS 9 / Android 4.4). CTA via mraid.open only.
+ * Compliance: verb is &quot;trade&quot;/&quot;make your call&quot;, never &quot;bet&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE = {
+    ios:     &quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android: &quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot;
+  };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+
+  /* Each option adds to one archetype: C=contrarian, M=momentum, A=analyst, G=gut */
+  var QS = [
+    { q:&quot;It&amp;rsquo;s election night. You&amp;rsquo;re&amp;hellip;&quot;,
+      a:[ {t:&quot;Refreshing the odds every 30 seconds&quot;,e:&quot;📊&quot;,k:&quot;A&quot;},
+          {t:&quot;Fading the favorite &amp;mdash; everyone&amp;rsquo;s wrong&quot;,e:&quot;🙃&quot;,k:&quot;C&quot;},
+          {t:&quot;Riding whoever&amp;rsquo;s surging tonight&quot;,e:&quot;📈&quot;,k:&quot;M&quot;},
+          {t:&quot;You already had a feeling weeks ago&quot;,e:&quot;🔮&quot;,k:&quot;G&quot;} ] },
+    { q:&quot;A market is sitting at 80% YES. You&amp;hellip;&quot;,
+      a:[ {t:&quot;Buy YES &amp;mdash; the crowd&amp;rsquo;s usually right&quot;,e:&quot;🚀&quot;,k:&quot;M&quot;},
+          {t:&quot;Short it. 80% is overconfident&quot;,e:&quot;✂️&quot;,k:&quot;C&quot;},
+          {t:&quot;Read the fine print before anything&quot;,e:&quot;🔎&quot;,k:&quot;A&quot;},
+          {t:&quot;Trust your gut over the number&quot;,e:&quot;🎲&quot;,k:&quot;G&quot;} ] },
+    { q:&quot;Your dream market to call is&amp;hellip;&quot;,
+      a:[ {t:&quot;The Fed&amp;rsquo;s next rate decision&quot;,e:&quot;🏦&quot;,k:&quot;A&quot;},
+          {t:&quot;Who takes Best Picture&quot;,e:&quot;🏆&quot;,k:&quot;G&quot;},
+          {t:&quot;The Super Bowl champ&quot;,e:&quot;🏈&quot;,k:&quot;M&quot;},
+          {t:&quot;The one nobody else believes in&quot;,e:&quot;🌑&quot;,k:&quot;C&quot;} ] }
+  ];
+  var RESULTS = {
+    C:{ face:&quot;🃏&quot;, name:&quot;The Contrarian&quot;, desc:&quot;You make your best calls when the crowd leans the other way. Kalshi lets you take the other side &amp;mdash; for real.&quot;,
+        mq:&quot;Fed holds rates in Q1?&quot;, mp:&quot;41&quot;, side:&quot;YES&quot; },
+    M:{ face:&quot;🚀&quot;, name:&quot;The Momentum Rider&quot;, desc:&quot;You back what&amp;rsquo;s moving and ride the wave. Kalshi turns every trend into a tradable market.&quot;,
+        mq:&quot;S&amp;amp;P 500 closes green this week?&quot;, mp:&quot;67&quot;, side:&quot;YES&quot; },
+    A:{ face:&quot;🧠&quot;, name:&quot;The Analyst&quot;, desc:&quot;You read every data point before you commit. Kalshi rewards doing the homework.&quot;,
+        mq:&quot;CPI comes in under 3.0%?&quot;, mp:&quot;58&quot;, side:&quot;YES&quot; },
+    G:{ face:&quot;🔮&quot;, name:&quot;The Gut Trader&quot;, desc:&quot;You feel the call before the numbers catch up. Kalshi lets you put a price on that instinct.&quot;,
+        mq:&quot;An underdog wins Best Picture?&quot;, mp:&quot;33&quot;, side:&quot;YES&quot; }
+  };
+
+  var score={C:0,M:0,A:0,G:0}, idx=0, started=false, locked=false;
+  var progEl=document.getElementById(&quot;prog&quot;), qEl=document.getElementById(&quot;q&quot;),
+      optsEl=document.getElementById(&quot;opts&quot;), resEl=document.getElementById(&quot;result&quot;),
+      cta=document.getElementById(&quot;cta&quot;);
+
+  function renderQ(){
+    var Q=QS[idx];
+    progEl.innerHTML=&quot;Question &quot;+(idx+1)+&quot; of &quot;+QS.length;
+    qEl.innerHTML=Q.q;
+    optsEl.innerHTML=&quot;&quot;;
+    for(var i=0;i&lt;Q.a.length;i++){ (function(opt){
+      var b=document.createElement(&quot;button&quot;);
+      b.className=&quot;opt&quot;; b.innerHTML=&#x27;&lt;span class=&quot;em&quot;&gt;&#x27;+opt.e+&#x27;&lt;/span&gt;&lt;span&gt;&#x27;+opt.t+&#x27;&lt;/span&gt;&#x27;;
+      b.onclick=function(){ if(locked) return; locked=true; b.className=&quot;opt sel&quot;;
+        score[opt.k]++; setTimeout(next,230); };
+      optsEl.appendChild(b);
+    })(Q.a[i]); }
+  }
+  function next(){ locked=false; idx++; if(idx&lt;QS.length){ renderQ(); } else { showResult(); } }
+
+  function showResult(){
+    var best=&quot;C&quot;,bv=-1,k;
+    for(k in score){ if(score.hasOwnProperty(k) &amp;&amp; score[k]&gt;bv){ bv=score[k]; best=k; } }
+    var R=RESULTS[best];
+    document.getElementById(&quot;rface&quot;).innerHTML=R.face;
+    document.getElementById(&quot;rname&quot;).innerHTML=R.name;
+    document.getElementById(&quot;rdesc&quot;).innerHTML=R.desc;
+    document.getElementById(&quot;mktq&quot;).innerHTML=R.mq;
+    document.getElementById(&quot;mktp&quot;).innerHTML=R.mp+&quot;&amp;cent;&lt;small&gt;&quot;+R.side+&quot;&lt;/small&gt;&quot;;
+    progEl.style.display=&quot;none&quot;; qEl.style.display=&quot;none&quot;; optsEl.style.display=&quot;none&quot;;
+    resEl.className=&quot;show&quot;;
+  }
+
+  cta.addEventListener(&quot;click&quot;, function(){
+    var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot; &amp;&amp; mraid &amp;&amp; typeof mraid.open===&quot;function&quot;){ mraid.open(url); }
+    else if(window.open){ window.open(url,&quot;_blank&quot;); }
+  }, false);
+
+  /* MRAID lifecycle — quiz has no ambient motion, but honor viewability. */
+  function showAd(){ if(started) return; started=true; renderQ(); }
+  function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;, onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){
+    if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;, onSdkReady); } else { onSdkReady(); }
+  }
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Which Trader Are You?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Election night, an 80% market, your dream call → “You’re The Contrarian.” Personalized trader archetype + a live market matched to it.</div><div class="thesis"><b>Tests:</b> identity hook + self-segmentation — the result routes each user toward the market category they’ll actually trade.</div><div class="file">Kalshi_TraderQuiz_3T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — The Real Thing&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
+    font-family:Inter, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;
+    color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center;
+    -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:
+      radial-gradient(circle at 50% 16%, rgba(0,221,148,0.22), rgba(0,221,148,0) 58%),
+      radial-gradient(circle at 82% 92%, rgba(77,228,178,0.12), rgba(77,228,178,0) 52%),
+      #01201A; touch-action:manipulation; }
+  #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:5% 7%;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:96px; height:auto; margin:0 0 14px; display:block; }
+  #logo path{ fill:#00DD94; }
+  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 8px; }
+  h1{ font-size:24px; line-height:1.25; font-weight:800; margin:0 0 6px; color:#fff; }
+  .sub{ font-size:13px; color:#86b8a6; margin:0 0 22px; }
+
+  .rows{ width:100%; max-width:380px; display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; gap:12px; }
+  .row{ position:relative; width:100%; cursor:pointer; text-align:left;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px; padding:16px 16px; overflow:hidden;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center; gap:14px;
+    -webkit-transition:border-color .25s ease, background .25s ease; transition:border-color .25s ease, background .25s ease; }
+  .check{ -webkit-flex-shrink:0; flex-shrink:0; width:34px; height:34px; border-radius:50%;
+    border:2px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.04);
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    -webkit-transition:all .25s ease; transition:all .25s ease; }
+  .check svg{ width:18px; height:18px; opacity:0; -webkit-transform:scale(.4); transform:scale(.4); -webkit-transition:all .3s cubic-bezier(.2,1.4,.4,1); transition:all .3s cubic-bezier(.2,1.4,.4,1); }
+  .check svg path{ stroke:#01201A; stroke-width:3.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .rtext{ -webkit-box-flex:1; -webkit-flex:1; flex:1; min-width:0; padding-right:44px; }
+  .rtext .big{ display:block; font-size:15px; font-weight:800; color:#eafff7; line-height:1.25; }
+  .rtext .small{ display:block; font-size:12px; color:#86b8a6; margin-top:3px; line-height:1.35; }
+  .row.on{ border-color:#00DD94; background:rgba(0,221,148,0.12); }
+  .row.on .check{ background:#00DD94; border-color:#00DD94; }
+  .row.on .check svg{ opacity:1; -webkit-transform:scale(1); transform:scale(1); }
+  .row .tapme{ position:absolute; right:14px; top:50%; -webkit-transform:translateY(-50%); transform:translateY(-50%);
+    font-size:11px; font-weight:800; letter-spacing:.08em; color:#00DD94; text-transform:uppercase;
+    -webkit-transition:opacity .2s; transition:opacity .2s; }
+  .row.on .tapme{ opacity:0; }
+
+  #done{ display:none; width:100%; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; }
+  #done.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
+  .seal{ font-size:52px; line-height:1; margin:6px 0 8px; }
+  .dhead{ font-size:26px; font-weight:800; color:#00DD94; text-shadow:0 0 30px rgba(0,221,148,0.35); margin:0 0 8px; }
+  .dsub{ font-size:14px; color:#bfeede; line-height:1.5; max-width:330px; margin:0 0 6px; }
+
+  #cta{ margin:20px auto 0; padding:15px 32px; border:0; border-radius:999px; font-family:inherit;
+    font-weight:800; font-size:17px; color:#01201A; background:#00DD94;
+    box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    -webkit-transition:-webkit-transform .1s ease; transition:transform .1s ease; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .legal{ margin-top:16px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.5; }
+  .legal b{ color:#86b8a6; font-weight:700; }
+
+  @media (orientation:landscape){
+    #panel{ max-width:640px; padding:2.5% 6%; }
+    #logo{ width:76px; margin-bottom:8px; } h1{ font-size:20px; } .sub{ margin-bottom:12px; }
+    .rows{ max-width:520px; } .seal{ font-size:40px; } .dhead{ font-size:22px; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot; id=&quot;tag&quot;&gt;Too good to be true?&lt;/div&gt;
+  &lt;h1 id=&quot;head&quot;&gt;Is this actually legal?&lt;/h1&gt;
+  &lt;div class=&quot;sub&quot; id=&quot;sub&quot;&gt;Tap each one to check for yourself.&lt;/div&gt;
+  &lt;div class=&quot;rows&quot; id=&quot;rows&quot;&gt;
+    &lt;button class=&quot;row&quot; data-i=&quot;0&quot;&gt;&lt;span class=&quot;check&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 12.5l5 5L20 6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span class=&quot;rtext&quot;&gt;&lt;span class=&quot;big&quot;&gt;Federally regulated&lt;/span&gt;&lt;span class=&quot;small&quot;&gt;Overseen by the CFTC &amp;mdash; like a stock exchange&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&quot;tapme&quot;&gt;Tap&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-i=&quot;1&quot;&gt;&lt;span class=&quot;check&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 12.5l5 5L20 6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span class=&quot;rtext&quot;&gt;&lt;span class=&quot;big&quot;&gt;Legal in all 50 states&lt;/span&gt;&lt;span class=&quot;small&quot;&gt;No sportsbook gray zones. Everywhere in the US.&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&quot;tapme&quot;&gt;Tap&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;row&quot; data-i=&quot;2&quot;&gt;&lt;span class=&quot;check&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 12.5l5 5L20 6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+      &lt;span class=&quot;rtext&quot;&gt;&lt;span class=&quot;big&quot;&gt;Real markets, real payouts&lt;/span&gt;&lt;span class=&quot;small&quot;&gt;Trade on events. Cash out anytime.&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&quot;tapme&quot;&gt;Tap&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;done&quot;&gt;
+    &lt;div class=&quot;seal&quot;&gt;✅&lt;/div&gt;
+    &lt;div class=&quot;dhead&quot;&gt;Verified.&lt;/div&gt;
+    &lt;div class=&quot;dsub&quot;&gt;Kalshi is a CFTC-regulated exchange where you can trade on real-world events &amp;mdash; legally, in all 50 states.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot;&gt;Make your first call&lt;/button&gt;
+    &lt;div class=&quot;legal&quot;&gt;Kalshi is a &lt;b&gt;CFTC-regulated&lt;/b&gt; exchange &amp;middot; &lt;b&gt;Legal in all 50 states&lt;/b&gt; &amp;middot; 18+&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — &quot;Is this actually legal?&quot; legitimacy playable.
+ * 3 taps reveal Kalshi&#x27;s credentials -&gt; Verified end card + CTA.
+ * Dramatizes the top-performing message (legitimacy, not betting).
+ * MRAID 3.0, ES5. Verb: &quot;make your call&quot;/&quot;trade&quot;, never &quot;bet&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE = {
+    ios:     &quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android: &quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot;
+  };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+
+  var rows=document.getElementById(&quot;rows&quot;), doneEl=document.getElementById(&quot;done&quot;),
+      cta=document.getElementById(&quot;cta&quot;), headEl=document.getElementById(&quot;head&quot;),
+      subEl=document.getElementById(&quot;sub&quot;), tagEl=document.getElementById(&quot;tag&quot;),
+      rowsEl=document.getElementById(&quot;rows&quot;);
+  var started=false, count=0, total=3;
+
+  function onTap(el){
+    if(el.className.indexOf(&quot;on&quot;)&gt;-1) return;
+    el.className=&quot;row on&quot;;
+    count++;
+    if(count===total){ setTimeout(finish, 420); }
+  }
+  var btns=rows.getElementsByClassName(&quot;row&quot;);
+  for(var i=0;i&lt;btns.length;i++){ (function(b){ b.onclick=function(){ if(started) onTap(b); }; })(btns[i]); }
+
+  function finish(){
+    tagEl.style.display=&quot;none&quot;; headEl.style.display=&quot;none&quot;; subEl.style.display=&quot;none&quot;; rowsEl.style.display=&quot;none&quot;;
+    doneEl.className=&quot;show&quot;;
+  }
+
+  cta.addEventListener(&quot;click&quot;, function(){
+    var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot; &amp;&amp; mraid &amp;&amp; typeof mraid.open===&quot;function&quot;){ mraid.open(url); }
+    else if(window.open){ window.open(url,&quot;_blank&quot;); }
+  }, false);
+
+  function showAd(){ if(started) return; started=true; }
+  function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;, onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){
+    if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;, onSdkReady); } else { onSdkReady(); }
+  }
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Is This Actually Legal?<span class="live">LIVE</span></div><div class="fmt hot">LEGITIMACY REVEAL · 3 TAPS</div><div class="hook">Tap to verify each credential → CFTC-regulated · legal in all 50 states · real payouts → “Verified.” Dramatizes the message that already wins for Kalshi.</div><div class="thesis"><b>Tests:</b> the legitimacy angle — turning “is this real?” from an objection into the hook. Legitimacy consistently out-converts betting-led messaging in this category.</div><div class="file">Kalshi_LegalIn50_3T.html</div></div></div></div><h2>Product demos — the proven core</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Forecast the Fed&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif;
+    color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center;
+    -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 18%, rgba(0,221,148,0.20), rgba(0,221,148,0) 60%),
+      radial-gradient(circle at 82% 92%, rgba(77,228,178,0.12), rgba(77,228,178,0) 55%),#01201A;
+    touch-action:none; }
+  #panel{ position:relative; width:100%; max-width:450px; margin:0 auto; padding:4% 7%;
+    display:-webkit-box; display:-webkit-flex; display:flex;
+    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:104px; height:auto; margin:0 0 12px; display:block; } #logo path{ fill:#00DD94; }
+  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 14px; }
+  .icon{ font-size:34px; line-height:1; margin:0 0 8px; }
+  h1{ font-size:21px; line-height:1.25; font-weight:800; margin:2px 0 2px; color:#fff; }
+  .sub{ font-size:12px; color:#86b8a6; margin:0 0 14px; }
+  #pct{ font-size:56px; line-height:1; font-weight:800; color:#00DD94; margin:4px 0 0; letter-spacing:-.02em; text-shadow:0 0 30px rgba(0,221,148,0.35); }
+  #pct small{ font-size:22px; font-weight:700; vertical-align:top; margin-left:2px; }
+  .yn{ font-size:13px; font-weight:700; color:#9fcab9; margin:6px 0 16px; } .yn b{ color:#fff; }
+  #slider{ position:relative; width:100%; height:52px; margin:2px 0 4px; cursor:grab; }
+  #track{ position:absolute; top:50%; left:0; right:0; height:14px; -webkit-transform:translateY(-50%); transform:translateY(-50%);
+    background:rgba(255,255,255,0.10); border-radius:999px; overflow:hidden; }
+  #fill{ position:absolute; top:0; left:0; bottom:0; width:50%; background:linear-gradient(90deg,#00CE8E,#00DD94); border-radius:999px; }
+  #thumb{ position:absolute; top:50%; left:50%; width:40px; height:40px; margin-left:-20px; -webkit-transform:translateY(-50%); transform:translateY(-50%);
+    background:#fff; border-radius:50%; box-shadow:0 6px 18px rgba(0,0,0,0.45),0 0 0 6px rgba(0,221,148,0.18);
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center; }
+  #thumb:after{ content:&quot;&quot;; width:13px; height:13px; border-radius:50%; background:#00DD94; }
+  .scale{ display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; width:100%; font-size:11px; color:#6f9c8b; margin-top:2px; }
+  #payout{ width:100%; margin:14px 0 2px; background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.22); border-radius:14px; padding:11px 14px;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:justify; -webkit-justify-content:space-between; justify-content:space-between; }
+  #payout .lab{ font-size:12px; color:#9fcab9; text-align:left; } #payout .val{ font-size:20px; font-weight:800; color:#fff; }
+  #hint{ font-size:12px; color:#4DE4B2; margin:12px 0 0; height:16px; -webkit-transition:opacity .3s; transition:opacity .3s; }
+  .nudge{ -webkit-animation:nudge 1.4s ease-in-out infinite; animation:nudge 1.4s ease-in-out infinite; }
+  @-webkit-keyframes nudge{ 0%,100%{ -webkit-transform:translateX(-6px);} 50%{ -webkit-transform:translateX(6px);} }
+  @keyframes nudge{ 0%,100%{ transform:translateX(-6px);} 50%{ transform:translateX(6px);} }
+  #cta{ margin:14px auto 0; padding:15px 30px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
+    color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    opacity:0; -webkit-transform:translateY(8px); transform:translateY(8px);
+    -webkit-transition:opacity .35s ease,-webkit-transform .35s ease; transition:opacity .35s ease,transform .35s ease; pointer-events:none; }
+  #cta.show{ opacity:1; -webkit-transform:translateY(0); transform:translateY(0); pointer-events:auto; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .legal{ margin-top:11px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.4; } .legal b{ color:#86b8a6; font-weight:700; }
+  #ticker{ position:absolute; left:0; right:0; bottom:2%; overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); }
+  #ticker .lab{ text-align:center; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:#6f9c8b; font-weight:700; margin:0 0 6px; }
+  #ttrack{ display:-webkit-inline-flex; display:inline-flex; white-space:nowrap; -webkit-animation:scroll 24s linear infinite; animation:scroll 24s linear infinite; }
+  #ticker.paused #ttrack{ -webkit-animation-play-state:paused; animation-play-state:paused; }
+  .chip{ display:-webkit-inline-flex; display:inline-flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; gap:6px; margin:0 6px;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.18); border-radius:999px; padding:6px 12px; font-size:12px; color:#cfeee2; font-weight:600; }
+  .chip i{ font-style:normal; color:#00DD94; font-weight:800; }
+  @-webkit-keyframes scroll{ from{ -webkit-transform:translateX(0);} to{ -webkit-transform:translateX(-50%);} }
+  @keyframes scroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  @media (orientation:landscape){ #panel{ max-width:600px; padding:1.5% 6%; } #logo{ width:84px; margin-bottom:6px; }
+    #pct{ font-size:42px; } h1{ font-size:17px; } .tag{ margin-bottom:6px; } .icon{ display:none; } .sub{ margin-bottom:8px; }
+    #payout{ margin-top:8px; } #cta{ margin-top:10px; padding:12px 26px; } #ticker{ bottom:1.5%; } }
+  @media (orientation:landscape) and (max-height:380px){ #pct{ font-size:34px; } #slider{ height:44px; } .sub,#ticker .lab{ display:none; } }
+  @media (prefers-reduced-motion:reduce){ .nudge{ -webkit-animation:none; animation:none; } #ttrack{ -webkit-animation:none; animation:none; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot;&gt;Prediction markets&lt;/div&gt;
+  &lt;div class=&quot;icon&quot;&gt;🏦&lt;/div&gt;
+  &lt;h1&gt;Will the Fed cut rates in December?&lt;/h1&gt;
+  &lt;div class=&quot;sub&quot;&gt;Drag to set your forecast&lt;/div&gt;
+  &lt;div id=&quot;pct&quot;&gt;50&lt;small&gt;%&lt;/small&gt;&lt;/div&gt;
+  &lt;div class=&quot;yn&quot;&gt;YES &lt;b id=&quot;yesc&quot;&gt;50&amp;cent;&lt;/b&gt; &amp;nbsp;&amp;middot;&amp;nbsp; NO &lt;b id=&quot;noc&quot;&gt;50&amp;cent;&lt;/b&gt;&lt;/div&gt;
+  &lt;div id=&quot;slider&quot;&gt;&lt;div id=&quot;track&quot;&gt;&lt;div id=&quot;fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;thumb&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;scale&quot;&gt;&lt;span&gt;0% &amp;middot; No cut&lt;/span&gt;&lt;span&gt;Rate cut?&lt;/span&gt;&lt;span&gt;100% &amp;middot; Cut&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;payout&quot;&gt;&lt;div class=&quot;lab&quot;&gt;If you&amp;rsquo;re right, $10 becomes&lt;/div&gt;&lt;div class=&quot;val&quot;&gt;$&lt;span id=&quot;pay&quot;&gt;20.00&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;hint&quot;&gt;&amp;nbsp;&lt;/div&gt;
+  &lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;
+  &lt;div class=&quot;legal&quot;&gt;CFTC-regulated exchange &amp;middot; Legal in all 50 states &amp;middot; 18+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;ticker&quot;&gt;&lt;div class=&quot;lab&quot;&gt;Trending markets right now&lt;/div&gt;&lt;div id=&quot;ttrack&quot;&gt;
+  &lt;span class=&quot;chip&quot;&gt;&lt;i&gt;68&amp;cent;&lt;/i&gt; S&amp;amp;P 500 up this week&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;44&amp;cent;&lt;/i&gt; CPI under 3.0%&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;31&amp;cent;&lt;/i&gt; Gov&amp;rsquo;t shutdown by Q1&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;72&amp;cent;&lt;/i&gt; Bitcoin above $100k&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;55&amp;cent;&lt;/i&gt; Named storm this month&lt;/span&gt;
+  &lt;span class=&quot;chip&quot;&gt;&lt;i&gt;68&amp;cent;&lt;/i&gt; S&amp;amp;P 500 up this week&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;44&amp;cent;&lt;/i&gt; CPI under 3.0%&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;31&amp;cent;&lt;/i&gt; Gov&amp;rsquo;t shutdown by Q1&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;72&amp;cent;&lt;/i&gt; Bitcoin above $100k&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;55&amp;cent;&lt;/i&gt; Named storm this month&lt;/span&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — Forecast slider (news/econ market variant).
+ * Drag to set YES probability; YES/NO cents + $10 payout update live.
+ * Teaches the contract math: YES costs &lt;pct&gt;c, pays $1.
+ * MRAID 3.0, ES5. CTA via mraid.open. Verb: &quot;trade&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+
+  var slider=document.getElementById(&quot;slider&quot;), fill=document.getElementById(&quot;fill&quot;), thumb=document.getElementById(&quot;thumb&quot;),
+      pctEl=document.getElementById(&quot;pct&quot;), yesEl=document.getElementById(&quot;yesc&quot;), noEl=document.getElementById(&quot;noc&quot;),
+      payEl=document.getElementById(&quot;pay&quot;), hint=document.getElementById(&quot;hint&quot;), cta=document.getElementById(&quot;cta&quot;),
+      ticker=document.getElementById(&quot;ticker&quot;);
+  var started=false, dragging=false, interacted=false, pct=50;
+  function clamp(v,lo,hi){ return v&lt;lo?lo:(v&gt;hi?hi:v); }
+  function render(p){
+    pct=Math.round(clamp(p,1,99)); fill.style.width=pct+&quot;%&quot;; thumb.style.left=pct+&quot;%&quot;;
+    pctEl.innerHTML=pct+&quot;&lt;small&gt;%&lt;/small&gt;&quot;; yesEl.innerHTML=pct+&quot;&amp;cent;&quot;; noEl.innerHTML=(100-pct)+&quot;&amp;cent;&quot;;
+    payEl.innerHTML=(10/(pct/100)).toFixed(2);
+  }
+  function pctFromX(x){ var r=slider.getBoundingClientRect(); return clamp(((x-r.left)/r.width)*100,1,99); }
+  function onMove(x){ if(!dragging||!started) return; render(pctFromX(x));
+    if(!interacted){ interacted=true; cta.className=&quot;show&quot;; hint.className=&quot;&quot;; hint.innerHTML=&quot;Back your call &amp;mdash; trade it live on Kalshi.&quot;; } }
+  function startDrag(x){ if(!started) return; dragging=true; slider.style.cursor=&quot;grabbing&quot;; onMove(x); }
+  function endDrag(){ dragging=false; slider.style.cursor=&quot;grab&quot;; }
+  slider.addEventListener(&quot;touchstart&quot;,function(e){ startDrag(e.touches[0].clientX); e.preventDefault(); },false);
+  slider.addEventListener(&quot;touchmove&quot;,function(e){ onMove(e.touches[0].clientX); e.preventDefault(); },false);
+  slider.addEventListener(&quot;touchend&quot;,function(){ endDrag(); },false);
+  slider.addEventListener(&quot;touchcancel&quot;,function(){ endDrag(); },false);
+  slider.addEventListener(&quot;mousedown&quot;,function(e){ startDrag(e.clientX); e.preventDefault(); },false);
+  document.addEventListener(&quot;mousemove&quot;,function(e){ onMove(e.clientX); },false);
+  document.addEventListener(&quot;mouseup&quot;,function(){ endDrag(); },false);
+  cta.addEventListener(&quot;click&quot;,function(){ if(!interacted) return; var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+  function startHint(){ hint.className=&quot;nudge&quot;; hint.innerHTML=&quot;&amp;#9664;&amp;nbsp; Drag the slider &amp;nbsp;&amp;#9654;&quot;; }
+  function stopHint(){ hint.className=&quot;&quot;; }
+  function startMotion(){ ticker.className=&quot;&quot;; if(!interacted) startHint(); }
+  function pauseMotion(){ ticker.className=&quot;paused&quot;; stopHint(); }
+  function showAd(){ if(started) return; started=true; render(50); startMotion(); }
+  function resumeAd(){ startMotion(); } function pauseAd(){ pauseMotion(); }
+  function onViewableChange(v){ if(v){ started?resumeAd():showAd(); } else { pauseAd(); } }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else { onSdkReady(); } }
+  document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) pauseAd(); else if(started) resumeAd(); },false);
+  window.addEventListener(&quot;resize&quot;,function(){ render(pct); },false);
+  render(50); boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Forecast the Fed<span class="live">LIVE</span></div><div class="fmt">DRAG SLIDER · FORECAST</div><div class="hook">Drag the slider to set your probability — YES/NO cents and the $10 payout update live. Teaches the contract math in one gesture.</div><div class="thesis"><b>Tests:</b> the core Kalshi mechanic — does teaching the payout before install lift qualified, deposit-ready users?</div><div class="file">Kalshi_ForecastSlider_Drag.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Make Your Call&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 16%, rgba(0,221,148,0.20), rgba(0,221,148,0) 58%),
+      radial-gradient(circle at 82% 92%, rgba(77,228,178,0.12), rgba(77,228,178,0) 52%),#01201A; touch-action:manipulation; }
+  #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:5% 7%;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:100px; height:auto; margin:0 0 14px; display:block; } #logo path{ fill:#00DD94; }
+  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 12px; }
+  .icon{ font-size:38px; line-height:1; margin:0 0 10px; }
+  h1{ font-size:24px; line-height:1.25; font-weight:800; margin:0 0 6px; color:#fff; }
+  .sub{ font-size:12px; color:#86b8a6; margin:0 0 22px; }
+  .btns{ width:100%; display:-webkit-box; display:-webkit-flex; display:flex; gap:12px; }
+  .pick{ -webkit-box-flex:1; -webkit-flex:1; flex:1; cursor:pointer; border-radius:18px; padding:18px 10px 16px;
+    border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.05);
+    -webkit-transition:-webkit-transform .12s ease,background .15s,border-color .15s; transition:transform .12s ease,background .15s,border-color .15s; }
+  .pick:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .pick .lab{ font-size:22px; font-weight:800; letter-spacing:.04em; }
+  .pick .price{ font-size:13px; font-weight:700; margin-top:4px; }
+  .pick.yes .lab{ color:#00DD94; } .pick.yes .price{ color:#7fd9bd; }
+  .pick.no .lab{ color:#ff8f8f; } .pick.no .price{ color:#d9a3a3; }
+  .pick.yes.sel{ background:rgba(0,221,148,0.16); border-color:#00DD94; } .pick.no.sel{ background:rgba(255,120,120,0.14); border-color:#ff8f8f; }
+  .pick.dim{ opacity:.38; }
+
+  #result{ display:none; width:100%; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; margin-top:20px; }
+  #result.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
+  .rlead{ font-size:13px; color:#9fcab9; font-weight:700; }
+  .payline{ font-size:15px; color:#bfeede; margin:8px 0 0; line-height:1.45; }
+  .payline b{ color:#fff; } .paybig{ font-size:44px; font-weight:800; color:#00DD94; text-shadow:0 0 30px rgba(0,221,148,0.35); margin:6px 0 2px; letter-spacing:-.02em; }
+
+  #cta{ margin:20px auto 0; padding:15px 32px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
+    color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer; -webkit-transition:-webkit-transform .1s; transition:transform .1s; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .legal{ margin-top:16px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.5; } .legal b{ color:#86b8a6; font-weight:700; }
+  @media (orientation:landscape){ #panel{ max-width:620px; padding:2.5% 6%; } #logo{ width:80px; margin-bottom:8px; } .icon{ display:none; } h1{ font-size:20px; } .sub{ margin-bottom:14px; } .btns{ max-width:520px; } }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot;&gt;Prediction markets&lt;/div&gt;
+  &lt;div class=&quot;icon&quot; id=&quot;icon&quot;&gt;🚀&lt;/div&gt;
+  &lt;h1 id=&quot;q&quot;&gt;Will Bitcoin close above $100k this year?&lt;/h1&gt;
+  &lt;div class=&quot;sub&quot; id=&quot;sub&quot;&gt;One tap. Make your call.&lt;/div&gt;
+  &lt;div class=&quot;btns&quot; id=&quot;btns&quot;&gt;
+    &lt;button class=&quot;pick yes&quot; id=&quot;pyes&quot;&gt;&lt;div class=&quot;lab&quot;&gt;YES&lt;/div&gt;&lt;div class=&quot;price&quot;&gt;72&amp;cent;&lt;/div&gt;&lt;/button&gt;
+    &lt;button class=&quot;pick no&quot; id=&quot;pno&quot;&gt;&lt;div class=&quot;lab&quot;&gt;NO&lt;/div&gt;&lt;div class=&quot;price&quot;&gt;28&amp;cent;&lt;/div&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;result&quot;&gt;
+    &lt;div class=&quot;rlead&quot; id=&quot;rlead&quot;&gt;You called YES.&lt;/div&gt;
+    &lt;div class=&quot;paybig&quot; id=&quot;paybig&quot;&gt;$13.89&lt;/div&gt;
+    &lt;div class=&quot;payline&quot;&gt;If you&amp;rsquo;re right, &lt;b&gt;$10&lt;/b&gt; pays out &lt;b id=&quot;payinline&quot;&gt;$13.89&lt;/b&gt;.&lt;br&gt;That&amp;rsquo;s the market &amp;mdash; real, and live right now.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot;&gt;Trade this on Kalshi&lt;/button&gt;
+    &lt;div class=&quot;legal&quot;&gt;Kalshi is a &lt;b&gt;CFTC-regulated&lt;/b&gt; exchange &amp;middot; &lt;b&gt;Legal in all 50 states&lt;/b&gt; &amp;middot; 18+&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — &quot;Make Your Call&quot; 1-tap baseline.
+ * Tap YES or NO on a live market -&gt; payout reveal -&gt; CTA.
+ * Lowest-friction concept; control for the A/B matrix.
+ * MRAID 3.0, ES5. Verb: &quot;make your call&quot;/&quot;trade&quot;, never &quot;bet&quot;.
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+
+  var YES_CENTS=72, NO_CENTS=28;
+  var pyes=document.getElementById(&quot;pyes&quot;), pno=document.getElementById(&quot;pno&quot;),
+      subEl=document.getElementById(&quot;sub&quot;), resEl=document.getElementById(&quot;result&quot;),
+      rlead=document.getElementById(&quot;rlead&quot;), paybig=document.getElementById(&quot;paybig&quot;),
+      payinline=document.getElementById(&quot;payinline&quot;), cta=document.getElementById(&quot;cta&quot;);
+  var started=false, done=false;
+
+  function pick(side){
+    if(!started||done) return; done=true;
+    var cents = side===&quot;YES&quot;?YES_CENTS:NO_CENTS;
+    var payout=(10/(cents/100)).toFixed(2);
+    (side===&quot;YES&quot;?pyes:pno).className=&quot;pick &quot;+(side===&quot;YES&quot;?&quot;yes&quot;:&quot;no&quot;)+&quot; sel&quot;;
+    (side===&quot;YES&quot;?pno:pyes).className=&quot;pick &quot;+(side===&quot;YES&quot;?&quot;no&quot;:&quot;yes&quot;)+&quot; dim&quot;;
+    subEl.style.display=&quot;none&quot;;
+    rlead.innerHTML=&quot;You called &quot;+side+&quot;.&quot;;
+    paybig.innerHTML=&quot;$&quot;+payout;
+    payinline.innerHTML=&quot;$&quot;+payout;
+    resEl.className=&quot;show&quot;;
+  }
+  pyes.onclick=function(){ pick(&quot;YES&quot;); };
+  pno.onclick=function(){ pick(&quot;NO&quot;); };
+
+  cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+
+  function showAd(){ if(started) return; started=true; }
+  function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else { onSdkReady(); } }
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Make Your Call<span class="live">LIVE</span></div><div class="fmt">YES / NO · 1 TAP</div><div class="hook">One market, one tap. Pick YES or NO → instant payout reveal → CTA. The lowest-friction entry point in the set.</div><div class="thesis"><b>Tests:</b> minimal-friction baseline — the control every other concept has to beat on IPM and FTD rate.</div><div class="file">Kalshi_MakeYourCall_1T.html</div></div></div></div><h2>Tentpole — World Cup 2026</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — World Cup 2026&lt;/title&gt;
+&lt;style&gt;
+  /* ---- Kalshi brand tokens (from kalshi.com/brandkit) ---- */
+  :root{
+    --green1:#00DD94;   /* primary green on dark */
+    --green2:#00CE8E;   /* primary green on light */
+    --turq:#4DE4B2;     /* accent */
+    --darkgreen:#01201A;/* signature dark */
+    --white:#FFFFFF;
+  }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{
+    margin:0; padding:0; width:100%; height:100%; overflow:hidden;
+    background:var(--darkgreen);
+    font-family:Inter, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;
+    color:var(--white);
+    -webkit-user-select:none; user-select:none;
+  }
+  #stage{
+    position:absolute; inset:0; top:0; left:0; right:0; bottom:0;
+    display:flex; align-items:center; justify-content:center;
+    background:
+      radial-gradient(circle at 50% 18%, rgba(0,221,148,0.20), rgba(0,221,148,0) 60%),
+      radial-gradient(circle at 82% 92%, rgba(77,228,178,0.12), rgba(77,228,178,0) 55%),
+      var(--darkgreen);
+    touch-action:none;
+  }
+  /* pitch stripes — subtle World Cup texture, behind everything */
+  #pitch{
+    position:absolute; inset:0; top:0; left:0; right:0; bottom:0;
+    background:repeating-linear-gradient(
+      0deg, rgba(255,255,255,0.018) 0 38px, rgba(255,255,255,0) 38px 76px);
+    pointer-events:none;
+  }
+  #panel{
+    position:relative;
+    width:100%; max-width:450px;
+    margin:0 auto;
+    padding:4% 7%;
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+  }
+  #logo{ width:108px; height:auto; margin:0 0 3% 0; display:block; }
+  #logo path{ fill:var(--green1); }
+
+  .tag{
+    font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--green1); font-weight:800; margin:0 0 12px;
+  }
+
+  /* matchup row */
+  .match{
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    margin:0 0 10px;
+  }
+  .team{
+    display:flex; flex-direction:column; align-items:center; gap:5px;
+    min-width:74px;
+  }
+  .badge{
+    width:46px; height:46px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:15px; letter-spacing:.02em;
+    border:1px solid rgba(255,255,255,0.14);
+  }
+  .badge.usa{ background:linear-gradient(135deg,#1b3a8f,#b22234); color:#fff; }
+  .badge.aus{ background:linear-gradient(135deg,#00843D,#FFCD00); color:#012; }
+  .team span{ font-size:12px; font-weight:700; color:#bfeede; }
+  .ball{ width:26px; height:26px; opacity:.95; }
+  .ball .o{ fill:var(--white); }
+  .ball .p{ fill:var(--darkgreen); }
+
+  h1{
+    font-size:20px; line-height:1.25; font-weight:800; margin:6px 0 2px;
+    color:var(--white);
+  }
+  .sub{ font-size:12px; color:#86b8a6; margin:0 0 14px; }
+
+  #pct{
+    font-size:56px; line-height:1; font-weight:800; color:var(--green1);
+    margin:4px 0 0; letter-spacing:-.02em;
+    text-shadow:0 0 30px rgba(0,221,148,0.35);
+  }
+  #pct small{ font-size:22px; font-weight:700; vertical-align:top; margin-left:2px; }
+  .yn{ font-size:13px; font-weight:700; color:#9fcab9; margin:6px 0 16px; }
+  .yn b{ color:var(--white); }
+
+  #slider{ position:relative; width:100%; height:52px; margin:2px 0 4px; cursor:grab; }
+  #track{
+    position:absolute; top:50%; left:0; right:0; height:14px;
+    transform:translateY(-50%);
+    background:rgba(255,255,255,0.10); border-radius:999px; overflow:hidden;
+  }
+  #fill{
+    position:absolute; top:0; left:0; bottom:0; width:50%;
+    background:linear-gradient(90deg, var(--green2), var(--green1)); border-radius:999px;
+  }
+  #thumb{
+    position:absolute; top:50%; left:50%; width:40px; height:40px; margin-left:-20px;
+    transform:translateY(-50%); background:var(--white); border-radius:50%;
+    box-shadow:0 6px 18px rgba(0,0,0,0.45), 0 0 0 6px rgba(0,221,148,0.18);
+    display:flex; align-items:center; justify-content:center;
+  }
+  #thumb:after{ content:&quot;&quot;; width:13px; height:13px; border-radius:50%; background:var(--green1); }
+  .scale{
+    display:flex; justify-content:space-between; width:100%;
+    font-size:11px; color:#6f9c8b; margin-top:2px;
+  }
+
+  #payout{
+    width:100%; margin:14px 0 2px;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.22);
+    border-radius:14px; padding:11px 14px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  #payout .lab{ font-size:12px; color:#9fcab9; text-align:left; }
+  #payout .val{ font-size:20px; font-weight:800; color:var(--white); }
+
+  #hint{ font-size:12px; color:var(--turq); margin:12px 0 0; height:16px; transition:opacity .3s; }
+  .nudge{ animation:nudge 1.4s ease-in-out infinite; }
+  @keyframes nudge{ 0%,100%{ transform:translateX(-6px);} 50%{ transform:translateX(6px);} }
+
+  #cta{
+    margin:14px auto 0; padding:15px 30px; border:0; border-radius:999px;
+    font-family:inherit; font-weight:800; font-size:17px;
+    color:var(--darkgreen); background:var(--green1);
+    box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
+    opacity:0; transform:translateY(8px);
+    transition:opacity .35s ease, transform .35s ease; pointer-events:none;
+  }
+  #cta.show{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  #cta:active{ transform:scale(.97); }
+
+  /* upcoming ticker */
+  #ticker{
+    position:absolute; left:0; right:0; bottom:2.5%;
+    overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  }
+  #ticker .lab{
+    text-align:center; font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    color:#6f9c8b; font-weight:700; margin:0 0 6px;
+  }
+  #ttrack{ display:inline-flex; white-space:nowrap; animation:scroll 22s linear infinite; }
+  #ticker.paused #ttrack{ animation-play-state:paused; }
+  .chip{
+    display:inline-flex; align-items:center; gap:6px; margin:0 6px;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(0,221,148,0.18);
+    border-radius:999px; padding:6px 12px; font-size:12px; color:#cfeee2; font-weight:600;
+  }
+  .chip i{ font-style:normal; color:var(--green1); font-weight:800; }
+  @keyframes scroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+  @media (orientation:landscape){
+    #panel{ max-width:600px; padding:1.5% 6%; }
+    #logo{ width:88px; margin-bottom:1%; }
+    #pct{ font-size:44px; }
+    h1{ font-size:17px; }
+    .tag{ margin-bottom:6px; }
+    .match{ margin-bottom:6px; }
+    .sub{ margin-bottom:8px; }
+    #payout{ margin-top:8px; }
+    #cta{ margin-top:10px; padding:12px 26px; }
+    #ticker{ bottom:1.5%; }
+  }
+  @media (orientation:landscape) and (max-height:380px){
+    #pct{ font-size:36px; } #slider{ height:44px; }
+    .sub,#ticker .lab{ display:none; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .nudge{ animation:none; }
+    #ttrack{ animation:none; }
+  }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;pitch&quot;&gt;&lt;/div&gt;&lt;div id=&quot;panel&quot;&gt;&lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;&lt;div class=&quot;tag&quot;&gt;World Cup 2026 · Group D&lt;/div&gt;&lt;div class=&quot;match&quot;&gt;&lt;div class=&quot;team&quot;&gt;&lt;div class=&quot;badge usa&quot;&gt;USA&lt;/div&gt;&lt;span&gt;United States&lt;/span&gt;&lt;/div&gt;&lt;svg class=&quot;ball&quot; viewBox=&quot;0 0 32 32&quot; aria-hidden=&quot;true&quot;&gt;&lt;circle class=&quot;o&quot; cx=&quot;16&quot; cy=&quot;16&quot; r=&quot;15&quot;/&gt;&lt;path class=&quot;p&quot; d=&quot;M16 7l4 3-1.5 5h-5L12 10z M7 14l3 1 1 4-3 2-3-3z M25 14l-1 4-3-2 1-4 3 1z M11 25l2-3h6l2 3-5 2z&quot;/&gt;&lt;/svg&gt;&lt;div class=&quot;team&quot;&gt;&lt;div class=&quot;badge aus&quot;&gt;AUS&lt;/div&gt;&lt;span&gt;Australia&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;h1&gt;Will the USA beat Australia?&lt;/h1&gt;&lt;div class=&quot;sub&quot;&gt;Jun 19 · Drag to set your forecast&lt;/div&gt;&lt;div id=&quot;pct&quot;&gt;50&lt;small&gt;%&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;yn&quot;&gt;YES &lt;b id=&quot;yesc&quot;&gt;50&amp;cent;&lt;/b&gt; &amp;nbsp;·&amp;nbsp; NO &lt;b id=&quot;noc&quot;&gt;50&amp;cent;&lt;/b&gt;&lt;/div&gt;&lt;div id=&quot;slider&quot;&gt;&lt;div id=&quot;track&quot;&gt;&lt;div id=&quot;fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;thumb&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;scale&quot;&gt;&lt;span&gt;0% &amp;middot; No&lt;/span&gt;&lt;span&gt;USA win?&lt;/span&gt;&lt;span&gt;100% &amp;middot; Yes&lt;/span&gt;&lt;/div&gt;&lt;div id=&quot;payout&quot;&gt;&lt;div class=&quot;lab&quot;&gt;If USA wins, $10 becomes&lt;/div&gt;&lt;div class=&quot;val&quot;&gt;$&lt;span id=&quot;pay&quot;&gt;20.00&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;hint&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;&lt;/div&gt;&lt;div id=&quot;ticker&quot;&gt;&lt;div class=&quot;lab&quot;&gt;Upcoming this fortnight&lt;/div&gt;&lt;div id=&quot;ttrack&quot;&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 18&lt;/i&gt; Mexico v South Korea&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 18&lt;/i&gt; Canada v Qatar&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 19&lt;/i&gt; Brazil v Haiti&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 19&lt;/i&gt; Scotland v Morocco&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 20&lt;/i&gt; Netherlands v Sweden&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 20&lt;/i&gt; Germany v Ivory Coast&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 18&lt;/i&gt; Mexico v South Korea&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 18&lt;/i&gt; Canada v Qatar&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 19&lt;/i&gt; Brazil v Haiti&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 19&lt;/i&gt; Scotland v Morocco&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 20&lt;/i&gt; Netherlands v Sweden&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;Jun 20&lt;/i&gt; Germany v Ivory Coast&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; &lt;script&gt;
+/* ============================================================
+ * Kalshi World Cup 2026 playable end card.
+ * One mechanic: drag the slider to forecast USA&#x27;s win probability
+ * vs Australia (Group D, Jun 19). YES/NO cents + $10 payout update live.
+ * MRAID 3.0: respect viewability; CTA via mraid.open. ES5 (iOS 9 / Android 4.4).
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+
+  var STORE = {
+    ios:     &quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android: &quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot;
+  };
+  function platform(){
+    var ua = navigator.userAgent || &quot;&quot;;
+    if(/iPhone|iPad|iPod/i.test(ua)) return &quot;ios&quot;;
+    if(/Android/i.test(ua)) return &quot;android&quot;;
+    return &quot;android&quot;;
+  }
+
+  var slider = document.getElementById(&quot;slider&quot;);
+  var fill   = document.getElementById(&quot;fill&quot;);
+  var thumb  = document.getElementById(&quot;thumb&quot;);
+  var pctEl  = document.getElementById(&quot;pct&quot;);
+  var yesEl  = document.getElementById(&quot;yesc&quot;);
+  var noEl   = document.getElementById(&quot;noc&quot;);
+  var payEl  = document.getElementById(&quot;pay&quot;);
+  var hint   = document.getElementById(&quot;hint&quot;);
+  var cta    = document.getElementById(&quot;cta&quot;);
+  var ticker = document.getElementById(&quot;ticker&quot;);
+
+  var started = false, dragging = false, interacted = false, pct = 50;
+
+  function clamp(v, lo, hi){ return v &lt; lo ? lo : (v &gt; hi ? hi : v); }
+
+  function render(p){
+    pct = Math.round(clamp(p, 1, 99));
+    fill.style.width = pct + &quot;%&quot;;
+    thumb.style.left = pct + &quot;%&quot;;
+    pctEl.innerHTML = pct + &quot;&lt;small&gt;%&lt;/small&gt;&quot;;
+    yesEl.innerHTML = pct + &quot;&amp;cent;&quot;;
+    noEl.innerHTML  = (100 - pct) + &quot;&amp;cent;&quot;;
+    /* Kalshi mechanic: a YES contract costs &lt;pct&gt; cents and pays $1.
+       $10 buys 1000/pct contracts -&gt; 10/(pct/100). */
+    payEl.innerHTML = (10 / (pct / 100)).toFixed(2);
+  }
+
+  function pctFromX(clientX){
+    var r = slider.getBoundingClientRect();
+    return clamp(((clientX - r.left) / r.width) * 100, 1, 99);
+  }
+
+  function onMove(clientX){
+    if(!dragging || !started) return;
+    render(pctFromX(clientX));
+    if(!interacted){
+      interacted = true;
+      cta.className = &quot;show&quot;;
+      hint.className = &quot;&quot;;
+      hint.innerHTML = &quot;Back your call — trade it live on Kalshi.&quot;;
+    }
+  }
+  function startDrag(clientX){ if(!started) return; dragging = true; slider.style.cursor = &quot;grabbing&quot;; onMove(clientX); }
+  function endDrag(){ dragging = false; slider.style.cursor = &quot;grab&quot;; }
+
+  slider.addEventListener(&quot;touchstart&quot;, function(e){ startDrag(e.touches[0].clientX); e.preventDefault(); }, false);
+  slider.addEventListener(&quot;touchmove&quot;,  function(e){ onMove(e.touches[0].clientX); e.preventDefault(); }, false);
+  slider.addEventListener(&quot;touchend&quot;,   function(){ endDrag(); }, false);
+  slider.addEventListener(&quot;touchcancel&quot;,function(){ endDrag(); }, false);
+  slider.addEventListener(&quot;mousedown&quot;,  function(e){ startDrag(e.clientX); e.preventDefault(); }, false);
+  document.addEventListener(&quot;mousemove&quot;,function(e){ onMove(e.clientX); }, false);
+  document.addEventListener(&quot;mouseup&quot;,  function(){ endDrag(); }, false);
+
+  cta.addEventListener(&quot;click&quot;, function(){
+    if(!interacted){ return; }            /* never opens on first touch */
+    var url = STORE[platform()];
+    if(typeof mraid !== &quot;undefined&quot; &amp;&amp; mraid &amp;&amp; typeof mraid.open === &quot;function&quot;){ mraid.open(url); }
+    else if(window.open){ window.open(url, &quot;_blank&quot;); }   /* preview mode outside the SDK */
+  }, false);
+
+  function startHint(){ hint.className = &quot;nudge&quot;; hint.innerHTML = &quot;&amp;#9664;&amp;nbsp; Drag the slider &amp;nbsp;&amp;#9654;&quot;; }
+  function stopHint(){ hint.className = &quot;&quot;; }
+
+  /* ============================================================
+   * MRAID lifecycle. End cards may begin with the video, but must
+   * honor isViewable: pause ambient motion (hint + ticker) when hidden.
+   * ============================================================ */
+  function startMotion(){ ticker.className = &quot;&quot;; if(!interacted) startHint(); }
+  function pauseMotion(){ ticker.className = &quot;paused&quot;; stopHint(); }
+
+  function showAd(){ if(started) return; started = true; render(50); startMotion(); }
+  function resumeAd(){ startMotion(); }
+  function pauseAd(){ pauseMotion(); }
+
+  function onViewableChange(viewable){ if(viewable){ started ? resumeAd() : showAd(); } else { pauseAd(); } }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;, onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){
+    if(typeof mraid === &quot;undefined&quot;){ showAd(); return; }  /* SDK absent: container will drive viewability */
+    if(mraid.getState() === &quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;, onSdkReady); }
+    else { onSdkReady(); }
+  }
+
+  document.addEventListener(&quot;visibilitychange&quot;, function(){
+    if(document.hidden) pauseAd(); else if(started) resumeAd();
+  }, false);
+  window.addEventListener(&quot;resize&quot;, function(){ render(pct); }, false);
+
+  render(50);
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">World Cup 2026 Forecast<span class="live">LIVE</span></div><div class="fmt">DRAG SLIDER · FIXTURE + TICKER</div><div class="hook">Forecast USA vs. Australia with the same slider mechanic, wrapped in a live fixtures ticker — the whole tournament calendar built into one creative.</div><div class="thesis"><b>Tests:</b> event-driven demand — does a fixture skin lift the forecast mechanic during the tentpole window? Data-bindable across all 104 fixtures with no new production.</div><div class="file">Kalshi_WorldCup2026_Drag.html</div></div></div></div>
+<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A — Friction</td><td>Make Your Call 1T vs. Forecast Slider</td><td>Does teaching the payout math qualify users or slow the funnel?</td><td>IPM → FTD rate</td></tr><tr><td>B — Hook</td><td>Trader Quiz vs. Is This Legal?</td><td>Identity vs. legitimacy — which brand message converts?</td><td>CTR → CVR</td></tr><tr><td>C — Message</td><td>Is This Legal? vs. Forecast Slider</td><td>Legitimacy story vs. product mechanic — which drives deposits?</td><td>CVR → FTD / payer</td></tr><tr><td>D — Tentpole</td><td>World Cup Forecast vs. Forecast the Fed</td><td>Does an event fixture lift the same mechanic during a tentpole?</td><td>IPM → D7 ROAS</td></tr></table>
+<div class="note"><b>About these builds:</b> everything on this page is a working concept build — final versions ship with Kalshi’s official brand assets and approved market copy. Both store CTAs are already wired with automatic iOS/Android detection, every creative is Unity-spec compliant (MRAID 3.0 · single file · &lt;5&nbsp;MB · both orientations), and copy holds the compliance line throughout — the verb is always “trade” / “make your call,” never “bet.” 18+, US-only, regulated-state targeting and category controls are handled at the campaign layer. Ready to move into campaign QA as soon as concepts are approved.</div>
+<footer>Benchmarks: AppAgent “State of Playable Ads 2025”; Admiral Media playable UA guide. Kalshi brand tokens: kalshi.com/brandkit. Store: apps.apple.com/us/app/kalshi/id1632713844 · play.google.com/store/apps/details?id=com.kalshi.mobile</footer>
+</div>
+</body>
+</html>

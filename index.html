@@ -478,57 +478,62 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#00CE8E;
     font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#01201A; -webkit-user-select:none; user-select:none; }
-  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
-    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column;
-    -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
-    background:radial-gradient(circle at 50% 42%, #12E39C, #00CE8E 70%); touch-action:none; }
-  /* progress bar */
-  #pbar{ position:absolute; top:0; left:0; height:5px; width:0%; background:#FFD23F; -webkit-transition:width .3s ease; transition:width .3s ease; box-shadow:0 0 10px rgba(255,210,63,.6); }
-  .prompt{ text-align:center; padding:0 18px; margin:0 0 14px; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0; overflow:hidden;
+    background:radial-gradient(circle at 50% 38%, #12E39C, #00CE8E 72%); touch-action:none; }
+  #pbar{ position:absolute; top:0; left:0; height:5px; width:0%; background:#FFD23F; -webkit-transition:width .35s ease; transition:width .35s ease; box-shadow:0 0 10px rgba(255,210,63,.6); z-index:20; }
+  .prompt{ position:absolute; top:0; left:0; right:0; text-align:center; padding:16px 18px 0; z-index:15; }
   .prompt .big{ font-size:19px; font-weight:800; color:#01201A; letter-spacing:-.01em; }
-  .prompt .small{ font-size:13px; font-weight:600; color:#0a3b2e; margin-top:3px; opacity:.8; }
+  .prompt .small{ font-size:13px; font-weight:600; color:#0a3b2e; margin-top:3px; opacity:.85; }
 
-  #board{ position:relative; }
-  .slot{ position:absolute; border:2px dashed rgba(1,32,26,0.18); border-radius:8px; }
-  .piece{ position:absolute; cursor:grab; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22)); -webkit-filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22)); }
+  #arena{ position:absolute; inset:0; top:0; left:0; right:0; bottom:0; }
+  #ghost{ position:absolute; opacity:.14; } #ghost path{ fill:#01201A; }
+  .slot{ position:absolute; border:2px dashed rgba(1,32,26,0.28); border-radius:10px; }
+  .slot.next{ border-color:rgba(1,32,26,0.6); -webkit-animation:slotpulse 1.2s ease-in-out infinite; animation:slotpulse 1.2s ease-in-out infinite; }
+  @-webkit-keyframes slotpulse{ 0%,100%{ background:rgba(1,32,26,0); } 50%{ background:rgba(1,32,26,0.08); } }
+  @keyframes slotpulse{ 0%,100%{ background:rgba(1,32,26,0); } 50%{ background:rgba(1,32,26,0.08); } }
+  #tray{ position:absolute; border-radius:16px; background:rgba(1,32,26,0.10); z-index:5; }
+
+  .piece{ position:absolute; cursor:grab; z-index:8; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22)); -webkit-filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22)); }
+  .piece.anim{ -webkit-transition:left .5s cubic-bezier(.3,1.1,.4,1), top .5s cubic-bezier(.3,1.1,.4,1); transition:left .5s cubic-bezier(.3,1.1,.4,1), top .5s cubic-bezier(.3,1.1,.4,1); }
   .piece.drag{ cursor:grabbing; }
   .piece.placed{ cursor:default; filter:none; -webkit-filter:none; }
   .piece svg{ display:block; }
 
   #done{ position:absolute; left:0; right:0; bottom:0; top:0; display:none; z-index:9999;
     -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
-    text-align:center; padding:0 30px; background:radial-gradient(circle at 50% 40%, rgba(18,227,156,.96), rgba(0,206,142,.98)); }
+    text-align:center; padding:0 30px; background:radial-gradient(circle at 50% 40%, rgba(18,227,156,.97), rgba(0,206,142,.99)); }
   #done.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
-  .dcheck{ font-size:52px; line-height:1; margin:0 0 8px; }
-  .dhead{ font-size:28px; font-weight:800; color:#01201A; letter-spacing:-.01em; margin:0 0 8px; }
+  #done .biglogo{ width:150px; height:auto; margin:0 0 14px; } #done .biglogo path{ fill:#01201A; }
+  .dhead{ font-size:27px; font-weight:800; color:#01201A; letter-spacing:-.01em; margin:0 0 8px; }
   .dsub{ font-size:14px; font-weight:600; color:#0a3b2e; line-height:1.5; max-width:320px; margin:0 0 6px; }
   #cta{ margin:18px auto 0; padding:15px 34px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
     color:#00CE8E; background:#01201A; box-shadow:0 8px 22px rgba(1,32,26,0.3); cursor:pointer; -webkit-transition:-webkit-transform .1s; transition:transform .1s; }
   #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
   .legal{ margin-top:14px; font-size:9.5px; letter-spacing:.02em; color:#0a3b2e; line-height:1.5; opacity:.75; max-width:330px; }
   .legal b{ font-weight:800; }
-
-  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; -webkit-animation:none!important; animation:none!important; } }
 &lt;/style&gt;
 &lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;
   &lt;div id=&quot;pbar&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;prompt&quot;&gt;&lt;div class=&quot;big&quot;&gt;Complete for an instant reward&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;Drag the pieces to finish the puzzle&lt;/div&gt;&lt;/div&gt;
-  &lt;div id=&quot;board&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;prompt&quot;&gt;&lt;div class=&quot;big&quot;&gt;Complete for an instant reward&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;Drag the pieces into the frame&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;arena&quot;&gt;&lt;/div&gt;
   &lt;div id=&quot;done&quot;&gt;
-    &lt;div class=&quot;dcheck&quot;&gt;✅&lt;/div&gt;
+    &lt;svg class=&quot;biglogo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
     &lt;div class=&quot;dhead&quot;&gt;Puzzle complete!&lt;/div&gt;
-    &lt;div class=&quot;dsub&quot;&gt;You&amp;rsquo;ve unlocked your Kalshi welcome offer. Trade on real-world events &amp;mdash; markets, sports, weather and more.&lt;/div&gt;
-    &lt;button id=&quot;cta&quot;&gt;Claim on Kalshi&lt;/button&gt;
+    &lt;div class=&quot;dsub&quot;&gt;Trade on real-world events with Kalshi &amp;mdash; markets, sports, weather and more.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;
     &lt;div class=&quot;legal&quot;&gt;Restrictions and eligibility requirements apply. Prices shown are not live. &lt;b&gt;CFTC-regulated&lt;/b&gt; event contract exchange &amp;mdash; see kalshi.com/regulatory. &lt;b&gt;Legal in all 50 states.&lt;/b&gt; Users must be 18+ to register and trade.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
 /* ============================================================
- * Kalshi — &quot;Complete the Puzzle&quot; jigsaw playable.
- * Rebuild of Kalshi&#x27;s live SensorTower puzzle creative: drag 4
- * scrambled jigsaw pieces to reassemble the Kalshi wordmark on
- * bright green -&gt; &quot;Complete for an instant reward&quot; -&gt; CTA.
- * MRAID 3.0, ES5. Verb: &quot;trade&quot;/&quot;claim&quot;, never &quot;bet&quot;.
+ * Kalshi — &quot;Complete the Puzzle&quot; jigsaw (tray + frame layout).
+ * Rebuild of Kalshi&#x27;s live SensorTower puzzle creative.
+ * Pieces rest in an ordered tray; drag into the framed slots to
+ * reassemble the Kalshi wordmark -&gt; reward end card. When left
+ * alone it auto-solves on a calm loop (so it reads clearly on a
+ * board / preview); any touch hands control to the user.
+ * MRAID 3.0, ES5. Verb: &quot;trade&quot;, never &quot;bet&quot;.
  * ============================================================ */
 (function(){
   &quot;use strict&quot;;
@@ -536,166 +541,173 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
     android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
   function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
-  /* Kalshi wordmark path, viewBox 0 0 772 226 */
   var WORD=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;;
 
-  var board=document.getElementById(&quot;board&quot;), stage=document.getElementById(&quot;stage&quot;),
+  var stage=document.getElementById(&quot;stage&quot;), arena=document.getElementById(&quot;arena&quot;),
       pbar=document.getElementById(&quot;pbar&quot;), doneEl=document.getElementById(&quot;done&quot;), cta=document.getElementById(&quot;cta&quot;);
-  var started=false, S, M, BOARD, placed=0, TOTAL=4, active=null, zTop=10;
+  var S,M,R,BOARD,TX,TY,trayX,trayY,traySpan;
+  var pieces=[], placedCount=0, TOTAL=4, mode=&quot;auto&quot;, autoT=null, active=null, zTop=50, started=false;
 
-  /* one jigsaw edge, traversed in the given direction, with a tab/notch bump.
-     dir: &#x27;T&#x27;,&#x27;R&#x27;,&#x27;B&#x27;,&#x27;L&#x27; (clockwise). t: 1=tab(out), -1=notch(in), 0=straight. */
-  function edge(dir,t,x0,y0,x1,y1,R){
-    if(t===0){ return &quot;L&quot;+x1+&quot; &quot;+y1+&quot; &quot;; }
-    var mx=(x0+x1)/2, my=(y0+y1)/2, out=(t&gt;0?1:0); // sweep flag
-    if(dir===&quot;T&quot;){ // left-&gt;right along top; out(tab)=up(-y)
-      return &quot;L&quot;+(mx-R)+&quot; &quot;+y0+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+(mx+R)+&quot; &quot;+y0+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
-    } else if(dir===&quot;R&quot;){ // top-&gt;bottom along right; out=+x
-      return &quot;L&quot;+x0+&quot; &quot;+(my-R)+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+x0+&quot; &quot;+(my+R)+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
-    } else if(dir===&quot;B&quot;){ // right-&gt;left along bottom; out=+y
-      return &quot;L&quot;+(mx+R)+&quot; &quot;+y0+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+(mx-R)+&quot; &quot;+y0+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
-    } else { // L: bottom-&gt;top along left; out=-x
-      return &quot;L&quot;+x0+&quot; &quot;+(my+R)+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+x0+&quot; &quot;+(my-R)+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
-    }
+  function edge(dir,t,x0,y0,x1,y1,r){
+    if(t===0) return &quot;L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    var mx=(x0+x1)/2, my=(y0+y1)/2, out=(t&gt;0?1:0);
+    if(dir===&quot;T&quot;) return &quot;L&quot;+(mx-r)+&quot; &quot;+y0+&quot; A&quot;+r+&quot; &quot;+r+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+(mx+r)+&quot; &quot;+y0+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    if(dir===&quot;R&quot;) return &quot;L&quot;+x0+&quot; &quot;+(my-r)+&quot; A&quot;+r+&quot; &quot;+r+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+x0+&quot; &quot;+(my+r)+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    if(dir===&quot;B&quot;) return &quot;L&quot;+(mx+r)+&quot; &quot;+y0+&quot; A&quot;+r+&quot; &quot;+r+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+(mx-r)+&quot; &quot;+y0+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    return &quot;L&quot;+x0+&quot; &quot;+(my+r)+&quot; A&quot;+r+&quot; &quot;+r+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+x0+&quot; &quot;+(my-r)+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
   }
-  /* edge types per piece so neighbours interlock.
-     vertical seam: left piece Right=tab, right piece Left=notch.
-     horizontal seam: top piece Bottom=tab, bottom piece Top=notch. */
-  function edges(row,col){
-    return { T: row===0?0:-1, R: col===1?0:1, B: row===1?0:1, L: col===0?0:-1 };
+  function edges(row,col){ return { T: row===0?0:-1, R: col===1?0:1, B: row===1?0:1, L: col===0?0:-1 }; }
+  function piecePath(row,col,r){
+    var a=M, b=M+S, e=edges(row,col);
+    return &quot;M&quot;+a+&quot; &quot;+a+&quot; &quot;+edge(&quot;T&quot;,e.T,a,a,b,a,r)+edge(&quot;R&quot;,e.R,b,a,b,b,r)+edge(&quot;B&quot;,e.B,b,b,a,b,r)+edge(&quot;L&quot;,e.L,a,b,a,a,r)+&quot;Z&quot;;
   }
-  function piecePath(row,col,R){
-    var m=M; var a=m, b=m+S; // cell corners inside margin m
-    var e=edges(row,col);
-    var d=&quot;M&quot;+a+&quot; &quot;+a+&quot; &quot;;
-    d+=edge(&quot;T&quot;,e.T,a,a,b,a,R);
-    d+=edge(&quot;R&quot;,e.R,b,a,b,b,R);
-    d+=edge(&quot;B&quot;,e.B,b,b,a,b,R);
-    d+=edge(&quot;L&quot;,e.L,a,b,a,a,R);
-    d+=&quot;Z&quot;;
-    return d;
-  }
-
-  function makePiece(row,col){
-    var R=Math.round(S*0.17);
+  function makePieceEl(row,col){
     var canvas=S+2*M;
-    var wrap=document.createElement(&quot;div&quot;);
-    wrap.className=&quot;piece&quot;; wrap.style.width=canvas+&quot;px&quot;; wrap.style.height=canvas+&quot;px&quot;;
-    var svg=document.createElementNS(SVGNS,&quot;svg&quot;);
-    svg.setAttribute(&quot;width&quot;,canvas); svg.setAttribute(&quot;height&quot;,canvas); svg.setAttribute(&quot;viewBox&quot;,&quot;0 0 &quot;+canvas+&quot; &quot;+canvas);
-    var cid=&quot;clip_&quot;+row+&quot;_&quot;+col;
+    var wrap=document.createElement(&quot;div&quot;); wrap.className=&quot;piece&quot;;
+    wrap.style.width=canvas+&quot;px&quot;; wrap.style.height=canvas+&quot;px&quot;;
+    var svg=document.createElementNS(SVGNS,&quot;svg&quot;); svg.setAttribute(&quot;width&quot;,canvas); svg.setAttribute(&quot;height&quot;,canvas); svg.setAttribute(&quot;viewBox&quot;,&quot;0 0 &quot;+canvas+&quot; &quot;+canvas);
+    var cid=&quot;cp_&quot;+row+&quot;_&quot;+col+&quot;_&quot;+Math.floor(Math.random()*99999);
     var defs=document.createElementNS(SVGNS,&quot;defs&quot;);
     var clip=document.createElementNS(SVGNS,&quot;clipPath&quot;); clip.setAttribute(&quot;id&quot;,cid);
-    var cp=document.createElementNS(SVGNS,&quot;path&quot;); cp.setAttribute(&quot;d&quot;,piecePath(row,col,R)); clip.appendChild(cp); defs.appendChild(clip);
-    svg.appendChild(defs);
+    var cpp=document.createElementNS(SVGNS,&quot;path&quot;); cpp.setAttribute(&quot;d&quot;,piecePath(row,col,R)); clip.appendChild(cpp); defs.appendChild(clip); svg.appendChild(defs);
     var g=document.createElementNS(SVGNS,&quot;g&quot;); g.setAttribute(&quot;clip-path&quot;,&quot;url(#&quot;+cid+&quot;)&quot;);
-    /* green tile fill for this piece&#x27;s area (whole canvas) */
-    var bg=document.createElementNS(SVGNS,&quot;rect&quot;); bg.setAttribute(&quot;x&quot;,0); bg.setAttribute(&quot;y&quot;,0);
-    bg.setAttribute(&quot;width&quot;,canvas); bg.setAttribute(&quot;height&quot;,canvas); bg.setAttribute(&quot;fill&quot;,&quot;#0CD089&quot;); g.appendChild(bg);
-    /* wordmark, positioned so this piece shows its quadrant.
-       Board coords: wordmark spans width Wm centered; convert to piece-local by subtracting cell origin, adding margin M. */
-    var Wm=BOARD*0.9, Hm=Wm*226/772;
-    var wmX=(BOARD-Wm)/2, wmY=(BOARD-Hm)/2;
-    var localX=wmX - col*S + M, localY=wmY - row*S + M;
-    var wg=document.createElementNS(SVGNS,&quot;g&quot;);
-    wg.setAttribute(&quot;transform&quot;,&quot;translate(&quot;+localX+&quot; &quot;+localY+&quot;) scale(&quot;+(Wm/772)+&quot;)&quot;);
-    var wp=document.createElementNS(SVGNS,&quot;path&quot;); wp.setAttribute(&quot;d&quot;,WORD); wp.setAttribute(&quot;fill&quot;,&quot;#01201A&quot;); wg.appendChild(wp);
-    g.appendChild(wg);
+    var bg=document.createElementNS(SVGNS,&quot;rect&quot;); bg.setAttribute(&quot;x&quot;,0); bg.setAttribute(&quot;y&quot;,0); bg.setAttribute(&quot;width&quot;,canvas); bg.setAttribute(&quot;height&quot;,canvas); bg.setAttribute(&quot;fill&quot;,&quot;#0CD089&quot;); g.appendChild(bg);
+    var Wm=BOARD*0.9, Hm=Wm*226/772, wmX=(BOARD-Wm)/2, wmY=(BOARD-Hm)/2;
+    var wg=document.createElementNS(SVGNS,&quot;g&quot;); wg.setAttribute(&quot;transform&quot;,&quot;translate(&quot;+(wmX-col*S+M)+&quot; &quot;+(wmY-row*S+M)+&quot;) scale(&quot;+(Wm/772)+&quot;)&quot;);
+    var wp=document.createElementNS(SVGNS,&quot;path&quot;); wp.setAttribute(&quot;d&quot;,WORD); wp.setAttribute(&quot;fill&quot;,&quot;#01201A&quot;); wg.appendChild(wp); g.appendChild(wg);
     svg.appendChild(g);
-    /* seam outline */
-    var stroke=document.createElementNS(SVGNS,&quot;path&quot;); stroke.setAttribute(&quot;d&quot;,piecePath(row,col,R));
-    stroke.setAttribute(&quot;fill&quot;,&quot;none&quot;); stroke.setAttribute(&quot;stroke&quot;,&quot;rgba(255,255,255,0.55)&quot;); stroke.setAttribute(&quot;stroke-width&quot;,&quot;2&quot;); svg.appendChild(stroke);
-    wrap.appendChild(svg);
-    return wrap;
+    var stroke=document.createElementNS(SVGNS,&quot;path&quot;); stroke.setAttribute(&quot;d&quot;,piecePath(row,col,R)); stroke.setAttribute(&quot;fill&quot;,&quot;none&quot;); stroke.setAttribute(&quot;stroke&quot;,&quot;rgba(255,255,255,0.6)&quot;); stroke.setAttribute(&quot;stroke-width&quot;,&quot;2&quot;); svg.appendChild(stroke);
+    wrap.appendChild(svg); return wrap;
   }
+  function setPos(p,x,y){ p.el.style.left=x+&quot;px&quot;; p.el.style.top=y+&quot;px&quot;; p.x=x; p.y=y; }
+  function anim(p,x,y,cb){ p.el.className=&quot;piece anim&quot;+(p.placed?&quot; placed&quot;:&quot;&quot;); setPos(p,x,y); if(cb) setTimeout(cb,520); }
 
-  var pieces=[];
   function layout(){
-    BOARD=Math.max(220, Math.min(320, Math.floor(Math.min(window.innerWidth*0.86, window.innerHeight*0.52))));
-    S=Math.floor(BOARD/2); M=Math.round(S*0.19); BOARD=S*2;
-    board.style.width=BOARD+&quot;px&quot;; board.style.height=BOARD+&quot;px&quot;;
-    board.innerHTML=&quot;&quot;;
-    pieces=[];
-    var cells=[[0,0],[0,1],[1,0],[1,1]];
-    /* faint home slots */
-    for(var s=0;s&lt;cells.length;s++){
-      var sl=document.createElement(&quot;div&quot;); sl.className=&quot;slot&quot;;
-      sl.style.left=(cells[s][1]*S+M*0.4)+&quot;px&quot;; sl.style.top=(cells[s][0]*S+M*0.4)+&quot;px&quot;;
-      sl.style.width=(S-M*0.8)+&quot;px&quot;; sl.style.height=(S-M*0.8)+&quot;px&quot;; board.appendChild(sl);
-    }
-    /* build pieces; home element pos = cell origin - margin */
-    var homes=[];
-    for(var i=0;i&lt;cells.length;i++){
-      var r=cells[i][0], c=cells[i][1];
-      var p=makePiece(r,c);
-      var hx=c*S-M, hy=r*S-M;
-      p._home={x:hx,y:hy}; p._placed=false;
-      board.appendChild(p); pieces.push(p); homes.push({x:hx,y:hy});
-    }
-    /* scramble: derange the home positions + jitter so none starts solved */
-    var order=[3,2,1,0]; // simple derangement of 4
-    for(var k=0;k&lt;pieces.length;k++){
-      var dest=homes[order[k]];
-      var jx=(Math.random()-0.5)*S*0.22, jy=(Math.random()-0.5)*S*0.22;
-      /* keep scrambled pieces inside the board so they never cover the prompt */
-      var nx=Math.max(-M, Math.min(S-M, dest.x+jx));
-      var ny=Math.max(-M, Math.min(S-M, dest.y+jy));
-      setPos(pieces[k], nx, ny);
-      pieces[k].style.zIndex=k+2;
-    }
-    bindAll();
-  }
-  function setPos(p,x,y){ p.style.left=x+&quot;px&quot;; p.style.top=y+&quot;px&quot;; p._x=x; p._y=y; }
+    var vw=stage.clientWidth||window.innerWidth, vh=stage.clientHeight||window.innerHeight;
+    /* S bound by width so the 4-piece tray row fits, and by height for the whole block */
+    S=Math.floor(Math.max(50, Math.min(96, Math.min(vw/5.3, vh/6.6))));
+    M=Math.round(S*0.18); R=Math.round(S*0.17); BOARD=2*S;
+    var gapx=Math.round(S*0.24), rowW=4*S+3*gapx;
+    var blockH=2*S + Math.round(S*0.85) + S; /* frame + gap + tray */
+    TX=Math.round((vw-BOARD)/2);
+    TY=Math.round(Math.max(100, (vh-blockH)/2 + 6));
+    trayX=Math.round((vw-rowW)/2); trayY=Math.round(TY+BOARD+S*0.85); traySpan=rowW;
+    /* keep tray on-screen */
+    if(trayY+S+M&gt;vh-8){ trayY=vh-8-S-M; }
+    arena.innerHTML=&quot;&quot;; pieces=[]; placedCount=0; pbar.style.width=&quot;0%&quot;;
 
+    /* ghost target logo */
+    var ghost=document.createElementNS(SVGNS,&quot;svg&quot;); ghost.setAttribute(&quot;id&quot;,&quot;ghost&quot;);
+    var Wm=BOARD*0.9, Hm=Wm*226/772;
+    ghost.setAttribute(&quot;width&quot;,Wm); ghost.setAttribute(&quot;height&quot;,Hm); ghost.setAttribute(&quot;viewBox&quot;,&quot;0 0 772 226&quot;);
+    ghost.style.left=(TX+(BOARD-Wm)/2)+&quot;px&quot;; ghost.style.top=(TY+(BOARD-Hm)/2)+&quot;px&quot;;
+    var gp=document.createElementNS(SVGNS,&quot;path&quot;); gp.setAttribute(&quot;d&quot;,WORD); ghost.appendChild(gp); arena.appendChild(ghost);
+
+    /* slots */
+    var cells=[[0,0],[0,1],[1,0],[1,1]];
+    for(var s=0;s&lt;cells.length;s++){ var sl=document.createElement(&quot;div&quot;); sl.className=&quot;slot&quot;; sl.setAttribute(&quot;data-slot&quot;,s);
+      sl.style.left=(TX+cells[s][1]*S+3)+&quot;px&quot;; sl.style.top=(TY+cells[s][0]*S+3)+&quot;px&quot;; sl.style.width=(S-6)+&quot;px&quot;; sl.style.height=(S-6)+&quot;px&quot;; arena.appendChild(sl); }
+
+    /* tray platform */
+    var tray=document.createElement(&quot;div&quot;); tray.id=&quot;tray&quot;;
+    tray.style.left=(trayX-M*0.5)+&quot;px&quot;; tray.style.top=(trayY-M*0.5)+&quot;px&quot;; tray.style.width=(rowW+M)+&quot;px&quot;; tray.style.height=(S+M)+&quot;px&quot;; arena.appendChild(tray);
+
+    /* pieces: build in cell order, then assign to shuffled tray columns */
+    var order=[0,1,2,3]; for(var i=order.length-1;i&gt;0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=order[i]; order[i]=order[j]; order[j]=t; }
+    for(var c=0;c&lt;cells.length;c++){
+      var row=cells[c][0], col=cells[c][1];
+      var el=makePieceEl(row,col);
+      var p={ el:el, row:row, col:col, placed:false,
+              slotX: TX+col*S-M, slotY: TY+row*S-M };
+      arena.appendChild(el); pieces.push(p);
+    }
+    /* tray home = shuffled column position for each piece */
+    for(var k=0;k&lt;pieces.length;k++){
+      var colPos=order[k];
+      pieces[k].trayX = trayX + colPos*(S+gapx) - M;
+      pieces[k].trayY = trayY - M;
+      setPos(pieces[k], pieces[k].trayX, pieces[k].trayY);
+      pieces[k].el.style.zIndex=8+k;
+      bindPiece(pieces[k]);
+    }
+    markNextSlot();
+  }
+
+  function nextUnplaced(){ for(var i=0;i&lt;pieces.length;i++){ if(!pieces[i].placed) return pieces[i]; } return null; }
+  function markNextSlot(){
+    var slots=arena.querySelectorAll(&quot;.slot&quot;);
+    for(var i=0;i&lt;slots.length;i++){ slots[i].className=&quot;slot&quot;; }
+    if(mode===&quot;manual&quot;){ var p=nextUnplaced(); if(p){ var idx=p.row*2+p.col; if(slots[idx]) slots[idx].className=&quot;slot next&quot;; } }
+  }
+  function place(p){ p.placed=true; p.el.className=&quot;piece anim placed&quot;; setPos(p,p.slotX,p.slotY); p.el.style.zIndex=4;
+    placedCount++; pbar.style.width=(placedCount/TOTAL*100)+&quot;%&quot;; markNextSlot();
+    if(placedCount===TOTAL){ setTimeout(finish, 520); } }
+
+  /* ---- auto demo loop ---- */
+  function autoStep(){
+    if(mode!==&quot;auto&quot;){ return; }
+    var p=nextUnplaced();
+    if(!p){ finish(); autoT=setTimeout(resetLoop, 2000); return; }
+    p.el.style.zIndex=(++zTop); anim(p, p.slotX, p.slotY, function(){ if(mode===&quot;auto&quot;) place(p); });
+    autoT=setTimeout(autoStep, 900);
+  }
+  function resetLoop(){
+    if(mode!==&quot;auto&quot;) return;
+    doneEl.className=&quot;&quot;;
+    for(var i=0;i&lt;pieces.length;i++){ pieces[i].placed=false; pieces[i].el.className=&quot;piece anim&quot;; pieces[i].el.style.zIndex=8+i; setPos(pieces[i], pieces[i].trayX, pieces[i].trayY); }
+    placedCount=0; pbar.style.width=&quot;0%&quot;;
+    autoT=setTimeout(autoStep, 700);
+  }
+  function stopAuto(){ if(autoT){ clearTimeout(autoT); autoT=null; } }
+
+  /* ---- manual drag ---- */
   function pointer(e){ var t=(e.touches&amp;&amp;e.touches[0])||(e.changedTouches&amp;&amp;e.changedTouches[0])||e; return {x:t.clientX,y:t.clientY}; }
+  function goManual(){ if(mode===&quot;manual&quot;) return; mode=&quot;manual&quot;; stopAuto();
+    /* snap current auto state back to tray so the user starts clean */
+    for(var i=0;i&lt;pieces.length;i++){ if(!pieces[i].placed){ pieces[i].el.className=&quot;piece anim&quot;; setPos(pieces[i], pieces[i].trayX, pieces[i].trayY); } }
+    markNextSlot();
+  }
+  function bindPiece(p){
+    p.el.addEventListener(&quot;touchstart&quot;,function(e){ down(p,e); },false);
+    p.el.addEventListener(&quot;mousedown&quot;,function(e){ down(p,e); },false);
+  }
   function down(p,e){
-    if(!started||p._placed) return;
-    active=p; p.className=&quot;piece drag&quot;; p.style.zIndex=(++zTop);
-    var pt=pointer(e), br=board.getBoundingClientRect();
-    p._grab={ dx: (pt.x-br.left)-p._x, dy:(pt.y-br.top)-p._y };
-    e.preventDefault();
+    if(!started||p.placed) return;
+    if(mode===&quot;auto&quot;){ goManual(); }
+    active=p; p.el.className=&quot;piece drag&quot;; p.el.style.zIndex=(++zTop);
+    var pt=pointer(e), sr=stage.getBoundingClientRect();
+    p._gx=(pt.x-sr.left)-p.x; p._gy=(pt.y-sr.top)-p.y; e.preventDefault();
   }
   function move(e){
     if(!active) return;
-    var pt=pointer(e), br=board.getBoundingClientRect();
-    var x=(pt.x-br.left)-active._grab.dx, y=(pt.y-br.top)-active._grab.dy;
-    var canvas=S+2*M;
-    x=Math.max(-M-S*0.5, Math.min(BOARD-canvas+M+S*0.5, x));
-    y=Math.max(-M-S*0.5, Math.min(BOARD-canvas+M+S*0.5, y));
-    setPos(active,x,y); e.preventDefault();
+    var pt=pointer(e), sr=stage.getBoundingClientRect();
+    setPos(active, (pt.x-sr.left)-active._gx, (pt.y-sr.top)-active._gy); e.preventDefault();
   }
   function up(e){
-    if(!active) return;
-    var p=active; active=null; p.className=&quot;piece&quot;;
-    var dx=p._x-p._home.x, dy=p._y-p._home.y;
-    if(Math.sqrt(dx*dx+dy*dy) &lt; S*0.42){
-      setPos(p,p._home.x,p._home.y); p._placed=true; p.className=&quot;piece placed&quot;; p.style.zIndex=1;
-      placed++; pbar.style.width=(placed/TOTAL*100)+&quot;%&quot;;
-      if(placed===TOTAL){ setTimeout(finish,420); }
-    }
-    e.preventDefault();
-  }
-  function bindAll(){
-    for(var i=0;i&lt;pieces.length;i++){ (function(p){
-      p.addEventListener(&quot;touchstart&quot;,function(e){ down(p,e); },false);
-      p.addEventListener(&quot;mousedown&quot;,function(e){ down(p,e); },false);
-    })(pieces[i]); }
+    if(!active) return; var p=active; active=null;
+    var cx=p.x+ (S+2*M)/2, cy=p.y+(S+2*M)/2;
+    var hx=p.slotX+(S+2*M)/2, hy=p.slotY+(S+2*M)/2;
+    if(Math.sqrt((cx-hx)*(cx-hx)+(cy-hy)*(cy-hy)) &lt; S*0.55){ place(p); }
+    else { p.el.className=&quot;piece anim&quot;; setPos(p, p.trayX, p.trayY); } /* wrong -&gt; return to its tray slot (stays orderly) */
+    if(e) e.preventDefault();
   }
   document.addEventListener(&quot;touchmove&quot;,move,{passive:false});
   document.addEventListener(&quot;mousemove&quot;,move,false);
   document.addEventListener(&quot;touchend&quot;,up,false);
   document.addEventListener(&quot;mouseup&quot;,up,false);
 
-  function finish(){ doneEl.className=&quot;show&quot;; }
+  function finish(){ stopAuto(); doneEl.className=&quot;show&quot;; }
   cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
     if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
 
-  function showAd(){ if(started) return; started=true; layout(); }
-  function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
+  function showAd(){ if(started) return; started=true; layout(); autoT=setTimeout(autoStep, 800); }
+  function pause(){ stopAuto(); } function resume(){ if(started &amp;&amp; mode===&quot;auto&quot; &amp;&amp; doneEl.className.indexOf(&quot;show&quot;)===-1 &amp;&amp; !autoT) autoT=setTimeout(autoStep,300); }
+  function onViewableChange(v){ if(v){ started?resume():showAd(); } else pause(); }
   function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
   function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
-    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else { onSdkReady(); } }
-  window.addEventListener(&quot;resize&quot;,function(){ if(started &amp;&amp; placed&lt;TOTAL) layout(); },false);
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else onSdkReady(); }
+  document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) pause(); else resume(); },false);
+  var rt=null; window.addEventListener(&quot;resize&quot;,function(){ if(!started) return; clearTimeout(rt); rt=setTimeout(function(){ if(placedCount&lt;TOTAL &amp;&amp; doneEl.className.indexOf(&quot;show&quot;)===-1){ stopAuto(); layout(); if(mode===&quot;auto&quot;) autoT=setTimeout(autoStep,500); } },250); },false);
   boot();
 })();
 &lt;/script&gt;

@@ -134,7 +134,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
       &lt;button id=&quot;cta2&quot;&gt;Trade Now&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class=&quot;disc&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Prices shown are not live and are subject to change. Federally regulated event contract exchange &amp;mdash; see kalshi.com/regulatory for more info. Users must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
+  &lt;div class=&quot;disc&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;script&gt;
 /* ============================================================
@@ -276,7 +276,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
     -webkit-transition:opacity .35s ease,-webkit-transform .35s ease; transition:opacity .35s ease,transform .35s ease; pointer-events:none; }
   #cta.show{ opacity:1; -webkit-transform:translateY(0); transform:translateY(0); pointer-events:auto; }
   #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
-  .legal{ margin-top:11px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.4; } .legal b{ color:#86b8a6; font-weight:700; }
+  .legal{ margin-top:11px; font-size:8px; letter-spacing:.01em; color:#5f8a7a; line-height:1.4; max-width:360px; } .legal b{ color:#86b8a6; font-weight:700; }
   #ticker{ position:absolute; left:0; right:0; bottom:2%; overflow:hidden;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); }
   #ticker .lab{ text-align:center; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:#6f9c8b; font-weight:700; margin:0 0 6px; }
@@ -306,12 +306,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   &lt;div id=&quot;payout&quot;&gt;&lt;div class=&quot;lab&quot;&gt;If you&amp;rsquo;re right, $10 becomes&lt;/div&gt;&lt;div class=&quot;val&quot;&gt;$&lt;span id=&quot;pay&quot;&gt;20.00&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
   &lt;div id=&quot;hint&quot;&gt;&amp;nbsp;&lt;/div&gt;
   &lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;
-  &lt;div class=&quot;legal&quot;&gt;CFTC-regulated exchange &amp;middot; Legal in all 50 states &amp;middot; 18+&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&quot;ticker&quot;&gt;&lt;div class=&quot;lab&quot;&gt;Trending markets right now&lt;/div&gt;&lt;div id=&quot;ttrack&quot;&gt;
-  &lt;span class=&quot;chip&quot;&gt;&lt;i&gt;68&amp;cent;&lt;/i&gt; S&amp;amp;P 500 up this week&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;44&amp;cent;&lt;/i&gt; CPI under 3.0%&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;31&amp;cent;&lt;/i&gt; Gov&amp;rsquo;t shutdown by Q1&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;72&amp;cent;&lt;/i&gt; Bitcoin above $100k&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;55&amp;cent;&lt;/i&gt; Named storm this month&lt;/span&gt;
-  &lt;span class=&quot;chip&quot;&gt;&lt;i&gt;68&amp;cent;&lt;/i&gt; S&amp;amp;P 500 up this week&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;44&amp;cent;&lt;/i&gt; CPI under 3.0%&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;31&amp;cent;&lt;/i&gt; Gov&amp;rsquo;t shutdown by Q1&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;72&amp;cent;&lt;/i&gt; Bitcoin above $100k&lt;/span&gt;&lt;span class=&quot;chip&quot;&gt;&lt;i&gt;55&amp;cent;&lt;/i&gt; Named storm this month&lt;/span&gt;
-&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;legal&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;script&gt;
 /* ============================================================
@@ -353,8 +348,8 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
     if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
   function startHint(){ hint.className=&quot;nudge&quot;; hint.innerHTML=&quot;&amp;#9664;&amp;nbsp; Drag the slider &amp;nbsp;&amp;#9654;&quot;; }
   function stopHint(){ hint.className=&quot;&quot;; }
-  function startMotion(){ ticker.className=&quot;&quot;; if(!interacted) startHint(); }
-  function pauseMotion(){ ticker.className=&quot;paused&quot;; stopHint(); }
+  function startMotion(){ if(!interacted) startHint(); }
+  function pauseMotion(){ stopHint(); }
   function showAd(){ if(started) return; started=true; render(50); startMotion(); }
   function resumeAd(){ startMotion(); } function pauseAd(){ pauseMotion(); }
   function onViewableChange(v){ if(v){ started?resumeAd():showAd(); } else { pauseAd(); } }
@@ -404,7 +399,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   #cta{ margin:20px auto 0; padding:15px 32px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
     color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer; -webkit-transition:-webkit-transform .1s; transition:transform .1s; }
   #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
-  .legal{ margin-top:16px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.5; } .legal b{ color:#86b8a6; font-weight:700; }
+  .legal{ margin-top:14px; font-size:8px; letter-spacing:.01em; color:#5f8a7a; line-height:1.45; max-width:360px; } .legal b{ color:#86b8a6; font-weight:700; }
   @media (orientation:landscape){ #panel{ max-width:620px; padding:2.5% 6%; } #logo{ width:80px; margin-bottom:8px; } .icon{ display:none; } h1{ font-size:20px; } .sub{ margin-bottom:14px; } .btns{ max-width:520px; } }
   @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
 &lt;/style&gt;
@@ -423,7 +418,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
     &lt;div class=&quot;paybig&quot; id=&quot;paybig&quot;&gt;$13.89&lt;/div&gt;
     &lt;div class=&quot;payline&quot;&gt;If you&amp;rsquo;re right, &lt;b&gt;$10&lt;/b&gt; pays out &lt;b id=&quot;payinline&quot;&gt;$13.89&lt;/b&gt;.&lt;br&gt;That&amp;rsquo;s the market &amp;mdash; real, and live right now.&lt;/div&gt;
     &lt;button id=&quot;cta&quot;&gt;Trade this on Kalshi&lt;/button&gt;
-    &lt;div class=&quot;legal&quot;&gt;Kalshi is a &lt;b&gt;CFTC-regulated&lt;/b&gt; exchange &amp;middot; &lt;b&gt;Legal in all 50 states&lt;/b&gt; &amp;middot; 18+&lt;/div&gt;
+    &lt;div class=&quot;legal&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;script&gt;
@@ -515,14 +510,14 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 &lt;/style&gt;
 &lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;
   &lt;div id=&quot;pbar&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;prompt&quot;&gt;&lt;div class=&quot;big&quot;&gt;Complete for an instant reward&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;Drag the pieces into the frame&lt;/div&gt;&lt;/div&gt;
+  &lt;div class=&quot;prompt&quot;&gt;&lt;div class=&quot;big&quot;&gt;Complete the puzzle&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;Drag the pieces into the frame&lt;/div&gt;&lt;/div&gt;
   &lt;div id=&quot;arena&quot;&gt;&lt;/div&gt;
   &lt;div id=&quot;done&quot;&gt;
     &lt;svg class=&quot;biglogo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
     &lt;div class=&quot;dhead&quot;&gt;Puzzle complete!&lt;/div&gt;
     &lt;div class=&quot;dsub&quot;&gt;Trade on real-world events with Kalshi &amp;mdash; markets, sports, weather and more.&lt;/div&gt;
     &lt;button id=&quot;cta&quot;&gt;Trade on Kalshi&lt;/button&gt;
-    &lt;div class=&quot;legal&quot;&gt;Restrictions and eligibility requirements apply. Prices shown are not live. &lt;b&gt;CFTC-regulated&lt;/b&gt; event contract exchange &amp;mdash; see kalshi.com/regulatory. &lt;b&gt;Legal in all 50 states.&lt;/b&gt; Users must be 18+ to register and trade.&lt;/div&gt;
+    &lt;div class=&quot;legal&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
@@ -712,7 +707,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Complete the Puzzle<span class="live">LIVE</span></div><div class="fmt hot">JIGSAW · DRAG TO ASSEMBLE</div><div class="hook">“Complete for an instant reward” — drag 4 scrambled pieces to reassemble the Kalshi logo on bright green → welcome-offer end card. Rebuilt from Kalshi’s live SensorTower puzzle creative.</div><div class="thesis"><b>Tests:</b> the proven puzzle format — playful, brand-building engagement that ends on a reward-led CTA. Matches the running gallery creative.</div><div class="file">Kalshi_LogoPuzzle_Drag.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Which Trader Are You?&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Complete the Puzzle<span class="live">LIVE</span></div><div class="fmt hot">JIGSAW · DRAG TO ASSEMBLE</div><div class="hook">Drag 4 scrambled pieces to reassemble the Kalshi logo on bright green → completion → CTA. Rebuilt from Kalshi’s live SensorTower puzzle creative; auto-solves on the board, fully draggable on device.</div><div class="thesis"><b>Tests:</b> the proven puzzle format — playful, brand-building engagement. Matches the running gallery creative.</div><div class="file">Kalshi_LogoPuzzle_Drag.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Which Trader Are You?&lt;/title&gt;
 &lt;style&gt;
   /* ---- Kalshi brand tokens (kalshi.com/brandkit) ---- */
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
@@ -790,7 +785,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   }
   #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
 
-  .legal{ margin-top:16px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.5; }
+  .legal{ margin-top:14px; font-size:8px; letter-spacing:.01em; color:#5f8a7a; line-height:1.45; max-width:360px; }
   .legal b{ color:#86b8a6; font-weight:700; }
 
   @media (orientation:landscape){
@@ -815,7 +810,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
     &lt;div class=&quot;rdesc&quot; id=&quot;rdesc&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mkt&quot;&gt;&lt;div class=&quot;q&quot; id=&quot;mktq&quot;&gt;Fed cuts rates in December?&lt;/div&gt;&lt;div class=&quot;pc&quot; id=&quot;mktp&quot;&gt;64&amp;cent;&lt;small&gt;YES&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;
     &lt;button id=&quot;cta&quot;&gt;Trade your take on Kalshi&lt;/button&gt;
-    &lt;div class=&quot;legal&quot;&gt;Kalshi is a &lt;b&gt;CFTC-regulated&lt;/b&gt; exchange &amp;middot; &lt;b&gt;Legal in all 50 states&lt;/b&gt; &amp;middot; 18+&lt;/div&gt;
+    &lt;div class=&quot;legal&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Please carefully consider if it&amp;rsquo;s appropriate for you in light of your personal financial circumstances. Prices shown are not be live and are subject to change. Certain products unavailable in some jurisdictions. Federally regulated event contract exchange, see kalshi.com/regulatory for more info. User must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;script&gt;
@@ -913,155 +908,8 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Which Trader Are You?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Election night, an 80% market, your dream call → “You’re The Contrarian.” Personalized trader archetype + a live market matched to it.</div><div class="thesis"><b>Tests:</b> identity hook + self-segmentation — the result routes each user toward the market category they’ll actually trade.</div><div class="file">Kalshi_TraderQuiz_3T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf5" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — The Real Thing&lt;/title&gt;
-&lt;style&gt;
-  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
-  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
-    font-family:Inter, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif;
-    color:#fff; -webkit-user-select:none; user-select:none; }
-  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
-    display:-webkit-box; display:-webkit-flex; display:flex;
-    -webkit-box-align:center; -webkit-align-items:center; align-items:center;
-    -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
-    background:
-      radial-gradient(circle at 50% 16%, rgba(0,221,148,0.22), rgba(0,221,148,0) 58%),
-      radial-gradient(circle at 82% 92%, rgba(77,228,178,0.12), rgba(77,228,178,0) 52%),
-      #01201A; touch-action:manipulation; }
-  #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:5% 7%;
-    display:-webkit-box; display:-webkit-flex; display:flex;
-    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column;
-    -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
-  #logo{ width:96px; height:auto; margin:0 0 14px; display:block; }
-  #logo path{ fill:#00DD94; }
-  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 8px; }
-  h1{ font-size:24px; line-height:1.25; font-weight:800; margin:0 0 6px; color:#fff; }
-  .sub{ font-size:13px; color:#86b8a6; margin:0 0 22px; }
-
-  .rows{ width:100%; max-width:380px; display:-webkit-box; display:-webkit-flex; display:flex;
-    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; gap:12px; }
-  .row{ position:relative; width:100%; cursor:pointer; text-align:left;
-    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12);
-    border-radius:16px; padding:16px 16px; overflow:hidden;
-    display:-webkit-box; display:-webkit-flex; display:flex;
-    -webkit-box-align:center; -webkit-align-items:center; align-items:center; gap:14px;
-    -webkit-transition:border-color .25s ease, background .25s ease; transition:border-color .25s ease, background .25s ease; }
-  .check{ -webkit-flex-shrink:0; flex-shrink:0; width:34px; height:34px; border-radius:50%;
-    border:2px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.04);
-    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
-    -webkit-transition:all .25s ease; transition:all .25s ease; }
-  .check svg{ width:18px; height:18px; opacity:0; -webkit-transform:scale(.4); transform:scale(.4); -webkit-transition:all .3s cubic-bezier(.2,1.4,.4,1); transition:all .3s cubic-bezier(.2,1.4,.4,1); }
-  .check svg path{ stroke:#01201A; stroke-width:3.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
-  .rtext{ -webkit-box-flex:1; -webkit-flex:1; flex:1; min-width:0; padding-right:44px; }
-  .rtext .big{ display:block; font-size:15px; font-weight:800; color:#eafff7; line-height:1.25; }
-  .rtext .small{ display:block; font-size:12px; color:#86b8a6; margin-top:3px; line-height:1.35; }
-  .row.on{ border-color:#00DD94; background:rgba(0,221,148,0.12); }
-  .row.on .check{ background:#00DD94; border-color:#00DD94; }
-  .row.on .check svg{ opacity:1; -webkit-transform:scale(1); transform:scale(1); }
-  .row .tapme{ position:absolute; right:14px; top:50%; -webkit-transform:translateY(-50%); transform:translateY(-50%);
-    font-size:11px; font-weight:800; letter-spacing:.08em; color:#00DD94; text-transform:uppercase;
-    -webkit-transition:opacity .2s; transition:opacity .2s; }
-  .row.on .tapme{ opacity:0; }
-
-  #done{ display:none; width:100%; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; }
-  #done.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
-  .seal{ font-size:52px; line-height:1; margin:6px 0 8px; }
-  .dhead{ font-size:26px; font-weight:800; color:#00DD94; text-shadow:0 0 30px rgba(0,221,148,0.35); margin:0 0 8px; }
-  .dsub{ font-size:14px; color:#bfeede; line-height:1.5; max-width:330px; margin:0 0 6px; }
-
-  #cta{ margin:20px auto 0; padding:15px 32px; border:0; border-radius:999px; font-family:inherit;
-    font-weight:800; font-size:17px; color:#01201A; background:#00DD94;
-    box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
-    -webkit-transition:-webkit-transform .1s ease; transition:transform .1s ease; }
-  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
-  .legal{ margin-top:16px; font-size:10px; letter-spacing:.04em; color:#5f8a7a; line-height:1.5; }
-  .legal b{ color:#86b8a6; font-weight:700; }
-
-  @media (orientation:landscape){
-    #panel{ max-width:640px; padding:2.5% 6%; }
-    #logo{ width:76px; margin-bottom:8px; } h1{ font-size:20px; } .sub{ margin-bottom:12px; }
-    .rows{ max-width:520px; } .seal{ font-size:40px; } .dhead{ font-size:22px; }
-  }
-  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
-&lt;/style&gt;
-&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
-  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
-  &lt;div class=&quot;tag&quot; id=&quot;tag&quot;&gt;Too good to be true?&lt;/div&gt;
-  &lt;h1 id=&quot;head&quot;&gt;Is this actually legal?&lt;/h1&gt;
-  &lt;div class=&quot;sub&quot; id=&quot;sub&quot;&gt;Tap each one to check for yourself.&lt;/div&gt;
-  &lt;div class=&quot;rows&quot; id=&quot;rows&quot;&gt;
-    &lt;button class=&quot;row&quot; data-i=&quot;0&quot;&gt;&lt;span class=&quot;check&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 12.5l5 5L20 6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-      &lt;span class=&quot;rtext&quot;&gt;&lt;span class=&quot;big&quot;&gt;Federally regulated&lt;/span&gt;&lt;span class=&quot;small&quot;&gt;Overseen by the CFTC &amp;mdash; like a stock exchange&lt;/span&gt;&lt;/span&gt;
-      &lt;span class=&quot;tapme&quot;&gt;Tap&lt;/span&gt;&lt;/button&gt;
-    &lt;button class=&quot;row&quot; data-i=&quot;1&quot;&gt;&lt;span class=&quot;check&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 12.5l5 5L20 6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-      &lt;span class=&quot;rtext&quot;&gt;&lt;span class=&quot;big&quot;&gt;Legal in all 50 states&lt;/span&gt;&lt;span class=&quot;small&quot;&gt;No sportsbook gray zones. Everywhere in the US.&lt;/span&gt;&lt;/span&gt;
-      &lt;span class=&quot;tapme&quot;&gt;Tap&lt;/span&gt;&lt;/button&gt;
-    &lt;button class=&quot;row&quot; data-i=&quot;2&quot;&gt;&lt;span class=&quot;check&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 12.5l5 5L20 6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-      &lt;span class=&quot;rtext&quot;&gt;&lt;span class=&quot;big&quot;&gt;Real markets, real payouts&lt;/span&gt;&lt;span class=&quot;small&quot;&gt;Trade on events. Cash out anytime.&lt;/span&gt;&lt;/span&gt;
-      &lt;span class=&quot;tapme&quot;&gt;Tap&lt;/span&gt;&lt;/button&gt;
-  &lt;/div&gt;
-
-  &lt;div id=&quot;done&quot;&gt;
-    &lt;div class=&quot;seal&quot;&gt;✅&lt;/div&gt;
-    &lt;div class=&quot;dhead&quot;&gt;Verified.&lt;/div&gt;
-    &lt;div class=&quot;dsub&quot;&gt;Kalshi is a CFTC-regulated exchange where you can trade on real-world events &amp;mdash; legally, in all 50 states.&lt;/div&gt;
-    &lt;button id=&quot;cta&quot;&gt;Make your first call&lt;/button&gt;
-    &lt;div class=&quot;legal&quot;&gt;Kalshi is a &lt;b&gt;CFTC-regulated&lt;/b&gt; exchange &amp;middot; &lt;b&gt;Legal in all 50 states&lt;/b&gt; &amp;middot; 18+&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;
-&lt;script&gt;
-/* ============================================================
- * Kalshi — &quot;Is this actually legal?&quot; legitimacy playable.
- * 3 taps reveal Kalshi&#x27;s credentials -&gt; Verified end card + CTA.
- * Dramatizes the top-performing message (legitimacy, not betting).
- * MRAID 3.0, ES5. Verb: &quot;make your call&quot;/&quot;trade&quot;, never &quot;bet&quot;.
- * ============================================================ */
-(function(){
-  &quot;use strict&quot;;
-  var STORE = {
-    ios:     &quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
-    android: &quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot;
-  };
-  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
-
-  var rows=document.getElementById(&quot;rows&quot;), doneEl=document.getElementById(&quot;done&quot;),
-      cta=document.getElementById(&quot;cta&quot;), headEl=document.getElementById(&quot;head&quot;),
-      subEl=document.getElementById(&quot;sub&quot;), tagEl=document.getElementById(&quot;tag&quot;),
-      rowsEl=document.getElementById(&quot;rows&quot;);
-  var started=false, count=0, total=3;
-
-  function onTap(el){
-    if(el.className.indexOf(&quot;on&quot;)&gt;-1) return;
-    el.className=&quot;row on&quot;;
-    count++;
-    if(count===total){ setTimeout(finish, 420); }
-  }
-  var btns=rows.getElementsByClassName(&quot;row&quot;);
-  for(var i=0;i&lt;btns.length;i++){ (function(b){ b.onclick=function(){ if(started) onTap(b); }; })(btns[i]); }
-
-  function finish(){
-    tagEl.style.display=&quot;none&quot;; headEl.style.display=&quot;none&quot;; subEl.style.display=&quot;none&quot;; rowsEl.style.display=&quot;none&quot;;
-    doneEl.className=&quot;show&quot;;
-  }
-
-  cta.addEventListener(&quot;click&quot;, function(){
-    var url=STORE[platform()];
-    if(typeof mraid!==&quot;undefined&quot; &amp;&amp; mraid &amp;&amp; typeof mraid.open===&quot;function&quot;){ mraid.open(url); }
-    else if(window.open){ window.open(url,&quot;_blank&quot;); }
-  }, false);
-
-  function showAd(){ if(started) return; started=true; }
-  function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
-  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;, onViewableChange); if(mraid.isViewable()) showAd(); }
-  function boot(){
-    if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
-    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;, onSdkReady); } else { onSdkReady(); }
-  }
-  boot();
-})();
-&lt;/script&gt;
-&lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf5');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Is This Actually Legal?<span class="live">LIVE</span></div><div class="fmt hot">LEGITIMACY REVEAL · 3 TAPS</div><div class="hook">Tap to verify each credential → CFTC-regulated · legal in all 50 states · real payouts → “Verified.” Dramatizes the message that already wins for Kalshi.</div><div class="thesis"><b>Tests:</b> the legitimacy angle — turning “is this real?” from an objection into the hook. Legitimacy consistently out-converts betting-led messaging in this category.</div><div class="file">Kalshi_LegalIn50_3T.html</div></div></div></div>
-<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A — Control</td><td>Pick Your Trade vs. Make Your Call 1T</td><td>Does the full market card beat the stripped 1-tap on install quality?</td><td>IPM → FTD rate</td></tr><tr><td>B — Friction</td><td>Pick Your Trade vs. Forecast Slider</td><td>Does teaching the payout math qualify users or slow the funnel?</td><td>CVR → FTD / payer</td></tr><tr><td>C — Hook</td><td>Trader Quiz vs. Is This Legal?</td><td>Identity vs. legitimacy — which brand message converts?</td><td>CTR → CVR</td></tr><tr><td>D — Message</td><td>Is This Legal? vs. Pick Your Trade</td><td>Does leading with legitimacy beat the proven product card?</td><td>CVR → FTD / payer</td></tr></table>
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Which Trader Are You?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Election night, an 80% market, your dream call → “You’re The Contrarian.” Personalized trader archetype + a live market matched to it.</div><div class="thesis"><b>Tests:</b> identity hook + self-segmentation — the result routes each user toward the market category they’ll actually trade.</div><div class="file">Kalshi_TraderQuiz_3T.html</div></div></div></div>
+<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A — Control</td><td>Pick Your Trade vs. Make Your Call 1T</td><td>Does the full market card beat the stripped 1-tap on install quality?</td><td>IPM → FTD rate</td></tr><tr><td>B — Friction</td><td>Pick Your Trade vs. Forecast Slider</td><td>Does teaching the payout math qualify users or slow the funnel?</td><td>CVR → FTD / payer</td></tr><tr><td>C — Hook</td><td>Trader Quiz vs. Pick Your Trade</td><td>Identity quiz vs. the product card — which hook converts?</td><td>CTR → CVR</td></tr><tr><td>D — Format</td><td>Complete the Puzzle vs. Pick Your Trade</td><td>Does the playful brand puzzle beat the product card on engagement?</td><td>IPM → D7</td></tr></table>
 <div class="note"><b>About these builds:</b> everything on this page is a working concept build — final versions ship with Kalshi’s official brand assets and approved market copy. Both store CTAs are already wired with automatic iOS/Android detection, every creative is Unity-spec compliant (MRAID 3.0 · single file · &lt;5&nbsp;MB · both orientations), and copy holds the compliance line throughout — the verb is always “trade” / “make your call,” never “bet.” 18+, US-only, regulated-state targeting and category controls are handled at the campaign layer. Ready to move into campaign QA as soon as concepts are approved.</div>
 <footer>Benchmarks: AppAgent “State of Playable Ads 2025”; Admiral Media playable UA guide. Kalshi brand tokens: kalshi.com/brandkit. Store: apps.apple.com/us/app/kalshi/id1632713844 · play.google.com/store/apps/details?id=com.kalshi.mobile</footer>
 </div>

@@ -493,6 +493,10 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   .piece.drag{ cursor:grabbing; }
   .piece.placed{ cursor:default; filter:none; -webkit-filter:none; }
   .piece svg{ display:block; }
+  .piece.bob{ -webkit-animation:bob 1.25s ease-in-out infinite; animation:bob 1.25s ease-in-out infinite; }
+  @-webkit-keyframes bob{ 0%,100%{ -webkit-transform:translateY(0);} 50%{ -webkit-transform:translateY(-8px);} }
+  @keyframes bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-8px);} }
+  #hand{ position:absolute; z-index:30; font-size:30px; line-height:1; pointer-events:none; opacity:0; filter:drop-shadow(0 2px 3px rgba(0,0,0,.35)); -webkit-filter:drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
 
   #done{ position:absolute; left:0; right:0; bottom:0; top:0; display:none; z-index:9999;
     -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
@@ -512,6 +516,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   &lt;div id=&quot;pbar&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;prompt&quot;&gt;&lt;div class=&quot;big&quot;&gt;Complete the puzzle&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;Drag the pieces into the frame&lt;/div&gt;&lt;/div&gt;
   &lt;div id=&quot;arena&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;hand&quot;&gt;&amp;#128070;&lt;/div&gt;
   &lt;div id=&quot;done&quot;&gt;
     &lt;svg class=&quot;biglogo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
     &lt;div class=&quot;dhead&quot;&gt;Puzzle complete!&lt;/div&gt;
@@ -524,10 +529,10 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 /* ============================================================
  * Kalshi — &quot;Complete the Puzzle&quot; jigsaw (tray + frame layout).
  * Rebuild of Kalshi&#x27;s live SensorTower puzzle creative.
- * Pieces rest in an ordered tray; drag into the framed slots to
- * reassemble the Kalshi wordmark -&gt; reward end card. When left
- * alone it auto-solves on a calm loop (so it reads clearly on a
- * board / preview); any touch hands control to the user.
+ * A REAL playable: pieces rest in an ordered tray; the USER drags
+ * each one into the framed slots to reassemble the Kalshi wordmark
+ * -&gt; end card. It never solves itself — a looping hand + bobbing
+ * next-piece + pulsing target slot invite the drag (attract mode).
  * MRAID 3.0, ES5. Verb: &quot;trade&quot;, never &quot;bet&quot;.
  * ============================================================ */
 (function(){
@@ -539,9 +544,10 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   var WORD=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;;
 
   var stage=document.getElementById(&quot;stage&quot;), arena=document.getElementById(&quot;arena&quot;),
-      pbar=document.getElementById(&quot;pbar&quot;), doneEl=document.getElementById(&quot;done&quot;), cta=document.getElementById(&quot;cta&quot;);
+      pbar=document.getElementById(&quot;pbar&quot;), doneEl=document.getElementById(&quot;done&quot;), cta=document.getElementById(&quot;cta&quot;),
+      hand=document.getElementById(&quot;hand&quot;);
   var S,M,R,BOARD,TX,TY,trayX,trayY,traySpan;
-  var pieces=[], placedCount=0, TOTAL=4, mode=&quot;auto&quot;, autoT=null, active=null, zTop=50, started=false;
+  var pieces=[], placedCount=0, TOTAL=4, active=null, zTop=50, started=false, interacted=false, attractT=null;
 
   function edge(dir,t,x0,y0,x1,y1,r){
     if(t===0) return &quot;L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
@@ -632,43 +638,49 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   function markNextSlot(){
     var slots=arena.querySelectorAll(&quot;.slot&quot;);
     for(var i=0;i&lt;slots.length;i++){ slots[i].className=&quot;slot&quot;; }
-    if(mode===&quot;manual&quot;){ var p=nextUnplaced(); if(p){ var idx=p.row*2+p.col; if(slots[idx]) slots[idx].className=&quot;slot next&quot;; } }
+    var p=nextUnplaced(); if(p){ var idx=p.row*2+p.col; if(slots[idx]) slots[idx].className=&quot;slot next&quot;; }
   }
-  function place(p){ p.placed=true; p.el.className=&quot;piece anim placed&quot;; setPos(p,p.slotX,p.slotY); p.el.style.zIndex=4;
-    placedCount++; pbar.style.width=(placedCount/TOTAL*100)+&quot;%&quot;; markNextSlot();
-    if(placedCount===TOTAL){ setTimeout(finish, 520); } }
 
-  /* ---- auto demo loop ---- */
-  function autoStep(){
-    if(mode!==&quot;auto&quot;){ return; }
-    var p=nextUnplaced();
-    if(!p){ finish(); autoT=setTimeout(resetLoop, 2000); return; }
-    p.el.style.zIndex=(++zTop); anim(p, p.slotX, p.slotY, function(){ if(mode===&quot;auto&quot;) place(p); });
-    autoT=setTimeout(autoStep, 900);
-  }
-  function resetLoop(){
-    if(mode!==&quot;auto&quot;) return;
-    doneEl.className=&quot;&quot;;
-    for(var i=0;i&lt;pieces.length;i++){ pieces[i].placed=false; pieces[i].el.className=&quot;piece anim&quot;; pieces[i].el.style.zIndex=8+i; setPos(pieces[i], pieces[i].trayX, pieces[i].trayY); }
-    placedCount=0; pbar.style.width=&quot;0%&quot;;
-    autoT=setTimeout(autoStep, 700);
-  }
-  function stopAuto(){ if(autoT){ clearTimeout(autoT); autoT=null; } }
-
-  /* ---- manual drag ---- */
-  function pointer(e){ var t=(e.touches&amp;&amp;e.touches[0])||(e.changedTouches&amp;&amp;e.changedTouches[0])||e; return {x:t.clientX,y:t.clientY}; }
-  function goManual(){ if(mode===&quot;manual&quot;) return; mode=&quot;manual&quot;; stopAuto();
-    /* snap current auto state back to tray so the user starts clean */
-    for(var i=0;i&lt;pieces.length;i++){ if(!pieces[i].placed){ pieces[i].el.className=&quot;piece anim&quot;; setPos(pieces[i], pieces[i].trayX, pieces[i].trayY); } }
+  /* ---- attract mode: hand glides from the next tray piece to its slot; that piece bobs.
+     Purely a hint — it NEVER moves a piece. First touch cancels it. ---- */
+  function clearBob(){ for(var i=0;i&lt;pieces.length;i++){ if(!pieces[i].placed &amp;&amp; pieces[i].el.className===&quot;piece bob&quot;) pieces[i].el.className=&quot;piece&quot;; } }
+  function stopAttract(){ if(attractT){ clearTimeout(attractT); attractT=null; } if(hand) hand.style.opacity=&quot;0&quot;; clearBob(); }
+  function startAttract(){
+    stopAttract();
+    if(interacted) return;
+    var p=nextUnplaced(); if(!p) return;
+    if(p.el.className===&quot;piece&quot;) p.el.className=&quot;piece bob&quot;;
     markNextSlot();
+    handCycle(p);
   }
+  function handCycle(p){
+    if(interacted || p.placed || !hand) return;
+    var CW=S+2*M, fx=p.trayX+CW*0.5, fy=p.trayY+CW*0.45, tx=p.slotX+CW*0.5, ty=p.slotY+CW*0.45;
+    hand.style.transition=&quot;none&quot;; hand.style.left=fx+&quot;px&quot;; hand.style.top=fy+&quot;px&quot;; hand.style.opacity=&quot;0&quot;;
+    void hand.offsetWidth; /* reflow so the next transition runs */
+    hand.style.transition=&quot;opacity .25s ease, left 1s ease .2s, top 1s ease .2s&quot;;
+    hand.style.opacity=&quot;0.95&quot;;
+    setTimeout(function(){ if(!interacted){ hand.style.left=tx+&quot;px&quot;; hand.style.top=ty+&quot;px&quot;; } }, 60);
+    setTimeout(function(){ hand.style.transition=&quot;opacity .35s ease&quot;; hand.style.opacity=&quot;0&quot;; }, 1300);
+    attractT=setTimeout(function(){ handCycle(p); }, 1950);
+  }
+
+  function place(p){
+    p.placed=true; p.el.className=&quot;piece anim placed&quot;; setPos(p,p.slotX,p.slotY); p.el.style.zIndex=4;
+    placedCount++; pbar.style.width=(placedCount/TOTAL*100)+&quot;%&quot;;
+    if(placedCount===TOTAL){ stopAttract(); setTimeout(finish, 450); }
+    else { interacted=false; startAttract(); }   /* guide the next piece */
+  }
+
+  /* ---- drag (the only way the puzzle advances) ---- */
+  function pointer(e){ var t=(e.touches&amp;&amp;e.touches[0])||(e.changedTouches&amp;&amp;e.changedTouches[0])||e; return {x:t.clientX,y:t.clientY}; }
   function bindPiece(p){
     p.el.addEventListener(&quot;touchstart&quot;,function(e){ down(p,e); },false);
     p.el.addEventListener(&quot;mousedown&quot;,function(e){ down(p,e); },false);
   }
   function down(p,e){
     if(!started||p.placed) return;
-    if(mode===&quot;auto&quot;){ goManual(); }
+    interacted=true; stopAttract();
     active=p; p.el.className=&quot;piece drag&quot;; p.el.style.zIndex=(++zTop);
     var pt=pointer(e), sr=stage.getBoundingClientRect();
     p._gx=(pt.x-sr.left)-p.x; p._gy=(pt.y-sr.top)-p.y; e.preventDefault();
@@ -680,10 +692,9 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   }
   function up(e){
     if(!active) return; var p=active; active=null;
-    var cx=p.x+ (S+2*M)/2, cy=p.y+(S+2*M)/2;
-    var hx=p.slotX+(S+2*M)/2, hy=p.slotY+(S+2*M)/2;
-    if(Math.sqrt((cx-hx)*(cx-hx)+(cy-hy)*(cy-hy)) &lt; S*0.55){ place(p); }
-    else { p.el.className=&quot;piece anim&quot;; setPos(p, p.trayX, p.trayY); } /* wrong -&gt; return to its tray slot (stays orderly) */
+    var CW=S+2*M, cx=p.x+CW/2, cy=p.y+CW/2, hx=p.slotX+CW/2, hy=p.slotY+CW/2;
+    if(Math.sqrt((cx-hx)*(cx-hx)+(cy-hy)*(cy-hy)) &lt; S*0.6){ place(p); }
+    else { p.el.className=&quot;piece anim&quot;; setPos(p, p.trayX, p.trayY); interacted=false; startAttract(); } /* wrong -&gt; back to tray, keep hinting */
     if(e) e.preventDefault();
   }
   document.addEventListener(&quot;touchmove&quot;,move,{passive:false});
@@ -691,18 +702,19 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   document.addEventListener(&quot;touchend&quot;,up,false);
   document.addEventListener(&quot;mouseup&quot;,up,false);
 
-  function finish(){ stopAuto(); doneEl.className=&quot;show&quot;; }
+  function finish(){ stopAttract(); doneEl.className=&quot;show&quot;; }
   cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
     if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
 
-  function showAd(){ if(started) return; started=true; layout(); autoT=setTimeout(autoStep, 800); }
-  function pause(){ stopAuto(); } function resume(){ if(started &amp;&amp; mode===&quot;auto&quot; &amp;&amp; doneEl.className.indexOf(&quot;show&quot;)===-1 &amp;&amp; !autoT) autoT=setTimeout(autoStep,300); }
+  function showAd(){ if(started) return; started=true; layout(); startAttract(); }
+  function pause(){ stopAttract(); }
+  function resume(){ if(started &amp;&amp; placedCount&lt;TOTAL &amp;&amp; doneEl.className.indexOf(&quot;show&quot;)===-1 &amp;&amp; !active){ interacted=false; startAttract(); } }
   function onViewableChange(v){ if(v){ started?resume():showAd(); } else pause(); }
   function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
   function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
     if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else onSdkReady(); }
   document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) pause(); else resume(); },false);
-  var rt=null; window.addEventListener(&quot;resize&quot;,function(){ if(!started) return; clearTimeout(rt); rt=setTimeout(function(){ if(placedCount&lt;TOTAL &amp;&amp; doneEl.className.indexOf(&quot;show&quot;)===-1){ stopAuto(); layout(); if(mode===&quot;auto&quot;) autoT=setTimeout(autoStep,500); } },250); },false);
+  var rt=null; window.addEventListener(&quot;resize&quot;,function(){ if(!started||active) return; clearTimeout(rt); rt=setTimeout(function(){ if(placedCount&lt;TOTAL &amp;&amp; doneEl.className.indexOf(&quot;show&quot;)===-1){ interacted=false; layout(); startAttract(); } },250); },false);
   boot();
 })();
 &lt;/script&gt;

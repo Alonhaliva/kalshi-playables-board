@@ -58,7 +58,11 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:20px 22px 8px;
     display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; }
   #logo{ width:96px; height:auto; margin:0 0 20px; display:block; } #logo path{ fill:#00DD94; }
-  .headline{ font-size:34px; line-height:1.02; font-weight:800; letter-spacing:-.01em; color:#fff; margin:0 0 18px; text-transform:uppercase; }
+  .headline{ font-size:34px; line-height:1.02; font-weight:800; letter-spacing:-.01em; color:#fff; margin:0 0 16px; text-transform:uppercase; }
+
+  .dots{ display:-webkit-box; display:-webkit-flex; display:flex; gap:6px; margin:0 0 12px; }
+  .dot{ width:20px; height:4px; border-radius:2px; background:rgba(255,255,255,0.16); -webkit-transition:background .2s; transition:background .2s; }
+  .dot.on{ background:#00DD94; }
 
   .card{ background:rgba(255,255,255,0.03); border:1px solid rgba(0,221,148,0.20); border-radius:16px; padding:15px 15px 13px; }
   .cat{ font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:#6f9c8b; font-weight:800; margin:0 0 6px; }
@@ -84,52 +88,60 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   #cta{ display:block; width:100%; margin:12px auto 0; padding:15px 30px; border:0; border-radius:999px; font-family:inherit;
     font-weight:800; font-size:18px; color:#08201B; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer;
     -webkit-transition:-webkit-transform .1s ease; transition:transform .1s ease; }
-  #cta.pulse{ -webkit-animation:pulse 1.2s ease-in-out infinite; animation:pulse 1.2s ease-in-out infinite; }
   #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
-  @-webkit-keyframes pulse{ 0%,100%{ box-shadow:0 8px 24px rgba(0,221,148,0.35);} 50%{ box-shadow:0 8px 34px rgba(0,221,148,0.65);} }
-  @keyframes pulse{ 0%,100%{ box-shadow:0 8px 24px rgba(0,221,148,0.35);} 50%{ box-shadow:0 8px 34px rgba(0,221,148,0.65);} }
+
+  /* end card */
+  #endcard{ display:none; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; padding:6px 4px 0; }
+  #endcard.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
+  #endcard .biglogo{ width:150px; height:auto; margin:6px 0 18px; } #endcard .biglogo path{ fill:#00DD94; }
+  #endcard h2{ font-size:30px; font-weight:800; letter-spacing:-.01em; color:#fff; text-transform:uppercase; margin:0 0 6px; }
+  #endcard .amers{ font-size:14px; font-weight:700; color:#86b8a6; margin:0 0 22px; }
+  .badges{ display:-webkit-box; display:-webkit-flex; display:flex; gap:10px; margin:0 0 14px; }
+  .badge{ display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; gap:7px; cursor:pointer;
+    background:#000; border:1px solid rgba(255,255,255,0.22); border-radius:10px; padding:8px 14px; color:#fff; }
+  .badge .glyph{ font-size:18px; } .badge .t small{ display:block; font-size:8px; letter-spacing:.06em; color:#c9c9c9; } .badge .t b{ font-size:14px; font-weight:700; }
 
   .disc{ font-size:8.5px; line-height:1.4; color:#4b6b60; margin:14px 2px 4px; text-align:center; }
-  .disc a{ color:#5f8a7a; }
 
   @media (orientation:landscape){
     #panel{ max-width:820px; -webkit-box-orient:horizontal; -webkit-flex-direction:row; flex-direction:row; -webkit-flex-wrap:wrap; flex-wrap:wrap; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-column-gap:34px; column-gap:34px; padding-top:10px; }
-    #logo{ -webkit-flex-basis:100%; flex-basis:100%; margin-bottom:10px; }
-    .headline{ -webkit-box-flex:1; -webkit-flex:1 1 34%; flex:1 1 34%; font-size:44px; margin:0; }
-    .cardwrap{ -webkit-flex:1 1 52%; flex:1 1 52%; }
+    #logo{ -webkit-flex-basis:100%; flex-basis:100%; margin-bottom:8px; }
+    .headline{ -webkit-box-flex:1; -webkit-flex:1 1 32%; flex:1 1 32%; font-size:40px; margin:0; }
+    #cardwrap{ -webkit-flex:1 1 54%; flex:1 1 54%; }
     .disc{ -webkit-flex-basis:100%; flex-basis:100%; }
     #cta{ max-width:280px; }
+    #endcard{ -webkit-flex-basis:100%; flex-basis:100%; }
   }
-  @media (orientation:landscape) and (max-height:400px){ #logo{ width:78px; margin-bottom:4px; } .headline{ font-size:34px; } .disc{ display:none; } }
-  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } #cta.pulse{ -webkit-animation:none; animation:none; } }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
 &lt;/style&gt;
 &lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
   &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
   &lt;div class=&quot;headline&quot;&gt;Pick your&lt;br&gt;trade&lt;/div&gt;
-  &lt;div class=&quot;cardwrap&quot;&gt;&lt;div class=&quot;card&quot;&gt;
-    &lt;div class=&quot;cat&quot;&gt;Crypto&lt;/div&gt;
-    &lt;div class=&quot;cardq&quot;&gt;Bitcoin price by this year?&lt;/div&gt;
-    &lt;div class=&quot;cols&quot;&gt;&lt;span class=&quot;spacer&quot;&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;Yes&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;No&lt;/span&gt;&lt;/div&gt;
-    &lt;div class=&quot;mrow&quot; data-m=&quot;0&quot;&gt;
-      &lt;div class=&quot;mname&quot;&gt;&lt;b&gt;Above $100,000&lt;/b&gt;&lt;span class=&quot;pctv&quot;&gt;27%&lt;/span&gt;&lt;/div&gt;
-      &lt;button class=&quot;pick yes&quot; data-side=&quot;Yes&quot;&gt;27&amp;cent;&lt;/button&gt;
-      &lt;button class=&quot;pick no&quot; data-side=&quot;No&quot;&gt;73&amp;cent;&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;mrow&quot; data-m=&quot;1&quot;&gt;
-      &lt;div class=&quot;mname&quot;&gt;&lt;b&gt;Below $100,000&lt;/b&gt;&lt;span class=&quot;pctv&quot;&gt;73%&lt;/span&gt;&lt;/div&gt;
-      &lt;button class=&quot;pick yes&quot; data-side=&quot;Yes&quot;&gt;73&amp;cent;&lt;/button&gt;
-      &lt;button class=&quot;pick no&quot; data-side=&quot;No&quot;&gt;27&amp;cent;&lt;/button&gt;
+  &lt;div id=&quot;cardwrap&quot;&gt;
+    &lt;div class=&quot;dots&quot; id=&quot;dots&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;card&quot; id=&quot;card&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;conf&quot; id=&quot;conf&quot;&gt;&amp;nbsp;&lt;/div&gt;
+    &lt;button id=&quot;cta&quot;&gt;Trade Now&lt;/button&gt;
+
+    &lt;div id=&quot;endcard&quot;&gt;
+      &lt;svg class=&quot;biglogo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+      &lt;h2&gt;Trade what&amp;rsquo;s next&lt;/h2&gt;
+      &lt;div class=&quot;amers&quot;&gt;America&amp;rsquo;s #1 Prediction Market&lt;/div&gt;
+      &lt;div class=&quot;badges&quot;&gt;
+        &lt;div class=&quot;badge&quot; data-store=&quot;android&quot;&gt;&lt;span class=&quot;glyph&quot;&gt;&amp;#9654;&lt;/span&gt;&lt;span class=&quot;t&quot;&gt;&lt;small&gt;GET IT ON&lt;/small&gt;&lt;b&gt;Google Play&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;badge&quot; data-store=&quot;ios&quot;&gt;&lt;span class=&quot;glyph&quot;&gt;&amp;#63743;&lt;/span&gt;&lt;span class=&quot;t&quot;&gt;&lt;small&gt;Download on the&lt;/small&gt;&lt;b&gt;App Store&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button id=&quot;cta2&quot;&gt;Trade Now&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class=&quot;conf&quot; id=&quot;conf&quot;&gt;&amp;nbsp;&lt;/div&gt;
-  &lt;button id=&quot;cta&quot;&gt;Trade Now&lt;/button&gt;&lt;/div&gt;
   &lt;div class=&quot;disc&quot;&gt;Restrictions and eligibility requirements apply. Event contract trading involves significant risk and is not appropriate for everyone. Prices shown are not live and are subject to change. Federally regulated event contract exchange &amp;mdash; see kalshi.com/regulatory for more info. Users must be 18+ to register and trade. Ad may contain AI-generated imagery.&lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;
 &lt;script&gt;
 /* ============================================================
  * Kalshi — &quot;Pick Your Trade&quot; — aligned to the live SensorTower
- * creative (market card, Above/Below rows, Yes/No, Trade Now).
- * Tap a Yes/No cell -&gt; selection + confirm -&gt; CTA pulses -&gt; store.
+ * creative: rotates through market cards (crypto, weather, …),
+ * tap a Yes/No side to advance, ending on the &quot;Trade What&#x27;s Next
+ * — America&#x27;s #1 Prediction Market&quot; card with store badges.
  * MRAID 3.0, ES5. Verb: &quot;trade&quot;. Approved-style disclaimer inline.
  * ============================================================ */
 (function(){
@@ -137,33 +149,82 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
     android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
   function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+  function openStore(which){ var url=STORE[which||platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } }
 
-  var MK=[&quot;Bitcoin above $100,000&quot;,&quot;Bitcoin below $100,000&quot;];
-  var picks=document.querySelectorAll(&quot;.pick&quot;), conf=document.getElementById(&quot;conf&quot;), cta=document.getElementById(&quot;cta&quot;);
-  var started=false, chosen=false;
+  var MARKETS=[
+    { cat:&quot;Crypto&quot;,  q:&quot;Bitcoin price by this year?&quot;, rows:[
+        {name:&quot;Above $100,000&quot;, yes:27, no:73}, {name:&quot;Below $100,000&quot;, yes:73, no:27} ] },
+    { cat:&quot;Weather&quot;, q:&quot;Highest temperature in NYC today?&quot;, rows:[
+        {name:&quot;64&amp;deg; to 65&amp;deg;&quot;, yes:41, no:59}, {name:&quot;62&amp;deg; to 63&amp;deg;&quot;, yes:33, no:67} ] }
+  ];
+  var AUTO_MS=3600, PICK_HOLD=1050;
 
-  function choose(btn){
-    if(!started) return;
-    var row=btn.parentNode, mi=parseInt(row.getAttribute(&quot;data-m&quot;),10), side=btn.getAttribute(&quot;data-side&quot;);
-    // clear previous
-    for(var i=0;i&lt;picks.length;i++){ picks[i].className=picks[i].className.replace(/\s*(sel|dim)/g,&quot;&quot;); }
-    for(var j=0;j&lt;picks.length;j++){ if(picks[j]!==btn){ picks[j].className+=&quot; dim&quot;; } }
-    btn.className+=&quot; sel&quot;;
-    chosen=true;
-    conf.innerHTML=&quot;You picked &lt;b&gt;&quot;+side.toUpperCase()+&quot;&lt;/b&gt; on &quot;+MK[mi]+&quot;.&quot;;
-    conf.className=&quot;conf show&quot;;
-    cta.className=&quot;pulse&quot;;
+  var dotsEl=document.getElementById(&quot;dots&quot;), cardEl=document.getElementById(&quot;card&quot;),
+      confEl=document.getElementById(&quot;conf&quot;), cta=document.getElementById(&quot;cta&quot;),
+      cardwrapDots=null, endcard=document.getElementById(&quot;endcard&quot;);
+  var idx=0, started=false, locked=false, autoT=null;
+
+  function clearAuto(){ if(autoT){ clearTimeout(autoT); autoT=null; } }
+  function scheduleAuto(){ clearAuto(); autoT=setTimeout(function(){ advance(); }, AUTO_MS); }
+
+  function renderDots(){
+    dotsEl.innerHTML=&quot;&quot;;
+    for(var i=0;i&lt;MARKETS.length;i++){ var d=document.createElement(&quot;span&quot;);
+      d.className=&quot;dot&quot;+(i===idx?&quot; on&quot;:&quot;&quot;); dotsEl.appendChild(d); }
   }
-  for(var i=0;i&lt;picks.length;i++){ (function(b){ b.onclick=function(){ choose(b); }; })(picks[i]); }
+  function renderCard(){
+    var m=MARKETS[idx];
+    var html=&#x27;&lt;div class=&quot;cat&quot;&gt;&#x27;+m.cat+&#x27;&lt;/div&gt;&lt;div class=&quot;cardq&quot;&gt;&#x27;+m.q+&#x27;&lt;/div&gt;&#x27;+
+      &#x27;&lt;div class=&quot;cols&quot;&gt;&lt;span class=&quot;spacer&quot;&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;Yes&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;No&lt;/span&gt;&lt;/div&gt;&#x27;;
+    for(var r=0;r&lt;m.rows.length;r++){ var row=m.rows[r];
+      html+=&#x27;&lt;div class=&quot;mrow&quot; data-m=&quot;&#x27;+r+&#x27;&quot;&gt;&#x27;+
+        &#x27;&lt;div class=&quot;mname&quot;&gt;&lt;b&gt;&#x27;+row.name+&#x27;&lt;/b&gt;&lt;span class=&quot;pctv&quot;&gt;&#x27;+row.yes+&#x27;%&lt;/span&gt;&lt;/div&gt;&#x27;+
+        &#x27;&lt;button class=&quot;pick yes&quot; data-side=&quot;Yes&quot;&gt;&#x27;+row.yes+&#x27;&amp;cent;&lt;/button&gt;&#x27;+
+        &#x27;&lt;button class=&quot;pick no&quot; data-side=&quot;No&quot;&gt;&#x27;+row.no+&#x27;&amp;cent;&lt;/button&gt;&lt;/div&gt;&#x27;;
+    }
+    cardEl.innerHTML=html;
+    confEl.className=&quot;conf&quot;; confEl.innerHTML=&quot;&amp;nbsp;&quot;;
+    locked=false;
+    var picks=cardEl.querySelectorAll(&quot;.pick&quot;);
+    for(var p=0;p&lt;picks.length;p++){ (function(b){ b.onclick=function(){ choose(b); }; })(picks[p]); }
+    renderDots();
+    scheduleAuto();
+  }
+  function choose(btn){
+    if(!started||locked) return; locked=true; clearAuto();
+    var row=btn.parentNode, mi=parseInt(row.getAttribute(&quot;data-m&quot;),10), side=btn.getAttribute(&quot;data-side&quot;);
+    var picks=cardEl.querySelectorAll(&quot;.pick&quot;);
+    for(var i=0;i&lt;picks.length;i++){ if(picks[i]!==btn){ picks[i].className+=&quot; dim&quot;; } }
+    btn.className+=&quot; sel&quot;;
+    confEl.innerHTML=&quot;You picked &lt;b&gt;&quot;+side.toUpperCase()+&quot;&lt;/b&gt; on &quot;+MARKETS[idx].rows[mi].name.replace(/&amp;deg;/g,&quot;°&quot;)+&quot;.&quot;;
+    confEl.className=&quot;conf show&quot;;
+    setTimeout(advance, PICK_HOLD);
+  }
+  function advance(){
+    clearAuto();
+    if(idx &lt; MARKETS.length-1){ idx++; renderCard(); }
+    else { showEnd(); }
+  }
+  function showEnd(){
+    dotsEl.style.display=&quot;none&quot;; cardEl.style.display=&quot;none&quot;; confEl.style.display=&quot;none&quot;; cta.style.display=&quot;none&quot;;
+    endcard.className=&quot;show&quot;;
+  }
 
-  cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
-    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+  cta.addEventListener(&quot;click&quot;,function(){ openStore(); },false);
+  document.getElementById(&quot;cta2&quot;).addEventListener(&quot;click&quot;,function(){ openStore(); },false);
+  var badges=endcard.querySelectorAll(&quot;.badge&quot;);
+  for(var b=0;b&lt;badges.length;b++){ (function(el){ el.onclick=function(){ openStore(el.getAttribute(&quot;data-store&quot;)); }; })(badges[b]); }
 
-  function showAd(){ if(started) return; started=true; }
-  function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
+  /* MRAID viewability: pause auto-rotate when hidden */
+  function pause(){ clearAuto(); }
+  function resume(){ if(started &amp;&amp; endcard.className.indexOf(&quot;show&quot;)===-1 &amp;&amp; !locked) scheduleAuto(); }
+  function showAd(){ if(started) return; started=true; renderCard(); }
+  function onViewableChange(v){ if(v){ started?resume():showAd(); } else { pause(); } }
   function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
   function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
     if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else { onSdkReady(); } }
+  document.addEventListener(&quot;visibilitychange&quot;,function(){ if(document.hidden) pause(); else resume(); },false);
   boot();
 })();
 &lt;/script&gt;
@@ -412,161 +473,234 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Make Your Call<span class="live">LIVE</span></div><div class="fmt">YES / NO · 1 TAP</div><div class="hook">One market, one tap. Pick YES or NO → instant payout reveal → CTA. The lowest-friction entry point in the set.</div><div class="thesis"><b>Tests:</b> minimal-friction baseline — the control every other concept has to beat on IPM and FTD rate.</div><div class="file">Kalshi_MakeYourCall_1T.html</div></div></div></div><h2>Brand mechanics — the untested edge</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Beat the Market&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Make Your Call<span class="live">LIVE</span></div><div class="fmt">YES / NO · 1 TAP</div><div class="hook">One market, one tap. Pick YES or NO → instant payout reveal → CTA. The lowest-friction entry point in the set.</div><div class="thesis"><b>Tests:</b> minimal-friction baseline — the control every other concept has to beat on IPM and FTD rate.</div><div class="file">Kalshi_MakeYourCall_1T.html</div></div></div></div><h2>Brand mechanics — the untested edge</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Complete the Puzzle&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
-  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
-    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#fff; -webkit-user-select:none; user-select:none; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#00CE8E;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#01201A; -webkit-user-select:none; user-select:none; }
   #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
-    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
-    background:radial-gradient(circle at 50% 14%, rgba(0,221,148,0.20), rgba(0,221,148,0) 58%),
-      radial-gradient(circle at 82% 92%, rgba(77,228,178,0.12), rgba(77,228,178,0) 52%),#01201A; touch-action:manipulation; }
-  #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:5% 7%;
-    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
-  #logo{ width:90px; height:auto; margin:0 0 10px; display:block; } #logo path{ fill:#00DD94; }
-  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 4px; }
-  .streak{ font-size:12px; color:#86b8a6; font-weight:700; letter-spacing:.04em; margin:0 0 16px; } .streak b{ color:#fff; }
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column;
+    -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 42%, #12E39C, #00CE8E 70%); touch-action:none; }
+  /* progress bar */
+  #pbar{ position:absolute; top:0; left:0; height:5px; width:0%; background:#FFD23F; -webkit-transition:width .3s ease; transition:width .3s ease; box-shadow:0 0 10px rgba(255,210,63,.6); }
+  .prompt{ text-align:center; padding:0 18px; margin:0 0 14px; }
+  .prompt .big{ font-size:19px; font-weight:800; color:#01201A; letter-spacing:-.01em; }
+  .prompt .small{ font-size:13px; font-weight:600; color:#0a3b2e; margin-top:3px; opacity:.8; }
 
-  /* anchor market */
-  .anchor{ width:100%; max-width:360px; background:rgba(255,255,255,0.04); border:1px solid rgba(0,221,148,0.20); border-radius:14px; padding:12px 14px; margin:0 0 10px; }
-  .anchor .q{ font-size:13px; color:#cfeee2; font-weight:600; line-height:1.3; } .anchor .p{ font-size:30px; font-weight:800; color:#00DD94; margin-top:2px; text-shadow:0 0 24px rgba(0,221,148,0.30); }
-  .vs{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#6f9c8b; font-weight:800; margin:2px 0 8px; }
+  #board{ position:relative; }
+  .slot{ position:absolute; border:2px dashed rgba(1,32,26,0.18); border-radius:8px; }
+  .piece{ position:absolute; cursor:grab; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22)); -webkit-filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22)); }
+  .piece.drag{ cursor:grabbing; }
+  .piece.placed{ cursor:default; filter:none; -webkit-filter:none; }
+  .piece svg{ display:block; }
 
-  /* challenger */
-  .chal{ width:100%; max-width:360px; background:rgba(255,255,255,0.06); border:1px solid rgba(0,221,148,0.24); border-radius:14px; padding:14px 14px 15px; margin:0 0 14px; }
-  .chal .q{ font-size:16px; color:#fff; font-weight:800; line-height:1.25; min-height:40px; display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center; }
-  .chal .reveal{ font-size:30px; font-weight:800; margin-top:6px; height:34px; opacity:0; -webkit-transition:opacity .25s; transition:opacity .25s; }
-  .chal .reveal.show{ opacity:1; } .reveal.up{ color:#00DD94; } .reveal.down{ color:#ff8f8f; }
-
-  .btns{ width:100%; max-width:360px; display:-webkit-box; display:-webkit-flex; display:flex; gap:11px; }
-  .hl{ -webkit-box-flex:1; -webkit-flex:1; flex:1; cursor:pointer; border-radius:14px; padding:15px 8px; border:1px solid rgba(0,221,148,0.30);
-    background:rgba(0,221,148,0.08); color:#eafff7; font-family:inherit; font-weight:800; font-size:15px;
-    -webkit-transition:-webkit-transform .1s ease, background .12s; transition:transform .1s ease, background .12s; }
-  .hl:active{ -webkit-transform:scale(.96); transform:scale(.96); }
-  .hl .ar{ font-size:19px; display:block; margin-bottom:1px; }
-
-  #hint{ font-size:12px; color:#4DE4B2; margin:12px 0 0; height:16px; }
-
-  /* end card */
-  #end{ display:none; width:100%; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; }
-  #end.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
-  .eface{ font-size:56px; line-height:1; margin:2px 0 6px; }
-  .escore{ font-size:26px; font-weight:800; color:#00DD94; text-shadow:0 0 30px rgba(0,221,148,0.35); margin:0 0 6px; }
-  .edesc{ font-size:14px; color:#bfeede; line-height:1.5; max-width:320px; margin:0 0 4px; }
-  #cta{ margin:18px auto 0; padding:15px 32px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
-    color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer; -webkit-transition:-webkit-transform .1s; transition:transform .1s; }
+  #done{ position:absolute; left:0; right:0; bottom:0; top:0; display:none; z-index:9999;
+    -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    text-align:center; padding:0 30px; background:radial-gradient(circle at 50% 40%, rgba(18,227,156,.96), rgba(0,206,142,.98)); }
+  #done.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
+  .dcheck{ font-size:52px; line-height:1; margin:0 0 8px; }
+  .dhead{ font-size:28px; font-weight:800; color:#01201A; letter-spacing:-.01em; margin:0 0 8px; }
+  .dsub{ font-size:14px; font-weight:600; color:#0a3b2e; line-height:1.5; max-width:320px; margin:0 0 6px; }
+  #cta{ margin:18px auto 0; padding:15px 34px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
+    color:#00CE8E; background:#01201A; box-shadow:0 8px 22px rgba(1,32,26,0.3); cursor:pointer; -webkit-transition:-webkit-transform .1s; transition:transform .1s; }
   #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
-  .legal{ margin-top:14px; font-size:10px; letter-spacing:.03em; color:#5f8a7a; line-height:1.5; } .legal b{ color:#86b8a6; font-weight:700; }
+  .legal{ margin-top:14px; font-size:9.5px; letter-spacing:.02em; color:#0a3b2e; line-height:1.5; opacity:.75; max-width:330px; }
+  .legal b{ font-weight:800; }
 
-  @media (orientation:landscape){ #panel{ max-width:640px; padding:2% 6%; } #logo{ width:70px; margin-bottom:6px; }
-    .streak{ margin-bottom:8px; } .anchor{ margin-bottom:6px; } .vs{ margin:0 0 4px; } .chal{ margin-bottom:8px; } .chal .q{ min-height:0; }
-    .eface{ font-size:44px; } .escore{ font-size:22px; } }
   @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
 &lt;/style&gt;
-&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
-  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
-  &lt;div class=&quot;tag&quot;&gt;Beat the market&lt;/div&gt;
-  &lt;div class=&quot;streak&quot; id=&quot;streak&quot;&gt;Streak: &lt;b&gt;0&lt;/b&gt; &amp;middot; Round 1 of 3&lt;/div&gt;
-
-  &lt;div id=&quot;game&quot;&gt;
-    &lt;div class=&quot;anchor&quot;&gt;&lt;div class=&quot;q&quot; id=&quot;anchorQ&quot;&gt;Fed cuts rates in December&lt;/div&gt;&lt;div class=&quot;p&quot; id=&quot;anchorP&quot;&gt;64%&lt;/div&gt;&lt;/div&gt;
-    &lt;div class=&quot;vs&quot;&gt;More likely or less?&lt;/div&gt;
-    &lt;div class=&quot;chal&quot;&gt;&lt;div class=&quot;q&quot; id=&quot;chalQ&quot;&gt;Bitcoin closes above $100k this year&lt;/div&gt;&lt;div class=&quot;reveal&quot; id=&quot;reveal&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
-    &lt;div class=&quot;btns&quot;&gt;
-      &lt;button class=&quot;hl&quot; id=&quot;higher&quot;&gt;&lt;span class=&quot;ar&quot;&gt;&amp;#9650;&lt;/span&gt;More likely&lt;/button&gt;
-      &lt;button class=&quot;hl&quot; id=&quot;lower&quot;&gt;&lt;span class=&quot;ar&quot;&gt;&amp;#9660;&lt;/span&gt;Less likely&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div id=&quot;hint&quot;&gt;Read the odds. Call the next one.&lt;/div&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;pbar&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;prompt&quot;&gt;&lt;div class=&quot;big&quot;&gt;Complete for an instant reward&lt;/div&gt;&lt;div class=&quot;small&quot;&gt;Drag the pieces to finish the puzzle&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;board&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;done&quot;&gt;
+    &lt;div class=&quot;dcheck&quot;&gt;✅&lt;/div&gt;
+    &lt;div class=&quot;dhead&quot;&gt;Puzzle complete!&lt;/div&gt;
+    &lt;div class=&quot;dsub&quot;&gt;You&amp;rsquo;ve unlocked your Kalshi welcome offer. Trade on real-world events &amp;mdash; markets, sports, weather and more.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot;&gt;Claim on Kalshi&lt;/button&gt;
+    &lt;div class=&quot;legal&quot;&gt;Restrictions and eligibility requirements apply. Prices shown are not live. &lt;b&gt;CFTC-regulated&lt;/b&gt; event contract exchange &amp;mdash; see kalshi.com/regulatory. &lt;b&gt;Legal in all 50 states.&lt;/b&gt; Users must be 18+ to register and trade.&lt;/div&gt;
   &lt;/div&gt;
-
-  &lt;div id=&quot;end&quot;&gt;
-    &lt;div class=&quot;eface&quot; id=&quot;eface&quot;&gt;🎯&lt;/div&gt;
-    &lt;div class=&quot;escore&quot; id=&quot;escore&quot;&gt;3 / 3 — Sharp read.&lt;/div&gt;
-    &lt;div class=&quot;edesc&quot; id=&quot;edesc&quot;&gt;You&amp;rsquo;ve got a feel for the odds. On Kalshi these are real markets — put your read to work.&lt;/div&gt;
-    &lt;button id=&quot;cta&quot;&gt;Trade real markets on Kalshi&lt;/button&gt;
-    &lt;div class=&quot;legal&quot;&gt;CFTC-regulated exchange &amp;middot; Legal in all 50 states &amp;middot; Prices not live &amp;middot; 18+&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;script&gt;
 /* ============================================================
- * Kalshi — &quot;Beat the Market&quot; higher/lower odds puzzle.
- * Read the anchor market&#x27;s probability; call whether the next
- * event is MORE or LESS likely. 3 rounds -&gt; score + CTA.
- * Teaches reading market odds. MRAID 3.0, ES5. Verb: &quot;trade&quot;.
- * NOTE: interpretation of the gallery &quot;puzzle&quot; — swap mechanic
- * if the live one differs (sort / match / etc.).
+ * Kalshi — &quot;Complete the Puzzle&quot; jigsaw playable.
+ * Rebuild of Kalshi&#x27;s live SensorTower puzzle creative: drag 4
+ * scrambled jigsaw pieces to reassemble the Kalshi wordmark on
+ * bright green -&gt; &quot;Complete for an instant reward&quot; -&gt; CTA.
+ * MRAID 3.0, ES5. Verb: &quot;trade&quot;/&quot;claim&quot;, never &quot;bet&quot;.
  * ============================================================ */
 (function(){
   &quot;use strict&quot;;
+  var SVGNS=&quot;http://www.w3.org/2000/svg&quot;;
   var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
     android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
   function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+  /* Kalshi wordmark path, viewBox 0 0 772 226 */
+  var WORD=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;;
 
-  /* chain of markets; each round compares challenger prob to the anchor prob */
-  var CHAIN=[
-    { q:&quot;Fed cuts rates in December&quot;, p:64 },
-    { q:&quot;Bitcoin closes above $100k this year&quot;, p:72 },
-    { q:&quot;Government shutdown before Q1&quot;, p:31 },
-    { q:&quot;S&amp;P 500 closes green this week&quot;, p:67 }
-  ];
-  var round=0, streak=0, locked=false, started=false;
-  var streakEl=document.getElementById(&quot;streak&quot;), anchorQ=document.getElementById(&quot;anchorQ&quot;), anchorP=document.getElementById(&quot;anchorP&quot;),
-      chalQ=document.getElementById(&quot;chalQ&quot;), reveal=document.getElementById(&quot;reveal&quot;), hint=document.getElementById(&quot;hint&quot;),
-      higher=document.getElementById(&quot;higher&quot;), lower=document.getElementById(&quot;lower&quot;),
-      gameEl=document.getElementById(&quot;game&quot;), endEl=document.getElementById(&quot;end&quot;), cta=document.getElementById(&quot;cta&quot;);
-  var TOTAL=3;
+  var board=document.getElementById(&quot;board&quot;), stage=document.getElementById(&quot;stage&quot;),
+      pbar=document.getElementById(&quot;pbar&quot;), doneEl=document.getElementById(&quot;done&quot;), cta=document.getElementById(&quot;cta&quot;);
+  var started=false, S, M, BOARD, placed=0, TOTAL=4, active=null, zTop=10;
 
-  function renderRound(){
-    var a=CHAIN[round], c=CHAIN[round+1];
-    streakEl.innerHTML=&quot;Streak: &lt;b&gt;&quot;+streak+&quot;&lt;/b&gt; &amp;middot; Round &quot;+(round+1)+&quot; of &quot;+TOTAL;
-    anchorQ.innerHTML=a.q; anchorP.innerHTML=a.p+&quot;%&quot;;
-    chalQ.innerHTML=c.q; reveal.className=&quot;reveal&quot;; reveal.innerHTML=&quot;&amp;nbsp;&quot;;
-    hint.style.visibility=&quot;visible&quot;;
-    locked=false;
+  /* one jigsaw edge, traversed in the given direction, with a tab/notch bump.
+     dir: &#x27;T&#x27;,&#x27;R&#x27;,&#x27;B&#x27;,&#x27;L&#x27; (clockwise). t: 1=tab(out), -1=notch(in), 0=straight. */
+  function edge(dir,t,x0,y0,x1,y1,R){
+    if(t===0){ return &quot;L&quot;+x1+&quot; &quot;+y1+&quot; &quot;; }
+    var mx=(x0+x1)/2, my=(y0+y1)/2, out=(t&gt;0?1:0); // sweep flag
+    if(dir===&quot;T&quot;){ // left-&gt;right along top; out(tab)=up(-y)
+      return &quot;L&quot;+(mx-R)+&quot; &quot;+y0+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+(mx+R)+&quot; &quot;+y0+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    } else if(dir===&quot;R&quot;){ // top-&gt;bottom along right; out=+x
+      return &quot;L&quot;+x0+&quot; &quot;+(my-R)+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+x0+&quot; &quot;+(my+R)+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    } else if(dir===&quot;B&quot;){ // right-&gt;left along bottom; out=+y
+      return &quot;L&quot;+(mx+R)+&quot; &quot;+y0+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+(mx-R)+&quot; &quot;+y0+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    } else { // L: bottom-&gt;top along left; out=-x
+      return &quot;L&quot;+x0+&quot; &quot;+(my+R)+&quot; A&quot;+R+&quot; &quot;+R+&quot; 0 0 &quot;+(out?0:1)+&quot; &quot;+x0+&quot; &quot;+(my-R)+&quot; L&quot;+x1+&quot; &quot;+y1+&quot; &quot;;
+    }
   }
-  function guess(isHigher){
-    if(locked||!started) return; locked=true;
-    var a=CHAIN[round], c=CHAIN[round+1];
-    var actuallyHigher = c.p &gt;= a.p;
-    var correct = (isHigher===actuallyHigher);
-    reveal.className=&quot;reveal show &quot;+(c.p&gt;=a.p?&quot;up&quot;:&quot;down&quot;);
-    reveal.innerHTML=c.p+&quot;%&quot;;
-    if(correct){ streak++; hint.innerHTML=&quot;Correct &amp;mdash; you read it right.&quot;; }
-    else { hint.innerHTML=&quot;Not this time &amp;mdash; the market saw it differently.&quot;; }
-    hint.style.visibility=&quot;visible&quot;;
-    streakEl.innerHTML=&quot;Streak: &lt;b&gt;&quot;+streak+&quot;&lt;/b&gt; &amp;middot; Round &quot;+(round+1)+&quot; of &quot;+TOTAL;
-    setTimeout(function(){
-      round++;
-      if(round&lt;TOTAL){ renderRound(); } else { finish(); }
-    }, 950);
+  /* edge types per piece so neighbours interlock.
+     vertical seam: left piece Right=tab, right piece Left=notch.
+     horizontal seam: top piece Bottom=tab, bottom piece Top=notch. */
+  function edges(row,col){
+    return { T: row===0?0:-1, R: col===1?0:1, B: row===1?0:1, L: col===0?0:-1 };
   }
-  higher.onclick=function(){ guess(true); };
-  lower.onclick=function(){ guess(false); };
-
-  function finish(){
-    gameEl.style.display=&quot;none&quot;;
-    var face=&quot;🎯&quot;, head=streak+&quot; / &quot;+TOTAL+&quot; — Sharp read.&quot;, desc=&quot;You&amp;rsquo;ve got a feel for the odds. On Kalshi these are real markets — put your read to work.&quot;;
-    if(streak&lt;=1){ face=&quot;📈&quot;; head=streak+&quot; / &quot;+TOTAL+&quot; — Room to run.&quot;; desc=&quot;Reading markets takes reps. Kalshi is where you get them — on real events.&quot;; }
-    else if(streak===2){ face=&quot;🔥&quot;; head=&quot;2 / 3 — Solid instincts.&quot;; desc=&quot;You&amp;rsquo;re close to the market. Sharpen it on Kalshi&amp;rsquo;s live events.&quot;; }
-    document.getElementById(&quot;eface&quot;).innerHTML=face;
-    document.getElementById(&quot;escore&quot;).innerHTML=head;
-    document.getElementById(&quot;edesc&quot;).innerHTML=desc;
-    endEl.className=&quot;show&quot;;
+  function piecePath(row,col,R){
+    var m=M; var a=m, b=m+S; // cell corners inside margin m
+    var e=edges(row,col);
+    var d=&quot;M&quot;+a+&quot; &quot;+a+&quot; &quot;;
+    d+=edge(&quot;T&quot;,e.T,a,a,b,a,R);
+    d+=edge(&quot;R&quot;,e.R,b,a,b,b,R);
+    d+=edge(&quot;B&quot;,e.B,b,b,a,b,R);
+    d+=edge(&quot;L&quot;,e.L,a,b,a,a,R);
+    d+=&quot;Z&quot;;
+    return d;
   }
 
+  function makePiece(row,col){
+    var R=Math.round(S*0.17);
+    var canvas=S+2*M;
+    var wrap=document.createElement(&quot;div&quot;);
+    wrap.className=&quot;piece&quot;; wrap.style.width=canvas+&quot;px&quot;; wrap.style.height=canvas+&quot;px&quot;;
+    var svg=document.createElementNS(SVGNS,&quot;svg&quot;);
+    svg.setAttribute(&quot;width&quot;,canvas); svg.setAttribute(&quot;height&quot;,canvas); svg.setAttribute(&quot;viewBox&quot;,&quot;0 0 &quot;+canvas+&quot; &quot;+canvas);
+    var cid=&quot;clip_&quot;+row+&quot;_&quot;+col;
+    var defs=document.createElementNS(SVGNS,&quot;defs&quot;);
+    var clip=document.createElementNS(SVGNS,&quot;clipPath&quot;); clip.setAttribute(&quot;id&quot;,cid);
+    var cp=document.createElementNS(SVGNS,&quot;path&quot;); cp.setAttribute(&quot;d&quot;,piecePath(row,col,R)); clip.appendChild(cp); defs.appendChild(clip);
+    svg.appendChild(defs);
+    var g=document.createElementNS(SVGNS,&quot;g&quot;); g.setAttribute(&quot;clip-path&quot;,&quot;url(#&quot;+cid+&quot;)&quot;);
+    /* green tile fill for this piece&#x27;s area (whole canvas) */
+    var bg=document.createElementNS(SVGNS,&quot;rect&quot;); bg.setAttribute(&quot;x&quot;,0); bg.setAttribute(&quot;y&quot;,0);
+    bg.setAttribute(&quot;width&quot;,canvas); bg.setAttribute(&quot;height&quot;,canvas); bg.setAttribute(&quot;fill&quot;,&quot;#0CD089&quot;); g.appendChild(bg);
+    /* wordmark, positioned so this piece shows its quadrant.
+       Board coords: wordmark spans width Wm centered; convert to piece-local by subtracting cell origin, adding margin M. */
+    var Wm=BOARD*0.9, Hm=Wm*226/772;
+    var wmX=(BOARD-Wm)/2, wmY=(BOARD-Hm)/2;
+    var localX=wmX - col*S + M, localY=wmY - row*S + M;
+    var wg=document.createElementNS(SVGNS,&quot;g&quot;);
+    wg.setAttribute(&quot;transform&quot;,&quot;translate(&quot;+localX+&quot; &quot;+localY+&quot;) scale(&quot;+(Wm/772)+&quot;)&quot;);
+    var wp=document.createElementNS(SVGNS,&quot;path&quot;); wp.setAttribute(&quot;d&quot;,WORD); wp.setAttribute(&quot;fill&quot;,&quot;#01201A&quot;); wg.appendChild(wp);
+    g.appendChild(wg);
+    svg.appendChild(g);
+    /* seam outline */
+    var stroke=document.createElementNS(SVGNS,&quot;path&quot;); stroke.setAttribute(&quot;d&quot;,piecePath(row,col,R));
+    stroke.setAttribute(&quot;fill&quot;,&quot;none&quot;); stroke.setAttribute(&quot;stroke&quot;,&quot;rgba(255,255,255,0.55)&quot;); stroke.setAttribute(&quot;stroke-width&quot;,&quot;2&quot;); svg.appendChild(stroke);
+    wrap.appendChild(svg);
+    return wrap;
+  }
+
+  var pieces=[];
+  function layout(){
+    BOARD=Math.max(220, Math.min(320, Math.floor(Math.min(window.innerWidth*0.86, window.innerHeight*0.52))));
+    S=Math.floor(BOARD/2); M=Math.round(S*0.19); BOARD=S*2;
+    board.style.width=BOARD+&quot;px&quot;; board.style.height=BOARD+&quot;px&quot;;
+    board.innerHTML=&quot;&quot;;
+    pieces=[];
+    var cells=[[0,0],[0,1],[1,0],[1,1]];
+    /* faint home slots */
+    for(var s=0;s&lt;cells.length;s++){
+      var sl=document.createElement(&quot;div&quot;); sl.className=&quot;slot&quot;;
+      sl.style.left=(cells[s][1]*S+M*0.4)+&quot;px&quot;; sl.style.top=(cells[s][0]*S+M*0.4)+&quot;px&quot;;
+      sl.style.width=(S-M*0.8)+&quot;px&quot;; sl.style.height=(S-M*0.8)+&quot;px&quot;; board.appendChild(sl);
+    }
+    /* build pieces; home element pos = cell origin - margin */
+    var homes=[];
+    for(var i=0;i&lt;cells.length;i++){
+      var r=cells[i][0], c=cells[i][1];
+      var p=makePiece(r,c);
+      var hx=c*S-M, hy=r*S-M;
+      p._home={x:hx,y:hy}; p._placed=false;
+      board.appendChild(p); pieces.push(p); homes.push({x:hx,y:hy});
+    }
+    /* scramble: derange the home positions + jitter so none starts solved */
+    var order=[3,2,1,0]; // simple derangement of 4
+    for(var k=0;k&lt;pieces.length;k++){
+      var dest=homes[order[k]];
+      var jx=(Math.random()-0.5)*S*0.22, jy=(Math.random()-0.5)*S*0.22;
+      /* keep scrambled pieces inside the board so they never cover the prompt */
+      var nx=Math.max(-M, Math.min(S-M, dest.x+jx));
+      var ny=Math.max(-M, Math.min(S-M, dest.y+jy));
+      setPos(pieces[k], nx, ny);
+      pieces[k].style.zIndex=k+2;
+    }
+    bindAll();
+  }
+  function setPos(p,x,y){ p.style.left=x+&quot;px&quot;; p.style.top=y+&quot;px&quot;; p._x=x; p._y=y; }
+
+  function pointer(e){ var t=(e.touches&amp;&amp;e.touches[0])||(e.changedTouches&amp;&amp;e.changedTouches[0])||e; return {x:t.clientX,y:t.clientY}; }
+  function down(p,e){
+    if(!started||p._placed) return;
+    active=p; p.className=&quot;piece drag&quot;; p.style.zIndex=(++zTop);
+    var pt=pointer(e), br=board.getBoundingClientRect();
+    p._grab={ dx: (pt.x-br.left)-p._x, dy:(pt.y-br.top)-p._y };
+    e.preventDefault();
+  }
+  function move(e){
+    if(!active) return;
+    var pt=pointer(e), br=board.getBoundingClientRect();
+    var x=(pt.x-br.left)-active._grab.dx, y=(pt.y-br.top)-active._grab.dy;
+    var canvas=S+2*M;
+    x=Math.max(-M-S*0.5, Math.min(BOARD-canvas+M+S*0.5, x));
+    y=Math.max(-M-S*0.5, Math.min(BOARD-canvas+M+S*0.5, y));
+    setPos(active,x,y); e.preventDefault();
+  }
+  function up(e){
+    if(!active) return;
+    var p=active; active=null; p.className=&quot;piece&quot;;
+    var dx=p._x-p._home.x, dy=p._y-p._home.y;
+    if(Math.sqrt(dx*dx+dy*dy) &lt; S*0.42){
+      setPos(p,p._home.x,p._home.y); p._placed=true; p.className=&quot;piece placed&quot;; p.style.zIndex=1;
+      placed++; pbar.style.width=(placed/TOTAL*100)+&quot;%&quot;;
+      if(placed===TOTAL){ setTimeout(finish,420); }
+    }
+    e.preventDefault();
+  }
+  function bindAll(){
+    for(var i=0;i&lt;pieces.length;i++){ (function(p){
+      p.addEventListener(&quot;touchstart&quot;,function(e){ down(p,e); },false);
+      p.addEventListener(&quot;mousedown&quot;,function(e){ down(p,e); },false);
+    })(pieces[i]); }
+  }
+  document.addEventListener(&quot;touchmove&quot;,move,{passive:false});
+  document.addEventListener(&quot;mousemove&quot;,move,false);
+  document.addEventListener(&quot;touchend&quot;,up,false);
+  document.addEventListener(&quot;mouseup&quot;,up,false);
+
+  function finish(){ doneEl.className=&quot;show&quot;; }
   cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
     if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
 
-  function showAd(){ if(started) return; started=true; renderRound(); }
+  function showAd(){ if(started) return; started=true; layout(); }
   function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
   function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
   function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
     if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else { onSdkReady(); } }
+  window.addEventListener(&quot;resize&quot;,function(){ if(started &amp;&amp; placed&lt;TOTAL) layout(); },false);
   boot();
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Beat the Market<span class="live">LIVE</span></div><div class="fmt hot">PUZZLE · HIGHER / LOWER</div><div class="hook">Read one market’s odds → is the next event more or less likely? Build a streak across 3 rounds → score + CTA. The higher/lower game skinned as a prediction-market puzzle.</div><div class="thesis"><b>Tests:</b> gamified engagement — a puzzle loop that teaches ‘reading the odds’ before install. Concept build of the puzzle format; swap to match the exact gallery mechanic on your word.</div><div class="file">Kalshi_BeatTheMarket_Puzzle.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Which Trader Are You?&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Complete the Puzzle<span class="live">LIVE</span></div><div class="fmt hot">JIGSAW · DRAG TO ASSEMBLE</div><div class="hook">“Complete for an instant reward” — drag 4 scrambled pieces to reassemble the Kalshi logo on bright green → welcome-offer end card. Rebuilt from Kalshi’s live SensorTower puzzle creative.</div><div class="thesis"><b>Tests:</b> the proven puzzle format — playful, brand-building engagement that ends on a reward-led CTA. Matches the running gallery creative.</div><div class="file">Kalshi_LogoPuzzle_Drag.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Which Trader Are You?&lt;/title&gt;
 &lt;style&gt;
   /* ---- Kalshi brand tokens (kalshi.com/brandkit) ---- */
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }

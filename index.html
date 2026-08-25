@@ -45,9 +45,163 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 <body>
 <div class="wrap">
 <h1><span class="brand">Kalshi</span> × Unity Ads — Playable Creative Board</h1>
-<p class="sub">5 Unity-compliant playable end cards — <b>all demos below are live, tap and play them right here</b> · MRAID 3.0 · single file · &lt;5&nbsp;MB · portrait+landscape · iOS&nbsp;+&nbsp;Android CTAs — August 2026</p>
-<div class="stats"><div class="stat"><b>up to 16×</b><span>conversion vs. non-interactive formats (playable benchmark, 2025)</span></div><div class="stat"><b>2–3×</b><span>CTR vs. standard video/display</span></div><div class="stat"><b>15–80s</b><span>engagement time — interactive creatives hold attention well beyond 60s, vs. 5–7s on standard video</span></div><div class="stat"><b>+30–40%</b><span>post-install retention when users try the mechanic before they install</span></div></div>
-<h2>Brand mechanics — the untested edge</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Which Trader Are You?&lt;/title&gt;
+<p class="sub">Playable concepts for Kalshi — <b>all live below, tap and play them right here.</b></p>
+<div class="stats"></div>
+<h2>Brand mechanics — the untested edge</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Beat the Market&lt;/title&gt;
+&lt;style&gt;
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
+  html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
+    font-family:Inter,-apple-system,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif; color:#fff; -webkit-user-select:none; user-select:none; }
+  #stage{ position:absolute; top:0; left:0; right:0; bottom:0;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center;
+    background:radial-gradient(circle at 50% 14%, rgba(0,221,148,0.20), rgba(0,221,148,0) 58%),
+      radial-gradient(circle at 82% 92%, rgba(77,228,178,0.12), rgba(77,228,178,0) 52%),#01201A; touch-action:manipulation; }
+  #panel{ position:relative; width:100%; max-width:460px; margin:0 auto; padding:5% 7%;
+    display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-orient:vertical; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; text-align:center; }
+  #logo{ width:90px; height:auto; margin:0 0 10px; display:block; } #logo path{ fill:#00DD94; }
+  .tag{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#00DD94; font-weight:800; margin:0 0 4px; }
+  .streak{ font-size:12px; color:#86b8a6; font-weight:700; letter-spacing:.04em; margin:0 0 16px; } .streak b{ color:#fff; }
+
+  /* anchor market */
+  .anchor{ width:100%; max-width:360px; background:rgba(255,255,255,0.04); border:1px solid rgba(0,221,148,0.20); border-radius:14px; padding:12px 14px; margin:0 0 10px; }
+  .anchor .q{ font-size:13px; color:#cfeee2; font-weight:600; line-height:1.3; } .anchor .p{ font-size:30px; font-weight:800; color:#00DD94; margin-top:2px; text-shadow:0 0 24px rgba(0,221,148,0.30); }
+  .vs{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#6f9c8b; font-weight:800; margin:2px 0 8px; }
+
+  /* challenger */
+  .chal{ width:100%; max-width:360px; background:rgba(255,255,255,0.06); border:1px solid rgba(0,221,148,0.24); border-radius:14px; padding:14px 14px 15px; margin:0 0 14px; }
+  .chal .q{ font-size:16px; color:#fff; font-weight:800; line-height:1.25; min-height:40px; display:-webkit-box; display:-webkit-flex; display:flex; -webkit-box-align:center; -webkit-align-items:center; align-items:center; -webkit-box-pack:center; -webkit-justify-content:center; justify-content:center; }
+  .chal .reveal{ font-size:30px; font-weight:800; margin-top:6px; height:34px; opacity:0; -webkit-transition:opacity .25s; transition:opacity .25s; }
+  .chal .reveal.show{ opacity:1; } .reveal.up{ color:#00DD94; } .reveal.down{ color:#ff8f8f; }
+
+  .btns{ width:100%; max-width:360px; display:-webkit-box; display:-webkit-flex; display:flex; gap:11px; }
+  .hl{ -webkit-box-flex:1; -webkit-flex:1; flex:1; cursor:pointer; border-radius:14px; padding:15px 8px; border:1px solid rgba(0,221,148,0.30);
+    background:rgba(0,221,148,0.08); color:#eafff7; font-family:inherit; font-weight:800; font-size:15px;
+    -webkit-transition:-webkit-transform .1s ease, background .12s; transition:transform .1s ease, background .12s; }
+  .hl:active{ -webkit-transform:scale(.96); transform:scale(.96); }
+  .hl .ar{ font-size:19px; display:block; margin-bottom:1px; }
+
+  #hint{ font-size:12px; color:#4DE4B2; margin:12px 0 0; height:16px; }
+
+  /* end card */
+  #end{ display:none; width:100%; -webkit-flex-direction:column; flex-direction:column; -webkit-box-align:center; -webkit-align-items:center; align-items:center; }
+  #end.show{ display:-webkit-box; display:-webkit-flex; display:flex; }
+  .eface{ font-size:56px; line-height:1; margin:2px 0 6px; }
+  .escore{ font-size:26px; font-weight:800; color:#00DD94; text-shadow:0 0 30px rgba(0,221,148,0.35); margin:0 0 6px; }
+  .edesc{ font-size:14px; color:#bfeede; line-height:1.5; max-width:320px; margin:0 0 4px; }
+  #cta{ margin:18px auto 0; padding:15px 32px; border:0; border-radius:999px; font-family:inherit; font-weight:800; font-size:17px;
+    color:#01201A; background:#00DD94; box-shadow:0 8px 24px rgba(0,221,148,0.35); cursor:pointer; -webkit-transition:-webkit-transform .1s; transition:transform .1s; }
+  #cta:active{ -webkit-transform:scale(.97); transform:scale(.97); }
+  .legal{ margin-top:14px; font-size:10px; letter-spacing:.03em; color:#5f8a7a; line-height:1.5; } .legal b{ color:#86b8a6; font-weight:700; }
+
+  @media (orientation:landscape){ #panel{ max-width:640px; padding:2% 6%; } #logo{ width:70px; margin-bottom:6px; }
+    .streak{ margin-bottom:8px; } .anchor{ margin-bottom:6px; } .vs{ margin:0 0 4px; } .chal{ margin-bottom:8px; } .chal .q{ min-height:0; }
+    .eface{ font-size:44px; } .escore{ font-size:22px; } }
+  @media (prefers-reduced-motion:reduce){ *{ -webkit-transition:none!important; transition:none!important; } }
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;&lt;div id=&quot;stage&quot;&gt;&lt;div id=&quot;panel&quot;&gt;
+  &lt;svg id=&quot;logo&quot; viewBox=&quot;0 0 772 226&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Kalshi&quot;&gt;&lt;path d=&quot;M255.677 58.1911C210.683 58.1911 183.381 78.5114 181.206 113.922H228.062C229.924 100.374 238.611 93.2917 253.814 93.2917C269.018 93.2917 277.396 100.064 277.088 110.842C276.775 119.156 271.501 122.852 258.16 124.7L238.923 127.164C195.484 132.398 175.002 148.717 175.002 177.967C175.002 207.218 195.48 226 229.611 226C251.331 226 267.776 218.302 278.017 203.522V222.61H326.422V117.924C326.422 78.5114 302.532 58.1911 255.677 58.1911ZM245.44 192.437C231.478 192.437 223.72 186.281 223.72 174.887C223.72 164.109 230.545 158.875 249.473 156.105L258.16 154.873C265.845 153.8 272.17 152.274 277.396 150.131V166.267C277.396 181.663 264.368 192.437 245.44 192.437ZM343.488 3.38607H393.135V222.61H343.488V3.38607ZM105.23 105.628L179.66 222.61H115.118L54.3009 121.934V222.61H0V3.38607H54.3009V99.102L119.464 3.38607H177.489L105.23 105.628ZM716.145 26.1705C716.145 12.0062 728.557 0 744.073 0C759.588 0 772 12.0062 772 26.1705C772 40.3347 759.588 52.3409 744.073 52.3409C728.557 52.3409 716.145 40.6407 716.145 26.1705ZM544.868 172.423C544.868 208.446 518.494 225.996 474.743 225.996C430.991 225.996 403.997 206.908 402.447 172.113H448.369C450.232 185.351 456.435 192.743 474.434 192.743C489.95 192.743 497.395 186.587 497.395 177.347C497.395 168.107 488.396 163.489 465.747 160.107C422.616 154.257 405.242 141.631 405.242 109.304C405.242 75.1293 436.582 58.1911 471.643 58.1911C509.186 58.1911 536.493 71.4293 540.218 108.688H495.225C493.054 96.9877 486.225 91.1376 471.951 91.1376C458.61 91.1376 451.161 97.2937 451.161 105.608C451.161 114.844 458.61 118.23 480.638 121.31C523.148 127.16 544.868 137.934 544.868 172.423ZM719.249 61.5771H768.896V222.61H719.249V61.5771ZM702.183 115.77V222.61H652.536V124.39C652.536 107.146 645.399 98.2197 629.884 98.2197C614.368 98.2197 603.51 108.072 603.51 127.47V222.61H553.863V3.38607H603.51V85.5617C611.32 70.1734 627.761 58.1911 651.603 58.1911C681.393 58.1911 702.179 76.9734 702.179 115.766L702.183 115.77Z&quot;/&gt;&lt;/svg&gt;
+  &lt;div class=&quot;tag&quot;&gt;Beat the market&lt;/div&gt;
+  &lt;div class=&quot;streak&quot; id=&quot;streak&quot;&gt;Streak: &lt;b&gt;0&lt;/b&gt; &amp;middot; Round 1 of 3&lt;/div&gt;
+
+  &lt;div id=&quot;game&quot;&gt;
+    &lt;div class=&quot;anchor&quot;&gt;&lt;div class=&quot;q&quot; id=&quot;anchorQ&quot;&gt;Fed cuts rates in December&lt;/div&gt;&lt;div class=&quot;p&quot; id=&quot;anchorP&quot;&gt;64%&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;vs&quot;&gt;More likely or less?&lt;/div&gt;
+    &lt;div class=&quot;chal&quot;&gt;&lt;div class=&quot;q&quot; id=&quot;chalQ&quot;&gt;Bitcoin closes above $100k this year&lt;/div&gt;&lt;div class=&quot;reveal&quot; id=&quot;reveal&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;btns&quot;&gt;
+      &lt;button class=&quot;hl&quot; id=&quot;higher&quot;&gt;&lt;span class=&quot;ar&quot;&gt;&amp;#9650;&lt;/span&gt;More likely&lt;/button&gt;
+      &lt;button class=&quot;hl&quot; id=&quot;lower&quot;&gt;&lt;span class=&quot;ar&quot;&gt;&amp;#9660;&lt;/span&gt;Less likely&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;hint&quot;&gt;Read the odds. Call the next one.&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;end&quot;&gt;
+    &lt;div class=&quot;eface&quot; id=&quot;eface&quot;&gt;🎯&lt;/div&gt;
+    &lt;div class=&quot;escore&quot; id=&quot;escore&quot;&gt;3 / 3 — Sharp read.&lt;/div&gt;
+    &lt;div class=&quot;edesc&quot; id=&quot;edesc&quot;&gt;You&amp;rsquo;ve got a feel for the odds. On Kalshi these are real markets — put your read to work.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot;&gt;Trade real markets on Kalshi&lt;/button&gt;
+    &lt;div class=&quot;legal&quot;&gt;CFTC-regulated exchange &amp;middot; Legal in all 50 states &amp;middot; Prices not live &amp;middot; 18+&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;
+&lt;script&gt;
+/* ============================================================
+ * Kalshi — &quot;Beat the Market&quot; higher/lower odds puzzle.
+ * Read the anchor market&#x27;s probability; call whether the next
+ * event is MORE or LESS likely. 3 rounds -&gt; score + CTA.
+ * Teaches reading market odds. MRAID 3.0, ES5. Verb: &quot;trade&quot;.
+ * NOTE: interpretation of the gallery &quot;puzzle&quot; — swap mechanic
+ * if the live one differs (sort / match / etc.).
+ * ============================================================ */
+(function(){
+  &quot;use strict&quot;;
+  var STORE={ ios:&quot;https://apps.apple.com/us/app/kalshi/id1632713844&quot;,
+    android:&quot;https://play.google.com/store/apps/details?id=com.kalshi.mobile&quot; };
+  function platform(){ var ua=navigator.userAgent||&quot;&quot;; if(/iPhone|iPad|iPod/i.test(ua))return &quot;ios&quot;; return &quot;android&quot;; }
+
+  /* chain of markets; each round compares challenger prob to the anchor prob */
+  var CHAIN=[
+    { q:&quot;Fed cuts rates in December&quot;, p:64 },
+    { q:&quot;Bitcoin closes above $100k this year&quot;, p:72 },
+    { q:&quot;Government shutdown before Q1&quot;, p:31 },
+    { q:&quot;S&amp;P 500 closes green this week&quot;, p:67 }
+  ];
+  var round=0, streak=0, locked=false, started=false;
+  var streakEl=document.getElementById(&quot;streak&quot;), anchorQ=document.getElementById(&quot;anchorQ&quot;), anchorP=document.getElementById(&quot;anchorP&quot;),
+      chalQ=document.getElementById(&quot;chalQ&quot;), reveal=document.getElementById(&quot;reveal&quot;), hint=document.getElementById(&quot;hint&quot;),
+      higher=document.getElementById(&quot;higher&quot;), lower=document.getElementById(&quot;lower&quot;),
+      gameEl=document.getElementById(&quot;game&quot;), endEl=document.getElementById(&quot;end&quot;), cta=document.getElementById(&quot;cta&quot;);
+  var TOTAL=3;
+
+  function renderRound(){
+    var a=CHAIN[round], c=CHAIN[round+1];
+    streakEl.innerHTML=&quot;Streak: &lt;b&gt;&quot;+streak+&quot;&lt;/b&gt; &amp;middot; Round &quot;+(round+1)+&quot; of &quot;+TOTAL;
+    anchorQ.innerHTML=a.q; anchorP.innerHTML=a.p+&quot;%&quot;;
+    chalQ.innerHTML=c.q; reveal.className=&quot;reveal&quot;; reveal.innerHTML=&quot;&amp;nbsp;&quot;;
+    hint.style.visibility=&quot;visible&quot;;
+    locked=false;
+  }
+  function guess(isHigher){
+    if(locked||!started) return; locked=true;
+    var a=CHAIN[round], c=CHAIN[round+1];
+    var actuallyHigher = c.p &gt;= a.p;
+    var correct = (isHigher===actuallyHigher);
+    reveal.className=&quot;reveal show &quot;+(c.p&gt;=a.p?&quot;up&quot;:&quot;down&quot;);
+    reveal.innerHTML=c.p+&quot;%&quot;;
+    if(correct){ streak++; hint.innerHTML=&quot;Correct &amp;mdash; you read it right.&quot;; }
+    else { hint.innerHTML=&quot;Not this time &amp;mdash; the market saw it differently.&quot;; }
+    hint.style.visibility=&quot;visible&quot;;
+    streakEl.innerHTML=&quot;Streak: &lt;b&gt;&quot;+streak+&quot;&lt;/b&gt; &amp;middot; Round &quot;+(round+1)+&quot; of &quot;+TOTAL;
+    setTimeout(function(){
+      round++;
+      if(round&lt;TOTAL){ renderRound(); } else { finish(); }
+    }, 950);
+  }
+  higher.onclick=function(){ guess(true); };
+  lower.onclick=function(){ guess(false); };
+
+  function finish(){
+    gameEl.style.display=&quot;none&quot;;
+    var face=&quot;🎯&quot;, head=streak+&quot; / &quot;+TOTAL+&quot; — Sharp read.&quot;, desc=&quot;You&amp;rsquo;ve got a feel for the odds. On Kalshi these are real markets — put your read to work.&quot;;
+    if(streak&lt;=1){ face=&quot;📈&quot;; head=streak+&quot; / &quot;+TOTAL+&quot; — Room to run.&quot;; desc=&quot;Reading markets takes reps. Kalshi is where you get them — on real events.&quot;; }
+    else if(streak===2){ face=&quot;🔥&quot;; head=&quot;2 / 3 — Solid instincts.&quot;; desc=&quot;You&amp;rsquo;re close to the market. Sharpen it on Kalshi&amp;rsquo;s live events.&quot;; }
+    document.getElementById(&quot;eface&quot;).innerHTML=face;
+    document.getElementById(&quot;escore&quot;).innerHTML=head;
+    document.getElementById(&quot;edesc&quot;).innerHTML=desc;
+    endEl.className=&quot;show&quot;;
+  }
+
+  cta.addEventListener(&quot;click&quot;,function(){ var url=STORE[platform()];
+    if(typeof mraid!==&quot;undefined&quot;&amp;&amp;mraid&amp;&amp;typeof mraid.open===&quot;function&quot;){ mraid.open(url); } else if(window.open){ window.open(url,&quot;_blank&quot;); } },false);
+
+  function showAd(){ if(started) return; started=true; renderRound(); }
+  function onViewableChange(v){ if(v &amp;&amp; !started) showAd(); }
+  function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
+  function boot(){ if(typeof mraid===&quot;undefined&quot;){ showAd(); return; }
+    if(mraid.getState()===&quot;loading&quot;){ mraid.addEventListener(&quot;ready&quot;,onSdkReady); } else { onSdkReady(); } }
+  boot();
+})();
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Beat the Market<span class="live">LIVE</span></div><div class="fmt hot">PUZZLE · HIGHER / LOWER</div><div class="hook">Read one market’s odds → is the next event more or less likely? Build a streak across 3 rounds → score + CTA. The higher/lower game skinned as a prediction-market puzzle.</div><div class="thesis"><b>Tests:</b> gamified engagement — a puzzle loop that teaches ‘reading the odds’ before install. Concept build of the puzzle format; swap to match the exact gallery mechanic on your word.</div><div class="file">Kalshi_BeatTheMarket_Puzzle.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Which Trader Are You?&lt;/title&gt;
 &lt;style&gt;
   /* ---- Kalshi brand tokens (kalshi.com/brandkit) ---- */
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
@@ -248,7 +402,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Which Trader Are You?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Election night, an 80% market, your dream call → “You’re The Contrarian.” Personalized trader archetype + a live market matched to it.</div><div class="thesis"><b>Tests:</b> identity hook + self-segmentation — the result routes each user toward the market category they’ll actually trade.</div><div class="file">Kalshi_TraderQuiz_3T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — The Real Thing&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Which Trader Are You?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Election night, an 80% market, your dream call → “You’re The Contrarian.” Personalized trader archetype + a live market matched to it.</div><div class="thesis"><b>Tests:</b> identity hook + self-segmentation — the result routes each user toward the market category they’ll actually trade.</div><div class="file">Kalshi_TraderQuiz_3T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — The Real Thing&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
@@ -395,7 +549,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Is This Actually Legal?<span class="live">LIVE</span></div><div class="fmt hot">LEGITIMACY REVEAL · 3 TAPS</div><div class="hook">Tap to verify each credential → CFTC-regulated · legal in all 50 states · real payouts → “Verified.” Dramatizes the message that already wins for Kalshi.</div><div class="thesis"><b>Tests:</b> the legitimacy angle — turning “is this real?” from an objection into the hook. Legitimacy consistently out-converts betting-led messaging in this category.</div><div class="file">Kalshi_LegalIn50_3T.html</div></div></div></div><h2>Product demos — the proven core</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Pick Your Trade&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Is This Actually Legal?<span class="live">LIVE</span></div><div class="fmt hot">LEGITIMACY REVEAL · 3 TAPS</div><div class="hook">Tap to verify each credential → CFTC-regulated · legal in all 50 states · real payouts → “Verified.” Dramatizes the message that already wins for Kalshi.</div><div class="thesis"><b>Tests:</b> the legitimacy angle — turning “is this real?” from an objection into the hook. Legitimacy consistently out-converts betting-led messaging in this category.</div><div class="file">Kalshi_LegalIn50_3T.html</div></div></div></div><h2>Product demos — the proven core</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Pick Your Trade&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#08201B;
@@ -516,7 +670,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Pick Your Trade<span class="live">LIVE</span></div><div class="fmt">MARKET CARD · 1–2 TAPS</div><div class="hook">Kalshi’s live in-market format, rebuilt for Unity: a real market card — “Bitcoin price by this year?” Above / Below, Yes / No — tap your side → “Trade Now.” Carries Kalshi’s approved compliance disclaimer verbatim.</div><div class="thesis"><b>Tests:</b> the proven running creative — the baseline to match on the network before testing the bolder brand mechanics against it.</div><div class="file">Kalshi_PickYourTrade_2T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Forecast the Fed&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Pick Your Trade<span class="live">LIVE</span></div><div class="fmt">MARKET CARD · 1–2 TAPS</div><div class="hook">Kalshi’s live in-market format, rebuilt for Unity: a real market card — “Bitcoin price by this year?” Above / Below, Yes / No — tap your side → “Trade Now.” Carries Kalshi’s approved compliance disclaimer verbatim.</div><div class="thesis"><b>Tests:</b> the proven running creative — the baseline to match on the network before testing the bolder brand mechanics against it.</div><div class="file">Kalshi_PickYourTrade_2T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Forecast the Fed&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
@@ -654,7 +808,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Forecast the Fed<span class="live">LIVE</span></div><div class="fmt">DRAG SLIDER · FORECAST</div><div class="hook">Drag the slider to set your probability — YES/NO cents and the $10 payout update live. Teaches the contract math in one gesture.</div><div class="thesis"><b>Tests:</b> the core Kalshi mechanic — does teaching the payout before install lift qualified, deposit-ready users?</div><div class="file">Kalshi_ForecastSlider_Drag.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Make Your Call&lt;/title&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Forecast the Fed<span class="live">LIVE</span></div><div class="fmt">DRAG SLIDER · FORECAST</div><div class="hook">Drag the slider to set your probability — YES/NO cents and the $10 payout update live. Teaches the contract math in one gesture.</div><div class="thesis"><b>Tests:</b> the core Kalshi mechanic — does teaching the payout before install lift qualified, deposit-ready users?</div><div class="file">Kalshi_ForecastSlider_Drag.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf5" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;&lt;title&gt;Kalshi — Make Your Call&lt;/title&gt;
 &lt;style&gt;
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; margin:0; padding:0; }
   html,body{ width:100%; height:100%; overflow:hidden; background:#01201A;
@@ -760,7 +914,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 })();
 &lt;/script&gt;
 &lt;/body&gt;&lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Make Your Call<span class="live">LIVE</span></div><div class="fmt">YES / NO · 1 TAP</div><div class="hook">One market, one tap. Pick YES or NO → instant payout reveal → CTA. The lowest-friction entry point in the set.</div><div class="thesis"><b>Tests:</b> minimal-friction baseline — the control every other concept has to beat on IPM and FTD rate.</div><div class="file">Kalshi_MakeYourCall_1T.html</div></div></div></div>
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf5');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Make Your Call<span class="live">LIVE</span></div><div class="fmt">YES / NO · 1 TAP</div><div class="hook">One market, one tap. Pick YES or NO → instant payout reveal → CTA. The lowest-friction entry point in the set.</div><div class="thesis"><b>Tests:</b> minimal-friction baseline — the control every other concept has to beat on IPM and FTD rate.</div><div class="file">Kalshi_MakeYourCall_1T.html</div></div></div></div>
 <h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A — Control</td><td>Pick Your Trade vs. Make Your Call 1T</td><td>Does the full market card beat the stripped 1-tap on install quality?</td><td>IPM → FTD rate</td></tr><tr><td>B — Friction</td><td>Pick Your Trade vs. Forecast Slider</td><td>Does teaching the payout math qualify users or slow the funnel?</td><td>CVR → FTD / payer</td></tr><tr><td>C — Hook</td><td>Trader Quiz vs. Is This Legal?</td><td>Identity vs. legitimacy — which brand message converts?</td><td>CTR → CVR</td></tr><tr><td>D — Message</td><td>Is This Legal? vs. Pick Your Trade</td><td>Does leading with legitimacy beat the proven product card?</td><td>CVR → FTD / payer</td></tr></table>
 <div class="note"><b>About these builds:</b> everything on this page is a working concept build — final versions ship with Kalshi’s official brand assets and approved market copy. Both store CTAs are already wired with automatic iOS/Android detection, every creative is Unity-spec compliant (MRAID 3.0 · single file · &lt;5&nbsp;MB · both orientations), and copy holds the compliance line throughout — the verb is always “trade” / “make your call,” never “bet.” 18+, US-only, regulated-state targeting and category controls are handled at the campaign layer. Ready to move into campaign QA as soon as concepts are approved.</div>
 <footer>Benchmarks: AppAgent “State of Playable Ads 2025”; Admiral Media playable UA guide. Kalshi brand tokens: kalshi.com/brandkit. Store: apps.apple.com/us/app/kalshi/id1632713844 · play.google.com/store/apps/details?id=com.kalshi.mobile</footer>

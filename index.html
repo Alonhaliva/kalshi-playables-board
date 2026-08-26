@@ -81,6 +81,9 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   .pick.yes{ background:rgba(0,221,148,0.10); color:#00DD94; } .pick.no{ background:rgba(255,110,110,0.10); color:#ff8f8f; }
   .pick.yes.sel{ background:#00DD94; color:#08201B; border-color:#00DD94; } .pick.no.sel{ background:#ff8f8f; color:#2a0d0d; border-color:#ff8f8f; }
   .pick.dim{ opacity:.4; }
+  .pick.pulse{ -webkit-animation:pickpulse 1.4s ease-in-out infinite; animation:pickpulse 1.4s ease-in-out infinite; }
+  @-webkit-keyframes pickpulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(0,221,148,0);} 50%{ box-shadow:0 0 0 5px rgba(0,221,148,0.16);} }
+  @keyframes pickpulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(0,221,148,0);} 50%{ box-shadow:0 0 0 5px rgba(0,221,148,0.16);} }
 
   .conf{ height:18px; text-align:center; font-size:12.5px; font-weight:700; color:#4DE4B2; margin:12px 0 0; opacity:0; -webkit-transition:opacity .25s; transition:opacity .25s; }
   .conf.show{ opacity:1; }
@@ -158,15 +161,12 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
     { cat:&quot;Weather&quot;, q:&quot;Highest temperature in NYC today?&quot;, rows:[
         {name:&quot;64&amp;deg; to 65&amp;deg;&quot;, yes:41, no:59}, {name:&quot;62&amp;deg; to 63&amp;deg;&quot;, yes:33, no:67} ] }
   ];
-  var AUTO_MS=3600, PICK_HOLD=1050;
+  var PICK_HOLD=1050;
 
   var dotsEl=document.getElementById(&quot;dots&quot;), cardEl=document.getElementById(&quot;card&quot;),
       confEl=document.getElementById(&quot;conf&quot;), cta=document.getElementById(&quot;cta&quot;),
       cardwrapDots=null, endcard=document.getElementById(&quot;endcard&quot;);
-  var idx=0, started=false, locked=false, autoT=null;
-
-  function clearAuto(){ if(autoT){ clearTimeout(autoT); autoT=null; } }
-  function scheduleAuto(){ clearAuto(); autoT=setTimeout(function(){ advance(); }, AUTO_MS); }
+  var idx=0, started=false, locked=false;
 
   function renderDots(){
     dotsEl.innerHTML=&quot;&quot;;
@@ -187,22 +187,21 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
     confEl.className=&quot;conf&quot;; confEl.innerHTML=&quot;&amp;nbsp;&quot;;
     locked=false;
     var picks=cardEl.querySelectorAll(&quot;.pick&quot;);
-    for(var p=0;p&lt;picks.length;p++){ (function(b){ b.onclick=function(){ choose(b); }; })(picks[p]); }
+    for(var p=0;p&lt;picks.length;p++){ (function(b){ b.onclick=function(){ choose(b); }; b.className+=&quot; pulse&quot;; })(picks[p]); }
+    confEl.innerHTML=&quot;&amp;#128070; Tap Yes or No to trade&quot;; confEl.className=&quot;conf show&quot;;
     renderDots();
-    scheduleAuto();
   }
   function choose(btn){
-    if(!started||locked) return; locked=true; clearAuto();
+    if(!started||locked) return; locked=true;
     var row=btn.parentNode, mi=parseInt(row.getAttribute(&quot;data-m&quot;),10), side=btn.getAttribute(&quot;data-side&quot;);
     var picks=cardEl.querySelectorAll(&quot;.pick&quot;);
-    for(var i=0;i&lt;picks.length;i++){ if(picks[i]!==btn){ picks[i].className+=&quot; dim&quot;; } }
+    for(var i=0;i&lt;picks.length;i++){ picks[i].className=picks[i].className.replace(&quot; pulse&quot;,&quot;&quot;); if(picks[i]!==btn){ picks[i].className+=&quot; dim&quot;; } }
     btn.className+=&quot; sel&quot;;
     confEl.innerHTML=&quot;You picked &lt;b&gt;&quot;+side.toUpperCase()+&quot;&lt;/b&gt; on &quot;+MARKETS[idx].rows[mi].name.replace(/&amp;deg;/g,&quot;°&quot;)+&quot;.&quot;;
     confEl.className=&quot;conf show&quot;;
     setTimeout(advance, PICK_HOLD);
   }
   function advance(){
-    clearAuto();
     if(idx &lt; MARKETS.length-1){ idx++; renderCard(); }
     else { showEnd(); }
   }
@@ -216,9 +215,9 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
   var badges=endcard.querySelectorAll(&quot;.badge&quot;);
   for(var b=0;b&lt;badges.length;b++){ (function(el){ el.onclick=function(){ openStore(el.getAttribute(&quot;data-store&quot;)); }; })(badges[b]); }
 
-  /* MRAID viewability: pause auto-rotate when hidden */
-  function pause(){ clearAuto(); }
-  function resume(){ if(started &amp;&amp; endcard.className.indexOf(&quot;show&quot;)===-1 &amp;&amp; !locked) scheduleAuto(); }
+  /* Fully tap-driven — no timers to pause on viewability change. */
+  function pause(){}
+  function resume(){}
   function showAd(){ if(started) return; started=true; renderCard(); }
   function onViewableChange(v){ if(v){ started?resume():showAd(); } else { pause(); } }
   function onSdkReady(){ mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange); if(mraid.isViewable()) showAd(); }
